@@ -13,12 +13,18 @@ void setup()
 {
   // use the baud rate your bluetooth module is configured to 
   // not all baud rates are working well, i.e. ATMEGA168 works best with 57600
-  Serial.begin(115200); 
+  //115000 firefly
+  //57600 old
+  Serial.begin(57600); 
 
   // register callback functions, which will be called when an associated event occurs.
   // - the first parameter is the name of your function (see below)
   // - match the second parameter ('A', 'B', 'a', etc...) with the flag on your Android application
   meetAndroid.registerFunction(testEvent, 'A');  
+  meetAndroid.registerFunction(setGroupProgress, 'B');  
+  meetAndroid.registerFunction(setMyProgress, 'C');  
+  meetAndroid.registerFunction(setGroupNotificatinoLight, 'D');  
+  meetAndroid.registerFunction(setMyNotificatinoLight, 'E');  
 
   pinMode(onboardLed, OUTPUT);
   digitalWrite(onboardLed, HIGH);
@@ -29,10 +35,36 @@ void loop()
 {
   meetAndroid.receive(); // you need to keep this in your loop() to receive events
 
-  delay(500);
-  meetAndroid.send(3);
-  flushLed(300);
 }
+
+void setGroupProgress(byte flag, byte numOfValues){
+  meetAndroid.send("setGroupProgress");
+  meetAndroid.send(meetAndroid.getInt());
+}
+
+void setMyProgress(byte flag, byte numOfValues){
+  meetAndroid.send("setMyProgress");
+  meetAndroid.send(meetAndroid.getInt());
+}
+void setGroupNotificatinoLight(byte flag, byte numOfValues){
+  meetAndroid.send("setGroupNotificatinoLight");
+  meetAndroid.send(meetAndroid.getInt());
+}
+void setMyNotificatinoLight(byte flag, byte numOfValues){
+  meetAndroid.send("setMyNotificatinoLight");
+  meetAndroid.send(meetAndroid.getInt());
+}
+
+void sendStart(){
+  meetAndroid.send("sendstart");
+}
+
+void sendShowProgress(){
+  meetAndroid.send("sendshowprogress");
+}
+
+
+
 
 /*
  * This method is called constantly.
@@ -40,8 +72,10 @@ void loop()
  */
 void testEvent(byte flag, byte numOfValues)
 {
+  sendStart();
   flushLed(300);
   flushLed(300);
+  //meetAndroid.send(meetAndroid.getInt());
 }
 
 void flushLed(int time)
@@ -51,5 +85,7 @@ void flushLed(int time)
   digitalWrite(onboardLed, HIGH);
   delay(time);
 }
+
+
 
 

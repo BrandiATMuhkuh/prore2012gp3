@@ -18,9 +18,15 @@ public final class R {
     }
     public static final class id {
         public static final int ColorIndicator=0x7f070000;
-        public static final int button1=0x7f070001;
-        public static final int first_button=0x7f070002;
-        public static final int menu_settings=0x7f070003;
+        public static final int LinearLayout02=0x7f070002;
+        public static final int ScrollView01=0x7f070001;
+        public static final int button1=0x7f070003;
+        public static final int buttonc=0x7f070004;
+        public static final int buttond=0x7f070005;
+        public static final int buttone=0x7f070006;
+        public static final int buttonf=0x7f070007;
+        public static final int first_button=0x7f070008;
+        public static final int menu_settings=0x7f070009;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
