@@ -40,7 +40,7 @@ public class ImageFragment extends Fragment implements EventInterface {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		System.out.println("onCreateView");
+		System.out.println("onCreateViews");
 		View view = inflater.inflate(R.layout.image, container, false);
 		return view;
 	}
