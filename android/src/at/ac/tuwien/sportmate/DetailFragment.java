@@ -30,7 +30,7 @@ public class DetailFragment extends Fragment implements EventInterface {
 	
 	@Override
 	public void onStop() {
-		//SportMateApplication.getApplication().unregisterListener(this.getClass().getName());
+		SportMateApplication.getApplication().unregisterListener(this.getClass().getName());
 		super.onStop();
 	}
 
@@ -46,17 +46,10 @@ public class DetailFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				Log.d("p", "press button");
-				SportMateApplication.getApplication().testSendEventA();
+				//SportMateApplication.getApplication().testSendEventA();
 				 //updateLed();
-				// SportMateApplication.getApplication().sendTest();
-				/*
-				Intent sendIntent = new Intent();
-				sendIntent.setAction(Intent.ACTION_SEND);
-				sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
-				sendIntent.setType("text/plain");
-				startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to));
-				startActivity(intent);
-				*/
+				 SportMateApplication.getApplication().sendTest();
+				
 			}
 		});
 		

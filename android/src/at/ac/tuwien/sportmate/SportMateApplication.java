@@ -90,6 +90,7 @@ public class SportMateApplication extends Application {
     public void sendStart() {
 		
 		//sent notification led
+    	testSendEventA();
 		setMyNotificatinoLight(1);
 	}
 	

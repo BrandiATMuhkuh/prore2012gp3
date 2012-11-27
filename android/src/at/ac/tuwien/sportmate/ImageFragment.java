@@ -19,14 +19,14 @@ public class ImageFragment extends Fragment implements EventInterface {
 	@Override
 	public void onResume() {
 		System.out.println("onResume");
-		//SportMateApplication.getApplication().registerListener(this.getClass().getName(), this);
+		SportMateApplication.getApplication().registerListener(this.getClass().getName(), this);
 		super.onResume();
 	}
 	
 	@Override
 	public void onStop() {
 		System.out.println("onStop");
-		//SportMateApplication.getApplication().unregisterListener(this.getClass().getName());
+		SportMateApplication.getApplication().unregisterListener(this.getClass().getName());
 		super.onStop();
 	}
 
