@@ -8,6 +8,8 @@
 
 MeetAndroid meetAndroid;
 int onboardLed = 13;
+int startButton = 7;
+int startButtonState = 0;
 
 void setup()  
 {
@@ -27,6 +29,7 @@ void setup()
   meetAndroid.registerFunction(setMyNotificatinoLight, 'E');  
 
   pinMode(onboardLed, OUTPUT);
+  pinMode(startButton, INPUT);
   digitalWrite(onboardLed, HIGH);
 
 }
@@ -35,6 +38,37 @@ void loop()
 {
   meetAndroid.receive(); // you need to keep this in your loop() to receive events
 
+  startButtonState = digitalRead(startButton);
+  
+  
+  
+  //Runs as long as button is pressed
+  while (startButtonState == HIGH){
+    int button_delay=0;
+    
+    //count button press time
+    
+    while (startButtonState == HIGH){
+      button_delay++;
+      delay(100);
+      startButtonState = digitalRead(startButton);
+      
+      //Long press button
+      if(button_delay == 10){ //no need to wait for user to release
+        sendStart(); 
+      }        
+      
+    }
+    
+    //short press button
+    if(button_delay < 10) { //short press
+      sendShowProgress();
+    }
+    
+  }
+  
+  
+  
 }
 
 void setGroupProgress(byte flag, byte numOfValues){

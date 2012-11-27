@@ -26,9 +26,7 @@ public class MainActivity extends Activity{
 	 */
 	//private static final String DEVICE_ADDRESS = "00:06:66:49:30:1E"; //firefly
 	private static final String DEVICE_ADDRESS = "00:06:66:43:40:68"; //old
-	private SetupReceiver arduinoReceiver3 = new SetupReceiver();
-	private StatusStartReceiver arduinoReceiver2 = new StatusStartReceiver();
-	private ArduinoReceiver arduinoReceiver = new ArduinoReceiver();
+	private ArduinoReceiver ArduinoReceiver = new ArduinoReceiver();
 	private String address;
 
 	final int DELAY = 150;
@@ -96,9 +94,7 @@ public class MainActivity extends Activity{
 	@Override
 	protected void onStart() {
 		super.onStart();
-		registerReceiver(arduinoReceiver, new IntentFilter(AmarinoIntent.ACTION_RECEIVED));
-		registerReceiver(arduinoReceiver3, new IntentFilter(AmarinoIntent.ACTION_RECEIVED));
-		registerReceiver(arduinoReceiver2, new IntentFilter(AmarinoIntent.ACTION_CONNECTED));
+		registerReceiver(ArduinoReceiver, new IntentFilter(AmarinoIntent.ACTION_RECEIVED));
 		Amarino.connect(this, DEVICE_ADDRESS);
         // set seekbars and feedback color according to last state
         
@@ -114,7 +110,7 @@ public class MainActivity extends Activity{
 		Amarino.disconnect(this, DEVICE_ADDRESS);
 		
 		// do never forget to unregister a registered receiver
-		unregisterReceiver(arduinoReceiver);
+		unregisterReceiver(ArduinoReceiver);
 	}
 
 	private void sendTest(){
@@ -153,27 +149,23 @@ public class MainActivity extends Activity{
 		Amarino.sendDataToArduino(this, DEVICE_ADDRESS, 'E', onOff);
 	}
 	
-	public class SetupReceiver extends BroadcastReceiver{
-
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			address = intent.getStringExtra(AmarinoIntent.EXTRA_DEVICE_ADDRESS);
-			
-			System.out.println(intent);
-			System.out.print("Arduino connected");
-		}
+	/**
+	 * Start the sport process
+	 * Is called via user interaction (arduino or phone)
+	 */
+	private void sendStart() {
 		
+		//sent notification led
+		setMyNotificatinoLight(1);
 	}
 	
-	public class StatusStartReceiver extends BroadcastReceiver{
-
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			
-			System.out.println(intent);
-			System.out.print("start buttond");
-		}
-		
+	/**
+	 * Show progress on the armband
+	 * Is called via user interaction (arduino or phone)
+	 */
+	private void sendShowProgress(){
+		setGroupProgress(49);
+		setMyProgress(12);
 	}
 
 	/**
@@ -202,6 +194,13 @@ public class MainActivity extends Activity{
 			if (dataType == AmarinoIntent.STRING_EXTRA){
 				data = intent.getStringExtra(AmarinoIntent.EXTRA_DATA);
 				
+				if(data.equals("sendstart")){
+					sendStart();
+				}
+				
+				if(data.equals("sendshowprogress")){
+					sendShowProgress();
+				}
 				System.out.println(data);
 			}
 		}
