@@ -32,6 +32,14 @@ public class MainActivity extends Activity {
 						new MyTabListener<ImageFragment>(this, "album",
 								ImageFragment.class));
 		actionBar.addTab(tab);
+		
+		tab = actionBar
+				.newTab()
+				.setText("Start")
+				.setTabListener(
+						new MyTabListener<StartFragment>(this, "Start",
+								StartFragment.class));
+		actionBar.addTab(tab);
 
 	}
 

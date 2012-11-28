@@ -86,6 +86,5 @@ public class DetailFragment extends Fragment implements EventInterface {
 	@Override
 	public void eventA() {
 		System.out.println("testEventStartetInClass: "+this.getClass().getName());
-		
 	}
 }
