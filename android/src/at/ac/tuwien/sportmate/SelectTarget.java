@@ -49,7 +49,7 @@ public class SelectTarget extends Fragment implements EventInterface {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.my_target, container, false);
+		view = inflater.inflate(R.layout.select_target, container, false);
 		
 		
 		ausdauer_count = 0; // bzw aus db auslesen
