@@ -13,7 +13,7 @@ public class BoActivity {
 	double intensity; 
 	double points; 
 	double bonus_points;
-	
+	BoCategory category;
 	
 	BoActivity(int activity_id, Date date, Time time, int duration_min, double intensity, double points, double bonus_points)
 	{

@@ -20,6 +20,14 @@ public class BoGroupMember {
 		
 	}
 	
+	public List<BoActivity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<BoActivity> activities) {
+		this.activities = activities;
+	}
+
 	public BoGroupMember(int group_id, int user_id, String user_name, Date user_joining_date, Date user_group_joining_date, Date user_group_leaving_date, int default_activity)
 	{
 		this.group_id = group_id; 
