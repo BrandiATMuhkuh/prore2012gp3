@@ -26,8 +26,8 @@
             android:id="@+id/ausdauer_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="15h"
-            android:textSize="40sp" />
+            android:text=""
+            android:textSize="32sp" />
 
         <Button
             android:id="@+id/ausdauer_up"
@@ -59,8 +59,8 @@
             android:id="@+id/kraft_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="15h"
-            android:textSize="40sp" />
+            android:text=""
+            android:textSize="32sp" />
 
         <Button
             android:id="@+id/kraft_up"
@@ -92,8 +92,8 @@
             android:id="@+id/ballspiel_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="15h"
-            android:textSize="40sp" />
+            android:text=""
+            android:textSize="32sp" />
 
         <Button
             android:id="@+id/ballspiel_up"
@@ -125,8 +125,8 @@
             android:id="@+id/gymnastik_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="15h"
-            android:textSize="40sp" />
+            android:text=""
+            android:textSize="32sp" />
 
         <Button
             android:id="@+id/gymnastik_up"
@@ -158,8 +158,8 @@
             android:id="@+id/leichte_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="15h"
-            android:textSize="40sp" />
+            android:text=""
+            android:textSize="32sp" />
 
         <Button
             android:id="@+id/leichte_up"

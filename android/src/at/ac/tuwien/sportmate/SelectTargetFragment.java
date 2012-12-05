@@ -20,6 +20,12 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 	private int gym_count;
 	private int leichte_count;
 	
+	TextView ac;
+	TextView kc;
+	TextView sc;
+	TextView gc;
+	TextView lc;
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -49,22 +55,19 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
 		view = inflater.inflate(R.layout.select_target, container, false);
 		
 		
-		ausdauer_count = 0; // bzw aus db auslesen
-		kraft_count = 0;
-		ballspiel_count = 0;
-		gym_count = 0;
-		leichte_count = 0;
 		
 		//Ausdauer 
-		final TextView ac = (TextView)view.findViewById(R.id.ausdauer_count);
+		ac = (TextView)view.findViewById(R.id.ausdauer_count);
 		((Button) view.findViewById(R.id.ausdauer_down)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				if (ausdauer_count > 0)	ausdauer_count--;
-				ac.setText(ausdauer_count *15 + "min");
+				ac.setText(ausdauer_count *15 + " min");
+				refreshPoints();
 			}
 		});
 		
@@ -72,17 +75,19 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				ausdauer_count++;
-				ac.setText(ausdauer_count *15 + "min");
+				ac.setText(ausdauer_count *15 + " min");
+				refreshPoints();
 			}
 		});
 		
 		//Kraft
-		final TextView kc = (TextView)view.findViewById(R.id.kraft_count);
+		kc = (TextView)view.findViewById(R.id.kraft_count);
 		((Button) view.findViewById(R.id.kraft_down)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				if (kraft_count > 0)	kraft_count--;
-				ac.setText(kraft_count*15 + "min");
+				kc.setText(kraft_count*15 + " min");
+				refreshPoints();
 			}
 		});
 		
@@ -90,17 +95,19 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				kraft_count++;
-				ac.setText(kraft_count*15 + "min");
+				kc.setText(kraft_count*15 + " min");
+				refreshPoints();
 			}
 		});
 		
 		//Ballspiel
-		final TextView sc = (TextView)view.findViewById(R.id.ballspiel_count);
+		sc = (TextView)view.findViewById(R.id.ballspiel_count);
 		((Button) view.findViewById(R.id.ballspiel_down)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				if (ballspiel_count > 0)	ballspiel_count--;
-				ac.setText(ballspiel_count*15 + "min");
+				sc.setText(ballspiel_count*15 + " min");
+				refreshPoints();
 			}
 		});
 		
@@ -108,17 +115,19 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				ballspiel_count++;
-				ac.setText(ballspiel_count*15 + "min");
+				sc.setText(ballspiel_count*15 + " min");
+				refreshPoints();
 			}
 		});
 		
 		//Gymnastik
-		final TextView gc = (TextView)view.findViewById(R.id.gymnastik_count);
+		gc = (TextView)view.findViewById(R.id.gymnastik_count);
 		((Button) view.findViewById(R.id.gymnastik_down)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				if (gym_count > 0)	gym_count--;
-				ac.setText(gym_count*15 + "min");
+				gc.setText(gym_count*15 + " min");
+				refreshPoints();
 			}
 		});
 		
@@ -126,17 +135,19 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				gym_count++;
-				ac.setText(gym_count*15 + "min");
+				gc.setText(gym_count*15 + " min");
+				refreshPoints();
 			}
 		});
 		
 		//Leichte
-		final TextView lc = (TextView)view.findViewById(R.id.leichte_count);
+		lc = (TextView)view.findViewById(R.id.leichte_count);
 		((Button) view.findViewById(R.id.leichte_down)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				if (leichte_count > 0)	leichte_count--;
-				ac.setText(leichte_count*15 + "min");
+				lc.setText(leichte_count*15 + " min");
+				refreshPoints();
 			}
 		});
 		
@@ -144,9 +155,12 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				leichte_count++;
-				ac.setText(leichte_count*15 + "min");
+				lc.setText(leichte_count*15 + " min");
+				refreshPoints();
 			}
 		});
+		
+		initTargets();
 		
 		return view;
 	}
@@ -159,7 +173,25 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 						 ballspiel_count*15*1.0 +
 						 gym_count*15*0.9 +
 						 leichte_count*15*0.8;
-		gesamt.setText(String.valueOf(punkte));
+		gesamt.setText(String.valueOf((int)punkte));
+	}
+	
+	private void initTargets(){
+		//daten aus db
+		ausdauer_count = 0; // bzw aus db auslesen
+		kraft_count = 0;
+		ballspiel_count = 0;
+		gym_count = 0;
+		leichte_count = 0;
+		
+		ac.setText(String.format("%3d min", ausdauer_count*15));
+		kc.setText(kraft_count*15 + " min");
+		sc.setText(ballspiel_count*15 + " min");
+		gc.setText(gym_count*15 + " min");
+		lc.setText(leichte_count*15 + " min");
+		
+		refreshPoints();
+		
 	}
 
 	@Override
