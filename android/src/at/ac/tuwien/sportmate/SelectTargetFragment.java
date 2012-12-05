@@ -10,7 +10,7 @@ import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class SelectTarget extends Fragment implements EventInterface {
+public class SelectTargetFragment extends Fragment implements EventInterface {
 	
 	private View view;
 	

@@ -1,4 +1,5 @@
 package at.ac.tuwien.sportmate;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
@@ -56,6 +57,14 @@ public class MainActivity extends Activity {
 				.setTabListener(
 						new MyTabListener<GroupFragment>(this, "Group",
 								GroupFragment.class));
+		actionBar.addTab(tab);
+		
+		tab = actionBar
+		.newTab()
+		.setText("Target")
+		.setTabListener(
+				new MyTabListener<SelectTargetFragment>(this, "Group",
+						SelectTargetFragment.class));
 		actionBar.addTab(tab);
 		
 	}
