@@ -40,6 +40,15 @@ public class MainActivity extends Activity {
 						new MyTabListener<StartFragment>(this, "Start",
 								StartFragment.class));
 		actionBar.addTab(tab);
+		
+		tab = actionBar
+				.newTab()
+				.setText("SingleStatistic")
+				.setTabListener(
+						new MyTabListener<SingleStatistic>(this, "SingleStatistic",
+								SingleStatistic.class));
+		actionBar.addTab(tab);
+
 
 		tab = actionBar
 				.newTab()
