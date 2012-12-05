@@ -51,21 +51,17 @@ public class SportMateApplication extends Application {
 		Amarino.sendDataToArduino(this, DEVICE_ADDRESS, 'A', 1);
 	}
 	
-	/**
-	 * Send the group progress to the arduino in percent
-	 * @param progress progress in percent
-	 */
-    public void setGroupProgress(int progress){
-		Amarino.sendDataToArduino(this, DEVICE_ADDRESS, 'B', progress);
-	}
-	
-	/**
-	 * Send my progress to the arduino in percent
-	 * @param progress progress in percent
-	 */
-    public void setMyProgress(int progress){
-		Amarino.sendDataToArduino(this, DEVICE_ADDRESS, 'C', progress);
-	}
+    /**
+     * Send my and the group pgrogress in percent to the arduino
+     * @param myProgress progress in percent
+     * @param groupProgress progress in percent
+     */
+    public void setProgresses(int myProgress, int groupProgress){
+    	int a[]={myProgress,groupProgress};
+    	Amarino.sendDataToArduino(this, DEVICE_ADDRESS, 'B', a);
+    }
+    
+
 	
 	/**
 	 * Send group notification light. 0=off 1=on
@@ -99,8 +95,7 @@ public class SportMateApplication extends Application {
 	 * Is called via user interaction (arduino or phone)
 	 */
     public void sendShowProgress(){
-		setGroupProgress(49);
-		setMyProgress(12);
+    	setProgresses(49,80);
 	}
     
     public void testSendEventA(){
