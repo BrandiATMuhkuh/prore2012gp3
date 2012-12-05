@@ -1,16 +1,29 @@
 package at.ac.tuwien.sportmate;
 
+import java.util.List;
+
 public class BoGroup {
 
 	int group_id; 
 	String group_name; 
-	
-	
+	List<BoGroupMember> groupMembers; 
+
+
+
 	BoGroup()
 	{
 		
 	}
 
+
+	public List<BoGroupMember> getGroupMembers() {
+		return groupMembers;
+	}
+
+
+	public void setGroupMembers(List<BoGroupMember> groupMembers) {
+		this.groupMembers = groupMembers;
+	}
 
 	BoGroup(int group_id, String group_name)
 	{
