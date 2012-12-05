@@ -50,6 +50,14 @@ public class MainActivity extends Activity {
 		actionBar.addTab(tab);
 
 
+		tab = actionBar
+				.newTab()
+				.setText("Group")
+				.setTabListener(
+						new MyTabListener<GroupFragment>(this, "Group",
+								GroupFragment.class));
+		actionBar.addTab(tab);
+		
 	}
 
 	public static class MyTabListener<T extends Fragment> implements

@@ -1,7 +1,6 @@
 package at.ac.tuwien.sportmate;
 
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -23,6 +22,8 @@ public class DBHandler {
 		boolean ok = true;
 		
 	    ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+	    nameValuePairs.add(new BasicNameValuePair("method", "getUser"));
+	    
 	    nameValuePairs.add(new BasicNameValuePair("fid", id.toString()));
 	    
 	    String result = this.sendRequestToServer(serviceName, nameValuePairs);
@@ -62,7 +63,6 @@ public class DBHandler {
 	
 	private String savePatient(String firstname, String lastname, Date bd) {
 		
-		String serviceName = "http://web.student.tuwien.ac.at/~e0826174/med/app/savePatient.php";
 		
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 	    nameValuePairs.add(new BasicNameValuePair("vorname", firstname));
