@@ -1,6 +1,7 @@
 package at.ac.tuwien.sportmate;
 
 import java.sql.Date;
+import java.util.List;
 
 public class BoGroupMember {
 
@@ -12,6 +13,7 @@ public class BoGroupMember {
 	Date user_group_leaving_date; 
 	int default_activity; 
 	
+	List<BoActivity> activities; 
 	
 	public BoGroupMember()
 	{
