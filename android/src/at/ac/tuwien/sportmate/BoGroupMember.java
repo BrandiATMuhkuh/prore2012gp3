@@ -14,6 +14,7 @@ public class BoGroupMember {
 	int default_activity; 
 	
 	List<BoActivity> activities; 
+	List<BoWeeklyTarget> weeklyActivitiesTarget;
 	
 	public BoGroupMember()
 	{
