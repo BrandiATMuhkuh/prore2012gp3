@@ -66,7 +66,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				if (ausdauer_count > 0)	ausdauer_count--;
-				ac.setText(ausdauer_count *15 + " min");
+				ac.setText(String.format("%3d min", ausdauer_count*15));
 				refreshPoints();
 			}
 		});
@@ -75,7 +75,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				ausdauer_count++;
-				ac.setText(ausdauer_count *15 + " min");
+				ac.setText(String.format("%3d min", ausdauer_count*15));
 				refreshPoints();
 			}
 		});
@@ -86,7 +86,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				if (kraft_count > 0)	kraft_count--;
-				kc.setText(kraft_count*15 + " min");
+				kc.setText(String.format("%3d min", kraft_count*15));
 				refreshPoints();
 			}
 		});
@@ -95,7 +95,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				kraft_count++;
-				kc.setText(kraft_count*15 + " min");
+				kc.setText(String.format("%3d min", kraft_count*15));
 				refreshPoints();
 			}
 		});
@@ -106,7 +106,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				if (ballspiel_count > 0)	ballspiel_count--;
-				sc.setText(ballspiel_count*15 + " min");
+				sc.setText(String.format("%3d min", ballspiel_count*15));
 				refreshPoints();
 			}
 		});
@@ -115,7 +115,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				ballspiel_count++;
-				sc.setText(ballspiel_count*15 + " min");
+				sc.setText(String.format("%3d min", ballspiel_count*15));
 				refreshPoints();
 			}
 		});
@@ -126,7 +126,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				if (gym_count > 0)	gym_count--;
-				gc.setText(gym_count*15 + " min");
+				gc.setText(String.format("%3d min", gym_count*15));
 				refreshPoints();
 			}
 		});
@@ -135,7 +135,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				gym_count++;
-				gc.setText(gym_count*15 + " min");
+				gc.setText(String.format("%3d min", gym_count*15));
 				refreshPoints();
 			}
 		});
@@ -146,7 +146,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				if (leichte_count > 0)	leichte_count--;
-				lc.setText(leichte_count*15 + " min");
+				lc.setText(String.format("%3d min", leichte_count*15));
 				refreshPoints();
 			}
 		});
@@ -155,7 +155,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) {
 				leichte_count++;
-				lc.setText(leichte_count*15 + " min");
+				lc.setText(String.format("%3d min", leichte_count*15));
 				refreshPoints();
 			}
 		});
@@ -167,13 +167,14 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 	
 	private void refreshPoints(){
 		//Gesamtcount
+		Log.d(this.getClass().getSimpleName(), "refreshing Points");
 		TextView gesamt = (TextView)view.findViewById(R.id.gesamt_count);
 		double punkte = ausdauer_count*15*1.2 +
 						 kraft_count*15*1.1 +
 						 ballspiel_count*15*1.0 +
 						 gym_count*15*0.9 +
 						 leichte_count*15*0.8;
-		gesamt.setText(String.valueOf((int)punkte));
+		gesamt.setText(" " + String.valueOf((int)punkte));
 	}
 	
 	private void initTargets(){
@@ -185,10 +186,10 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 		leichte_count = 0;
 		
 		ac.setText(String.format("%3d min", ausdauer_count*15));
-		kc.setText(kraft_count*15 + " min");
-		sc.setText(ballspiel_count*15 + " min");
-		gc.setText(gym_count*15 + " min");
-		lc.setText(leichte_count*15 + " min");
+		kc.setText(String.format("%3d min", kraft_count*15));
+		sc.setText(String.format("%3d min", ballspiel_count*15));
+		gc.setText(String.format("%3d min", gym_count*15));
+		lc.setText(String.format("%3d min", leichte_count*15));
 		
 		refreshPoints();
 		

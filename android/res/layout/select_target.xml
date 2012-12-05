@@ -24,10 +24,12 @@
 
         <TextView
             android:id="@+id/ausdauer_count"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text=""
-            android:textSize="32sp" />
+            android:gravity="center_horizontal"
+            android:textSize="28sp" />
 
         <Button
             android:id="@+id/ausdauer_up"
@@ -57,10 +59,12 @@
 
         <TextView
             android:id="@+id/kraft_count"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
+			android:layout_weight="1"
             android:text=""
-            android:textSize="32sp" />
+            android:gravity="center_horizontal"
+            android:textSize="28sp" />
 
         <Button
             android:id="@+id/kraft_up"
@@ -90,10 +94,12 @@
 
         <TextView
             android:id="@+id/ballspiel_count"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text=""
-            android:textSize="32sp" />
+            android:gravity="center_horizontal"
+            android:textSize="28sp" />
 
         <Button
             android:id="@+id/ballspiel_up"
@@ -123,10 +129,12 @@
 
         <TextView
             android:id="@+id/gymnastik_count"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text=""
-            android:textSize="32sp" />
+            android:gravity="center_horizontal"
+            android:textSize="28sp" />
 
         <Button
             android:id="@+id/gymnastik_up"
@@ -156,10 +164,12 @@
 
         <TextView
             android:id="@+id/leichte_count"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:text=""
-            android:textSize="32sp" />
+            android:textSize="28sp" />
 
         <Button
             android:id="@+id/leichte_up"
@@ -171,11 +181,12 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/gesamt_label"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:text="@string/gesamtLabel"
             android:textSize="40sp" />
