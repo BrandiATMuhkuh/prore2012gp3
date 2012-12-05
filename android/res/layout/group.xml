@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/groupmember1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <QuickContactBadge
+            android:id="@+id/quickContactBadge1"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" 
+                android:text= "User 1"
+                android:editable="false"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                />
+            
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/groupmember2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <QuickContactBadge
+            android:id="@+id/quickContactBadge2"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" 
+                android:text= "User 2"
+                android:editable="false"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.ProgressBar.Horizontal" 
+                />
+            
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/groupmember3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <QuickContactBadge
+            android:id="@+id/quickContactBadge3"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" 
+                android:text= "User 3"
+                android:editable="false"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                />
+            
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/groupmember4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <QuickContactBadge
+            android:id="@+id/quickContactBadge4"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" 
+                android:text= "User 4"
+                android:editable="false"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                />
+            
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/groupmember5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <QuickContactBadge
+            android:id="@+id/quickContactBadge5"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" 
+                android:text= "User 5"
+                android:editable="false"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                />
+            
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/groupmember6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <QuickContactBadge
+            android:id="@+id/quickContactBadge6"
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/editText6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" 
+                android:text= "User 6"
+                android:editable="false"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                />
+            
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
