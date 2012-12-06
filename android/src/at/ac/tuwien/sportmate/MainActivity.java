@@ -17,7 +17,8 @@ public class MainActivity extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setDisplayShowTitleEnabled(false);
-
+		actionBar.setDisplayShowHomeEnabled(false);
+		
 		Tab tab = actionBar
 				.newTab()
 				.setText("First tab")
