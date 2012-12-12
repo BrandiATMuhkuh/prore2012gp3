@@ -12,6 +12,11 @@
     <string name="blue">Blue</string>
      <string name="hello">Hello World, MainActivity!</string>
      
+     <string name="ausdauer">Ausdauersport</string>
+     <string name="fitness">Fitness</string>
+     <string name="spielsport">Spielsport</string>
+     <string name="gymnastik">Gymnastik</string>
+     <string name="leichtes">Leichtes</string>
      
      <string name="gesamtLabel">Punkte:</string>
 </resources>

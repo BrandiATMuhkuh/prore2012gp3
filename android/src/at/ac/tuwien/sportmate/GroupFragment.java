@@ -52,7 +52,7 @@ public class GroupFragment extends Fragment implements EventInterface {
 		//load group
 		
 		group = DBHandler.getGroupFromUser(1); //Flo
-		group.groupMembers = DBHandler.getUsers(group.group_id);
+		group.groupMembers = DBHandler.getUsersFromGroup(group.group_id);
 		
 		BoGroupMember member1 = group.groupMembers.get(0);
 		member1.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member1.user_id);

@@ -3,6 +3,8 @@ package at.ac.tuwien.sportmate;
 import java.sql.Date;
 import java.util.List;
 
+import android.util.Log;
+
 public class BoGroupMember {
 
 	int group_id; 
@@ -104,5 +106,18 @@ public class BoGroupMember {
 			sum += w.getCategory().getCategory_intensity() * w.weekly_target_min;
 		}
 		return sum;
+	}
+	
+	public int getWeeklyCategoryMins(int category_id){
+		int mins = 0;
+		String name = "category_name";
+		for(BoWeeklyTarget w: weeklyTargets){
+			if (w.category.category_id == category_id){
+				mins = w.weekly_target_min;
+				name = w.category.category_name;
+			}
+		}
+		Log.d(name +  " mins: ", ""+mins);
+		return mins;
 	}
 }

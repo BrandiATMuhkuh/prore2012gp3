@@ -39,7 +39,7 @@ public class DBHandler {
 	    
 	    while (sc.hasNext()) {
             line = sc.next();
-        	Log.d("ServerResponse", line);
+        	//Log.d("ServerResponse", line);
             String[] values = line.split("-!-");
             
             int group_id = Integer.parseInt(values[0]);
@@ -54,7 +54,8 @@ public class DBHandler {
 	    return null;
 	}
 	
-public static ArrayList<BoWeeklyTarget> getWeeklyTargetsFromUser(int user_id){
+
+	public static ArrayList<BoWeeklyTarget> getWeeklyTargetsFromUser(int user_id){
 		
 		boolean ok = true;
 		
@@ -76,7 +77,7 @@ public static ArrayList<BoWeeklyTarget> getWeeklyTargetsFromUser(int user_id){
 	    
         while (sc.hasNext()) {
             line = sc.next();
-        	Log.d("ServerResponse", line);
+        	//Log.d("ServerResponse", line);
             String[] values = line.split("-!-");
             
             int category_id = Integer.parseInt(values[0]);
@@ -95,7 +96,7 @@ public static ArrayList<BoWeeklyTarget> getWeeklyTargetsFromUser(int user_id){
 	    return null;
 	}
 	
-	public static ArrayList<BoGroupMember> getUsers(int group_id){
+	public static ArrayList<BoGroupMember> getUsersFromGroup(int group_id){
 		
 		boolean ok = true;
 		
@@ -117,9 +118,8 @@ public static ArrayList<BoWeeklyTarget> getWeeklyTargetsFromUser(int user_id){
 	    
         while (sc.hasNext()) {
             line = sc.next();
-        	Log.d("ServerResponse", line);
+        	//Log.d("ServerResponse", line);
             String[] values = line.split("-!-");
-            Log.d("ServerResponse", "ID: " + values[0]);
             
             int user_id = Integer.parseInt(values[0]);
             String user_name = values[1];
