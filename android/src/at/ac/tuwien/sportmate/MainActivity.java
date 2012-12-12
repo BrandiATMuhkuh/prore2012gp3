@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 public class MainActivity extends Activity {
 	@Override
@@ -19,29 +21,30 @@ public class MainActivity extends Activity {
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowHomeEnabled(false);
 		
-		Tab tab = actionBar
+		/*Tab tab = actionBar
 				.newTab()
 				.setText("First tab")
 				.setTabListener(
 						new MyTabListener<DetailFragment>(this, "artist",
 								DetailFragment.class));
-		actionBar.addTab(tab);
+		actionBar.addTab(tab);*/
 
-		tab = actionBar
+		/*tab = actionBar
 				.newTab()
 				.setText("Second Tab")
 				.setTabListener(
 						new MyTabListener<ImageFragment>(this, "album",
 								ImageFragment.class));
-		actionBar.addTab(tab);
+		actionBar.addTab(tab);*/
 		
-		tab = actionBar
+		Tab tab = actionBar
 				.newTab()
 				.setText("Start")
 				.setTabListener(
 						new MyTabListener<StartFragment>(this, "Start",
 								StartFragment.class));
 		actionBar.addTab(tab);
+		
 		
 		tab = actionBar
 				.newTab()
@@ -68,6 +71,15 @@ public class MainActivity extends Activity {
 						SelectTargetFragment.class));
 		actionBar.addTab(tab);
 		
+	}
+	
+	//Add Options Menu
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) 
+	{
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.options_menu, menu);
+	    return true;
 	}
 
 	public static class MyTabListener<T extends Fragment> implements
