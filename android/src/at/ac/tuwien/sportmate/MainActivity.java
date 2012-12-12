@@ -7,10 +7,17 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity
+{
+	private static String myTab = "";
+	private final static String TAG = "MainActivity";
+	private static Menu menu;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,10 +80,12 @@ public class MainActivity extends Activity {
 		
 	}
 	
+	
 	//Add Options Menu
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) 
 	{
+		this.menu = menu;
 	    MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.options_menu, menu);
 	    return true;
@@ -107,7 +116,19 @@ public class MainActivity extends Activity {
 
 		/* The following are each of the ActionBar.TabListener callbacks */
 
-		public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		public void onTabSelected(Tab tab, FragmentTransaction ft) 
+		{
+			//Tab handling
+			myTab = tab.getText().toString();
+			Log.i(TAG, myTab);
+			if(menu != null)
+			{
+				MenuItem item = menu.findItem(R.id.menu_setting);
+				MenuItem item2 = menu.findItem(R.id.menu_save);
+				item.setTitle(myTab);
+				item2.setTitle(myTab);
+			}
+			
 			// Check if the fragment is already initialized
 			if (mFragment == null) {
 				// If not, instantiate and add it to the activity
