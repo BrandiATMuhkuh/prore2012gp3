@@ -5,21 +5,21 @@
     android:orientation="vertical" >
 
     <EditText
-                android:id="@+id/groupName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10" 
-                android:gravity="center"
-                android:text= "Group Name"
-                android:editable="false"
-                android:textSize="18dp"
-                android:textAllCaps="true"
-                />
-    
+        android:id="@+id/groupName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:editable="false"
+        android:ems="10"
+        android:gravity="center"
+        android:text="Group Name"
+        android:textAllCaps="true"
+        android:textSize="18dp" />
+
     <LinearLayout
         android:id="@+id/groupmember1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
         <QuickContactBadge
             android:id="@+id/quickContactBadge1"
@@ -31,24 +31,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <EditText
-                android:id="@+id/editText1"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10" 
-                android:text= "User 1"
-                android:editable="false"/>
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:ems="10"
+                    android:text="User 1" />
+                
+                <TextView 
+                    android:id="@+id/targetPoints1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Punkte"/>
+            
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progressBar1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" 
                 style="@android:style/Widget.ProgressBar.Horizontal"
-                />
-            
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/groupmember2"
         android:layout_width="match_parent"
@@ -64,24 +75,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <EditText
-                android:id="@+id/editText2"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10" 
-                android:text= "User 2"
-                android:editable="false"/>
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:ems="10"
+                    android:text="User 2" />
+                
+                <TextView 
+                    android:id="@+id/targetPoints2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Punkte"/>
+            
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progressBar2"
+                style="@android:style/Widget.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@android:style/Widget.ProgressBar.Horizontal" 
-                />
-            
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/groupmember3"
         android:layout_width="match_parent"
@@ -97,24 +119,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <EditText
-                android:id="@+id/editText3"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10" 
-                android:text= "User 3"
-                android:editable="false"/>
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/editText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:ems="10"
+                    android:text="User 3" />
+                
+                <TextView 
+                    android:id="@+id/targetPoints3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Punkte"/>
+            
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progressBar3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" 
                 style="@android:style/Widget.ProgressBar.Horizontal"
-                />
-            
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/groupmember4"
         android:layout_width="match_parent"
@@ -130,24 +163,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <EditText
-                android:id="@+id/editText4"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10" 
-                android:text= "User 4"
-                android:editable="false"/>
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/editText4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:ems="10"
+                    android:text="User 4" />
+                
+                <TextView 
+                    android:id="@+id/targetPoints4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Punkte"/>
+            
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progressBar4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" 
                 style="@android:style/Widget.ProgressBar.Horizontal"
-                />
-            
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/groupmember5"
         android:layout_width="match_parent"
@@ -163,54 +207,33 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <EditText
-                android:id="@+id/editText5"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10" 
-                android:text= "User 5"
-                android:editable="false"/>
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/editText5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:ems="10"
+                    android:text="User 5" />
+                
+                <TextView 
+                    android:id="@+id/targetPoints5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Punkte"/>
+            
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progressBar5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" 
                 style="@android:style/Widget.ProgressBar.Horizontal"
-                />
-            
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
-    
-    <LinearLayout
-        android:id="@+id/groupmember6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
 
-        <QuickContactBadge
-            android:id="@+id/quickContactBadge6"
-            android:layout_width="64dp"
-            android:layout_height="64dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <EditText
-                android:id="@+id/editText6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10" 
-                android:text= "User 6"
-                android:editable="false"/>
-
-            <ProgressBar
-                android:id="@+id/progressBar6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" 
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                />
-            
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

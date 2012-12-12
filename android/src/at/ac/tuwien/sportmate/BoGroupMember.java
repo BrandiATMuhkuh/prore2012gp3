@@ -14,7 +14,7 @@ public class BoGroupMember {
 	int default_activity; 
 	
 	List<BoActivity> activities; 
-	List<BoWeeklyTarget> weeklyActivitiesTarget;
+	List<BoWeeklyTarget> weeklyTargets;
 	
 	public BoGroupMember()
 	{
@@ -95,5 +95,14 @@ public class BoGroupMember {
 
 	public void setDefault_activity(int default_activity) {
 		this.default_activity = default_activity;
+	}
+	
+	public int getWeeklyTargetPoints() {
+		
+		int sum = 0;
+		for(BoWeeklyTarget w: this.weeklyTargets){
+			sum += w.getCategory().getCategory_intensity() * w.weekly_target_min;
+		}
+		return sum;
 	}
 }

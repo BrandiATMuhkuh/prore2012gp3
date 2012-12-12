@@ -15,27 +15,129 @@ public class DBHandler {
 	
 	
 	//TODO 
-	String serviceName = "http://web.student.tuwien.ac.at/~e0826174/db_functions.php";
+	final static String serviceName = "http://web.student.tuwien.ac.at/~e0826174/db_functions.php";
 	
-	public String getUser(Integer id){
+	public static BoGroup getGroupFromUser(int user_id){
 		
 		boolean ok = true;
 		
 	    ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-	    nameValuePairs.add(new BasicNameValuePair("method", "getUser"));
+	    nameValuePairs.add(new BasicNameValuePair("method", "getGroupFromUser"));
+	    nameValuePairs.add(new BasicNameValuePair("user_id", String.valueOf(user_id)));
 	    
-	    nameValuePairs.add(new BasicNameValuePair("fid", id.toString()));
+	    String serverResponse = DBHandler.sendRequestToServer(serviceName, nameValuePairs);
 	    
-	    String result = this.sendRequestToServer(serviceName, nameValuePairs);
-	    
-	    if (result == null || result.equals("nok")) {
+	    if (serverResponse == null || serverResponse.equals("nok")) {
 	    	ok = false;
 	    }
+	    
+	    Scanner sc = new Scanner(serverResponse);
+        sc.useDelimiter(ServerResponseHandler.instance().getLineDelimiter());
+        String line = "";
+	    
+	    BoGroup g = new BoGroup();
+	    
+	    while (sc.hasNext()) {
+            line = sc.next();
+        	Log.d("ServerResponse", line);
+            String[] values = line.split("-!-");
+            
+            int group_id = Integer.parseInt(values[0]);
+            String group_name = values[1];
+            
+            g.group_id = group_id;
+            g.group_name = group_name;
+            
+        }
+	    
+	    if (ok) return g;
+	    return null;
+	}
+	
+public static ArrayList<BoWeeklyTarget> getWeeklyTargetsFromUser(int user_id){
+		
+		boolean ok = true;
+		
+	    ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+	    nameValuePairs.add(new BasicNameValuePair("method", "getWeeklyTargetsFromUser"));
+	    nameValuePairs.add(new BasicNameValuePair("user_id", String.valueOf(user_id)));
+	    
+	    String serverResponse = DBHandler.sendRequestToServer(serviceName, nameValuePairs);
+	    
+	    if (serverResponse == null || serverResponse.equals("nok")) {
+	    	ok = false;
+	    }
+	    
+	    Scanner sc = new Scanner(serverResponse);
+        sc.useDelimiter(ServerResponseHandler.instance().getLineDelimiter());
+        String line = "";
+        
+        ArrayList<BoWeeklyTarget> result = new ArrayList<BoWeeklyTarget>();
+	    
+        while (sc.hasNext()) {
+            line = sc.next();
+        	Log.d("ServerResponse", line);
+            String[] values = line.split("-!-");
+            
+            int category_id = Integer.parseInt(values[0]);
+            String category_name = values[1];
+            double category_intensity = Double.parseDouble(values[2]);
+            int weekly_target_min = Integer.parseInt(values[3]);
+            
+            BoWeeklyTarget w = new BoWeeklyTarget();
+            w.category = new BoCategory(category_id, category_name, category_intensity);
+            w.weekly_target_min = weekly_target_min;
+            result.add(w);
+        }
+	    
 	    
 	    if (ok) return result;
 	    return null;
 	}
 	
+	public static ArrayList<BoGroupMember> getUsers(int group_id){
+		
+		boolean ok = true;
+		
+	    ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+	    nameValuePairs.add(new BasicNameValuePair("method", "getUsers"));
+	    nameValuePairs.add(new BasicNameValuePair("group_id", String.valueOf(group_id)));
+	    
+	    String serverResponse = sendRequestToServer(serviceName, nameValuePairs);
+	    
+	    if (serverResponse == null || serverResponse.equals("nok")) {
+	    	ok = false;
+	    }
+	    
+	    Scanner sc = new Scanner(serverResponse);
+        sc.useDelimiter(ServerResponseHandler.instance().getLineDelimiter());
+        String line = "";
+        
+        ArrayList<BoGroupMember> result = new ArrayList<BoGroupMember>();
+	    
+        while (sc.hasNext()) {
+            line = sc.next();
+        	Log.d("ServerResponse", line);
+            String[] values = line.split("-!-");
+            Log.d("ServerResponse", "ID: " + values[0]);
+            
+            int user_id = Integer.parseInt(values[0]);
+            String user_name = values[1];
+            Log.d("User: ", user_name);
+            String user_joining_date = values[2];
+            int default_activity = Integer.parseInt(values[3]);
+            
+            BoGroupMember m = new BoGroupMember();
+            m.user_id = user_id; 
+            m.user_name = user_name; 
+            m.user_group_joining_date = java.sql.Date.valueOf(user_joining_date);
+            m.default_activity = default_activity; 
+            result.add(m);
+        }
+	    
+	    if (ok) return result;
+	    return null;
+	}
 	
 	public ArrayList<String> getQuestionSets(){
 		
@@ -84,7 +186,7 @@ public class DBHandler {
 	
 	
 	
-	private String sendRequestToServer(String serviceName, ArrayList<NameValuePair> nameValuePairs){
+	private static String sendRequestToServer(String serviceName, ArrayList<NameValuePair> nameValuePairs){
 		
 		InputStream is = null;
 	    //String result = "";

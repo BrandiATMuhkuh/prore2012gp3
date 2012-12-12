@@ -1,12 +1,13 @@
 package at.ac.tuwien.sportmate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BoGroup {
 
 	int group_id; 
 	String group_name; 
-	List<BoGroupMember> groupMembers; 
+	ArrayList<BoGroupMember> groupMembers; 
 
 
 
@@ -21,7 +22,7 @@ public class BoGroup {
 	}
 
 
-	public void setGroupMembers(List<BoGroupMember> groupMembers) {
+	public void setGroupMembers(ArrayList<BoGroupMember> groupMembers) {
 		this.groupMembers = groupMembers;
 	}
 
