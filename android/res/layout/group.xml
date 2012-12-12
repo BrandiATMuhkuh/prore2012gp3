@@ -4,6 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <EditText
+                android:id="@+id/groupName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10" 
+                android:gravity="center"
+                android:text= "Group Name"
+                android:editable="false"
+                android:textSize="18dp"
+                android:textAllCaps="true"
+                />
+    
     <LinearLayout
         android:id="@+id/groupmember1"
         android:layout_width="match_parent"

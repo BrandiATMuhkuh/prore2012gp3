@@ -49,8 +49,7 @@ void setup()
   // - the first parameter is the name of your function (see below)
   // - match the second parameter ('A', 'B', 'a', etc...) with the flag on your Android application
   meetAndroid.registerFunction(testEvent, 'A');  
-  meetAndroid.registerFunction(setGroupProgress, 'B');  
-  meetAndroid.registerFunction(setMyProgress, 'C');  
+  meetAndroid.registerFunction(setProgresses, 'B');   
   meetAndroid.registerFunction(setGroupNotificatinoLight, 'D');  
   meetAndroid.registerFunction(setMyNotificatinoLight, 'E');  
 
@@ -262,13 +261,33 @@ void nightRider(){
 
 }
 
-void setGroupProgress(byte flag, byte numOfValues){
-  meetAndroid.send("setGroupProgress");
-  meetAndroid.send(meetAndroid.getInt());
+/**
+* progress must be an int array of TWO values
+* value one is my own progress
+* value two is the group progress
+*/
+void setProgresses(byte flag, byte numOfValues){
+  int data[numOfValues];
+  meetAndroid.getIntValues(data);
+  
+  meetAndroid.send(data[0]);
+  meetAndroid.send(data[1]);
+  
+  
+  setAllProgLeds(LOW);
+  setMyProgress(data[0]);
+  setGroupProgress(data[1]);
+  
+  delay(2000);
+  setAllProgLeds(LOW);
+}
+
+void setGroupProgress(int progress){
+  //meetAndroid.send("setGroupProgress. "+progress);
   
   //calculate and set group progress in percent
-  int glowingLEDs = round((ledCount*meetAndroid.getInt())/100);
-  setAllProgLeds(LOW);
+  int glowingLEDs = round((ledCount * progress)/100);
+  
   if(glowingLEDs>=1){
     digitalWrite( g_1, HIGH);
   }
@@ -296,27 +315,24 @@ void setGroupProgress(byte flag, byte numOfValues){
   if(glowingLEDs>=7){
     digitalWrite( g_7, HIGH);
   }
-  delay(2000);
-  setAllProgLeds(LOW);
 }
 
-void setMyProgress(byte flag, byte numOfValues){
-  meetAndroid.send("setMyProgress");
-  meetAndroid.send(meetAndroid.getInt());
+void setMyProgress(int progress){
+  //meetAndroid.send("setMyProgress: "+progress);
   
    //calculate and set group progress in percent
-  int glowingLEDs = round((ledCount*meetAndroid.getInt())/100);
-  setAllProgLeds(LOW);
+  int glowingLEDs = round((ledCount * progress)/100);
+  
   if(glowingLEDs>=1){
-    digitalWrite( e_1, HIGH);
+    digitalWrite( e_7, HIGH);
   }
   
   if(glowingLEDs>=2){
-    digitalWrite( e_2, HIGH);
+    digitalWrite( e_6, HIGH);
   }
   
   if(glowingLEDs>=3){
-    digitalWrite( e_3, HIGH);
+    digitalWrite( e_5, HIGH);
   }
   
   if(glowingLEDs>=4){
@@ -324,18 +340,16 @@ void setMyProgress(byte flag, byte numOfValues){
   }
   
   if(glowingLEDs>=5){
-    digitalWrite( e_5, HIGH);
+    digitalWrite( e_3, HIGH);
   }
   
   if(glowingLEDs>=6){
-    digitalWrite( e_6, HIGH);
+    digitalWrite( e_2, HIGH);
   }
   
   if(glowingLEDs>=7){
-    digitalWrite( e_7, HIGH);
+    digitalWrite( e_1, HIGH);
   }
-  delay(2000);
-  setAllProgLeds(LOW);
 }
 void setGroupNotificatinoLight(byte flag, byte numOfValues){
   meetAndroid.send("setGroupNotificatinoLight");

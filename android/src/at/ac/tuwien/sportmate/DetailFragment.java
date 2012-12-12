@@ -55,14 +55,14 @@ public class DetailFragment extends Fragment implements EventInterface {
 		((Button) view.findViewById(R.id.buttonc)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				SportMateApplication.getApplication().setGroupProgress(49);
+				SportMateApplication.getApplication().setProgresses(20,80);
 			}
 		});
 		
 		((Button) view.findViewById(R.id.buttond)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				SportMateApplication.getApplication().setMyProgress(12);
+				SportMateApplication.getApplication().setProgresses(20,80);
 			}
 		});
 		
