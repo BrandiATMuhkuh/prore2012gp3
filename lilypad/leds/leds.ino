@@ -10,6 +10,7 @@ MeetAndroid meetAndroid;
 int startButton = 2;
 int startButtonState = 0;
 int ledCount = 7;
+int allLEDS = LOW;
 
 //gruppen vortschritt
 int g_1 = 3;
@@ -33,6 +34,12 @@ int e_7 = A2;
 //notify
 int g_n = A3;
 int e_n = A4;
+int g_nOn = false;
+int e_nOn = false;
+int e_nVal = 0;
+int g_nVal = 0;
+int e_nSwUp = true;
+int g_nSwUp = true;
 
 //testrun
 int testrun = 1;
@@ -113,6 +120,8 @@ void loop()
     if(button_delay < 10) { //short press
       sendShowProgress();
     }
+    
+
     
   }
   
@@ -275,11 +284,86 @@ void setProgresses(byte flag, byte numOfValues){
   
   
   setAllProgLeds(LOW);
-  setMyProgress(data[0]);
-  setGroupProgress(data[1]);
+  setMyGroupProgress(data[0], data[1]);
+  //setMyProgress(data[0]);
+  //setGroupProgress(data[1]);
   
-  delay(2000);
+  delay(4000);
   setAllProgLeds(LOW);
+}
+
+void setMyGroupProgress(int myProgress, int grProgress){
+  //meetAndroid.send("setGroupProgress. "+progress);
+  
+  //calculate and set group progress in percent
+  int glowingLEDs = round((ledCount * grProgress)/100);
+  int myglowingLEDs = round((ledCount * myProgress)/100);
+  
+  if(glowingLEDs>=1){
+    digitalWrite( g_1, HIGH);
+  }
+  
+  if(myglowingLEDs>=1){
+    digitalWrite( e_7, HIGH);
+  }
+  
+  delay(200);
+  
+  if(glowingLEDs>=2){
+    digitalWrite( g_2, HIGH);
+  }
+  
+  if(myglowingLEDs>=2){
+    digitalWrite( e_6, HIGH);
+  }
+  
+  delay(200);
+  
+  if(glowingLEDs>=3){
+    digitalWrite( g_3, HIGH);
+  }
+  
+  if(myglowingLEDs>=3){
+    digitalWrite( e_5, HIGH);
+  }
+  delay(200);
+  
+  if(glowingLEDs>=4){
+    digitalWrite( g_4, HIGH);
+  }
+  
+  if(myglowingLEDs>=4){
+    digitalWrite( e_4, HIGH);
+  }
+  delay(200);
+  
+  if(glowingLEDs>=5){
+    digitalWrite( g_5, HIGH);
+  }
+  
+  if(myglowingLEDs>=5){
+    digitalWrite( e_3, HIGH);
+  }
+  delay(200);
+  
+  
+  if(glowingLEDs>=6){
+    digitalWrite( g_6, HIGH);
+  }
+  
+  if(myglowingLEDs>=6){
+    digitalWrite( e_2, HIGH);
+  }
+  delay(200);
+  
+  
+  if(glowingLEDs>=7){
+    digitalWrite( g_7, HIGH);
+  }  
+  
+  if(myglowingLEDs>=7){
+    digitalWrite( e_1, HIGH);
+  }
 }
 
 void setGroupProgress(int progress){
@@ -356,10 +440,14 @@ void setGroupNotificatinoLight(byte flag, byte numOfValues){
   meetAndroid.send(meetAndroid.getInt());
   
   if(meetAndroid.getInt()==0){
+    //g_nOn = false;
+    //g_nVal = 0;
+    //g_nSwUp = true;
     digitalWrite( g_n, LOW);
   }
   
   if(meetAndroid.getInt()==1){
+    //g_nOn = true;
     digitalWrite( g_n, HIGH);
   }
 }
@@ -368,11 +456,14 @@ void setMyNotificatinoLight(byte flag, byte numOfValues){
   meetAndroid.send(meetAndroid.getInt());
   
   if(meetAndroid.getInt()==0){
-    
+    //e_nOn = false;
+    //e_nVal = 0;
+    //e_nSwUp = true;
     digitalWrite( e_n, LOW);
   }
   
   if(meetAndroid.getInt()==1){
+    //e_nOn = true;
     digitalWrite( e_n, HIGH);
   }
 }
@@ -395,18 +486,12 @@ void sendShowProgress(){
 void testEvent(byte flag, byte numOfValues)
 {
   sendStart();
-  flushLed(300);
-  flushLed(300);
-  //meetAndroid.send(meetAndroid.getInt());
+
+ setAllLeds(allLEDS);
+allLEDS= !allLEDS;
 }
 
-void flushLed(int time)
-{
-  digitalWrite(e_4, LOW);
-  delay(time);
-  digitalWrite(e_4, HIGH);
-  delay(time);
-}
+
 
 
 
