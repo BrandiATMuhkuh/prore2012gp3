@@ -7,6 +7,7 @@ public class BoActivity {
 
 
 	int activity_id; 
+	int group_id;
 	Date date; 
 	Time starttime; 
 	int duration_min; 
@@ -14,6 +15,10 @@ public class BoActivity {
 	double points; 
 	double bonus_points;
 	BoCategory category;
+	
+	BoActivity() {
+		
+	}
 	
 	BoActivity(int activity_id, Date date, Time time, int duration_min, double intensity, double points, double bonus_points)
 	{
@@ -32,6 +37,15 @@ public class BoActivity {
 	public void setActivity_id(int activity_id) {
 		this.activity_id = activity_id;
 	}
+	
+	public int getGroup_id() {
+		return group_id;
+	}
+
+	public void setGroup_id(int group_id) {
+		this.group_id = group_id;
+	}
+
 	public Date getDate() {
 		return date;
 	}

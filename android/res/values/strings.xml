@@ -18,5 +18,7 @@
      <string name="gymnastik">Gymnastik</string>
      <string name="leichtes">Leichtes</string>
      
+     <string name="seperator">/</string>
+     
      <string name="gesamtLabel">Punkte:</string>
 </resources>

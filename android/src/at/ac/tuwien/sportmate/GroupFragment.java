@@ -1,13 +1,17 @@
 package at.ac.tuwien.sportmate;
 
+import java.util.ArrayList;
+
 import org.w3c.dom.Text;
 
 import android.app.Fragment;
+import android.net.ParseException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -56,14 +60,23 @@ public class GroupFragment extends Fragment implements EventInterface {
 		
 		BoGroupMember member1 = group.groupMembers.get(0);
 		member1.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member1.user_id);
+		member1.activities = DBHandler.getActivitesFromUser(member1.user_id);
+		
 		BoGroupMember member2 = group.groupMembers.get(1);
 		member2.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member2.user_id);
+		member2.activities = DBHandler.getActivitesFromUser(member2.user_id);
+		
 		BoGroupMember member3 = group.groupMembers.get(2);
 		member3.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member3.user_id);
+		member3.activities = DBHandler.getActivitesFromUser(member3.user_id);
+		
 		BoGroupMember member4 = group.groupMembers.get(3);
 		member4.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member4.user_id);
+		member4.activities = DBHandler.getActivitesFromUser(member4.user_id);
+		
 		BoGroupMember member5 = group.groupMembers.get(4);
 		member5.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member5.user_id);
+		member5.activities = DBHandler.getActivitesFromUser(member5.user_id);
 		
 		
 		
@@ -84,37 +97,53 @@ public class GroupFragment extends Fragment implements EventInterface {
 		QuickContactBadge badge5 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge5);
 		badge5.setBackgroundResource(R.drawable.default_user_icon);
 		
-		//Points
+		//Set Current Points
+		TextView currentPoints1 = (TextView) view.findViewById(R.id.currentPoints1);
+		currentPoints1.setText(String.valueOf(member1.calculateAllPoints()));
+		
+		TextView currentPoints2 = (TextView) view.findViewById(R.id.currentPoints2);
+		currentPoints2.setText(String.valueOf(member2.calculateAllPoints()));
+		
+		TextView currentPoints3 = (TextView) view.findViewById(R.id.currentPoints3);
+		currentPoints3.setText(String.valueOf(member3.calculateAllPoints()));
+		
+		TextView currentPoints4 = (TextView) view.findViewById(R.id.currentPoints4);
+		currentPoints4.setText(String.valueOf(member4.calculateAllPoints()));
+		
+		TextView currentPoints5 = (TextView) view.findViewById(R.id.currentPoints5);
+		currentPoints5.setText(String.valueOf(member5.calculateAllPoints()));
+		
+		//Set TargetPoints
 		TextView targetPoints1 = (TextView) view.findViewById(R.id.targetPoints1);
-		targetPoints1.setText(String.valueOf(member1.getWeeklyTargetPoints()));
+		targetPoints1.setText(String.valueOf(member1.calculateWeeklyTargetPoints()));
 		
 		TextView targetPoints2 = (TextView) view.findViewById(R.id.targetPoints2);
-		targetPoints2.setText(String.valueOf(member2.getWeeklyTargetPoints()));
+		targetPoints2.setText(String.valueOf(member2.calculateWeeklyTargetPoints()));
 		
 		TextView targetPoints3 = (TextView) view.findViewById(R.id.targetPoints3);
-		targetPoints3.setText(String.valueOf(member3.getWeeklyTargetPoints()));
+		targetPoints3.setText(String.valueOf(member3.calculateWeeklyTargetPoints()));
 		
 		TextView targetPoints4 = (TextView) view.findViewById(R.id.targetPoints4);
-		targetPoints4.setText(String.valueOf(member4.getWeeklyTargetPoints()));
+		targetPoints4.setText(String.valueOf(member4.calculateWeeklyTargetPoints()));
 		
 		TextView targetPoints5 = (TextView) view.findViewById(R.id.targetPoints5);
-		targetPoints5.setText(String.valueOf(member5.getWeeklyTargetPoints()));
+		targetPoints5.setText(String.valueOf(member5.calculateWeeklyTargetPoints()));
 		
 		//Progressbars Instantiate
 		ProgressBar progressBar1 = (ProgressBar) view.findViewById(R.id.progressBar1);
-		progressBar1.setProgress(50);
+		progressBar1.setProgress(member1.calculateWeeklyPercentage());
 		
 		ProgressBar progressBar2 = (ProgressBar) view.findViewById(R.id.progressBar2);
-		progressBar2.setProgress(50);
+		progressBar2.setProgress(member2.calculateWeeklyPercentage());
 		
 		ProgressBar progressBar3 = (ProgressBar) view.findViewById(R.id.progressBar3);
-		progressBar3.setProgress(50);
+		progressBar3.setProgress(member3.calculateWeeklyPercentage());
 		
 		ProgressBar progressBar4 = (ProgressBar) view.findViewById(R.id.progressBar4);
-		progressBar4.setProgress(50);
+		progressBar4.setProgress(member4.calculateWeeklyPercentage());
 		
 		ProgressBar progressBar5 = (ProgressBar) view.findViewById(R.id.progressBar5);
-		progressBar5.setProgress(50);
+		progressBar5.setProgress(member5.calculateWeeklyPercentage());
 		
 		//EditText load names
 		EditText editText1 = (EditText) view.findViewById(R.id.editText1);
@@ -134,8 +163,6 @@ public class GroupFragment extends Fragment implements EventInterface {
 		
 		EditText groupName = (EditText) view.findViewById(R.id.groupName);
 		groupName.setText(group.group_name);
-		
-		
 		
 		return view;
 	}

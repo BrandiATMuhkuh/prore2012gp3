@@ -6,6 +6,9 @@ public class BoCategory {
 	String category_name; 
 	double category_intensity; 
 
+	BoCategory() {
+		
+	}
 	
 	BoCategory(int category_id, String category_name, double category_intensity)
 	{
