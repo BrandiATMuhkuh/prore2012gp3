@@ -12,10 +12,20 @@ import android.widget.TextView;
 
 public class SingleStatistic extends Fragment implements EventInterface {
 
+	int memberId;
+	BoGroupMember member;
+	
 	@Override
 	public void eventA() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void onCreate (Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		
+		this.loadDataFromDB(1); //TODO
 	}
 	
 	@Override
@@ -24,9 +34,6 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		
 		View view = inflater.inflate(R.layout.singlestat, container, false);
 		
-		BoGroupMember member = DBHandler.getGroupMember(1); //TODO
-		member.activities = DBHandler.getAllActivitesFromUser(1);
-		member.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(1);
 		
 		//Username Header
 		EditText username = (EditText) view.findViewById(R.id.userName);
@@ -81,5 +88,12 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		progressBar5.setProgress(member.calculateWeeklyCategoryPercentage(5));
 		
 		return view;
+	}
+	
+	private void loadDataFromDB(int user_id){
+		memberId = user_id; 
+		member = DBHandler.getGroupMember(memberId); 
+		member.activities = DBHandler.getAllActivitesFromUser(memberId);
+		member.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(memberId);
 	}
 }

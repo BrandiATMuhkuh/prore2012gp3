@@ -20,5 +20,7 @@
      
      <string name="seperator">/</string>
      
+     <string name="loading">Lade Daten...</string>
+     
      <string name="gesamtLabel">Punkte:</string>
 </resources>

@@ -22,16 +22,18 @@ public class GroupFragment extends Fragment implements EventInterface {
 	
 	BoGroup group = new BoGroup();
 	
+	BoGroupMember member1;
+	BoGroupMember member2;
+	BoGroupMember member3;
+	BoGroupMember member4;
+	BoGroupMember member5;
+	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.e("Test", "hello");
-	}
-
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-
+		
+		this.loadDataFromDB(1); //TODO
 	}
 	
 	@Override
@@ -39,47 +41,11 @@ public class GroupFragment extends Fragment implements EventInterface {
 		SportMateApplication.getApplication().registerListener(this.getClass().getName(), this);
 		super.onResume();
 	}
-	
-	@Override
-	public void onStop() {
-		SportMateApplication.getApplication().unregisterListener(this.getClass().getName());
-		super.onStop();
-	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.group, container, false);
-		
-		
-		
-		//load group
-		
-		group = DBHandler.getGroupFromUser(1); //Flo
-		group.groupMembers = DBHandler.getUsersFromGroup(group.group_id);
-		
-		BoGroupMember member1 = group.groupMembers.get(0);
-		member1.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member1.user_id);
-		member1.activities = DBHandler.getAllActivitesFromUser(member1.user_id);
-		
-		BoGroupMember member2 = group.groupMembers.get(1);
-		member2.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member2.user_id);
-		member2.activities = DBHandler.getAllActivitesFromUser(member2.user_id);
-		
-		BoGroupMember member3 = group.groupMembers.get(2);
-		member3.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member3.user_id);
-		member3.activities = DBHandler.getAllActivitesFromUser(member3.user_id);
-		
-		BoGroupMember member4 = group.groupMembers.get(3);
-		member4.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member4.user_id);
-		member4.activities = DBHandler.getAllActivitesFromUser(member4.user_id);
-		
-		BoGroupMember member5 = group.groupMembers.get(4);
-		member5.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member5.user_id);
-		member5.activities = DBHandler.getAllActivitesFromUser(member5.user_id);
-		
-		
-		
 		
 		//Contact Badges Instanciate
 		QuickContactBadge badge1 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge1);
@@ -170,5 +136,36 @@ public class GroupFragment extends Fragment implements EventInterface {
 	@Override
 	public void eventA() {
 		System.out.println("testEventStartetInClass: "+this.getClass().getName());
+	}
+	
+	@Override
+	public void onStop() {
+		SportMateApplication.getApplication().unregisterListener(this.getClass().getName());
+		super.onStop();
+	}
+	
+	private void loadDataFromDB(int user_id){
+		group = DBHandler.getGroupFromUser(user_id); 
+		group.groupMembers = DBHandler.getUsersFromGroup(group.group_id);
+		
+		member1 = group.groupMembers.get(0);
+		member1.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member1.user_id);
+		member1.activities = DBHandler.getAllActivitesFromUser(member1.user_id);
+		
+		member2 = group.groupMembers.get(1);
+		member2.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member2.user_id);
+		member2.activities = DBHandler.getAllActivitesFromUser(member2.user_id);
+		
+		member3 = group.groupMembers.get(2);
+		member3.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member3.user_id);
+		member3.activities = DBHandler.getAllActivitesFromUser(member3.user_id);
+		
+		member4 = group.groupMembers.get(3);
+		member4.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member4.user_id);
+		member4.activities = DBHandler.getAllActivitesFromUser(member4.user_id);
+		
+		member5 = group.groupMembers.get(4);
+		member5.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member5.user_id);
+		member5.activities = DBHandler.getAllActivitesFromUser(member5.user_id);
 	}
 }

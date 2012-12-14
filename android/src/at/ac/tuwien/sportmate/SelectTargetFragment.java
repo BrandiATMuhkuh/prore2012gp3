@@ -38,7 +38,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		
+		this.loadDataFromDB(1);
 	}
 
 	@Override
@@ -64,13 +64,6 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 			Bundle savedInstanceState) {
 		
 		view = inflater.inflate(R.layout.select_target, container, false);
-		
-		//TODO load current user
-		BoGroup group = DBHandler.getGroupFromUser(1); //Flo
-		group.groupMembers = DBHandler.getUsersFromGroup(group.group_id);
-		member = group.groupMembers.get(0);
-		member.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member.getUser_id());
-		
 		
 		//Ausdauer 
 		ac = (TextView)view.findViewById(R.id.ausdauer_count);
@@ -211,5 +204,10 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 	@Override
 	public void eventA() {
 		System.out.println("testEventStartetInClass: "+this.getClass().getName());
+	}
+	
+	private void loadDataFromDB(int user_id){
+		member = DBHandler.getGroupMember(1);
+		member.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member.getUser_id());
 	}
 }
