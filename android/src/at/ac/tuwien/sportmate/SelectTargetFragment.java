@@ -207,7 +207,7 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 	}
 	
 	private void loadDataFromDB(int user_id){
-		member = DBHandler.getGroupMember(1);
+		member = DBHandler.getGroupMember(user_id);
 		member.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member.getUser_id());
 	}
 }
