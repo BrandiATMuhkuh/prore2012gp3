@@ -110,7 +110,7 @@ public class BoGroupMember {
 		return sum;
 	}
 
-	public int getWeeklyCategoryMins(int category_id) {
+	public int getWeeklyTargetCategoryMins(int category_id) {
 		int mins = 0;
 		String name = "category_name";
 		for (BoWeeklyTarget w : weeklyTargets) {
@@ -119,7 +119,7 @@ public class BoGroupMember {
 				name = w.category.category_name;
 			}
 		}
-		Log.d(name + " mins: ", "" + mins);
+		//Log.d(name + " target mins: ", "" + mins);
 		return mins;
 	}
 
@@ -134,6 +134,19 @@ public class BoGroupMember {
 		return points;
 	}
 	
+	public int getCategoryMinutes(int category_id) {
+
+		int minutes = 0;
+
+		for (BoActivity a : activities) {
+			if (a.category.category_id == category_id) {
+				minutes += a.duration_min;
+			}
+		}
+
+		return minutes;
+	}
+	
 	public int calculateWeeklyPercentage(){
 		
 		double percentage = ((double)calculateAllPoints()/(double)calculateWeeklyTargetPoints()) * 100;
@@ -141,5 +154,14 @@ public class BoGroupMember {
 		if (percentage > 100) return 100;
 		else return (int)percentage;
 		
+	}
+	
+	public int calculateWeeklyCategoryPercentage(int category_id){
+		
+		double percentage = ((double)getCategoryMinutes(category_id)/(double)getWeeklyTargetCategoryMins(category_id)) * 100;
+	
+		Log.d("Test", "calculateWeeklyCategoryPercentage: " + percentage);
+		if (percentage > 100) return 100;
+		else return (int)percentage;
 	}
 }

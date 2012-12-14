@@ -1,10 +1,10 @@
 package at.ac.tuwien.sportmate;
 
 import java.io.InputStream;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 import org.apache.http.HttpEntity;
@@ -100,6 +100,61 @@ public class DBHandler {
 
 		if (ok)
 			return c;
+		return null;
+	}
+	
+	public static BoGroupMember getGroupMember(int user_id) {
+
+		Log.d("DBHandler", "getGroupMember for user_id = " + user_id);
+		
+		boolean ok = true;
+
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		nameValuePairs.add(new BasicNameValuePair("method", "getGroupMember"));
+		nameValuePairs.add(new BasicNameValuePair("user_id", String
+				.valueOf(user_id)));
+
+		String serverResponse = DBHandler.sendRequestToServer(serviceName,
+				nameValuePairs);
+
+		if (serverResponse == null || serverResponse.equals("nok")) {
+			ok = false;
+		}
+
+		Scanner sc = new Scanner(serverResponse);
+		sc.useDelimiter(ServerResponseHandler.instance().getLineDelimiter());
+		String line = "";
+
+		BoGroupMember m = new BoGroupMember();
+
+		while (sc.hasNext()) {
+			line = sc.next();
+			// Log.d("ServerResponse", line);
+			String[] values = line.split("-!-");
+
+			int group_id = Integer.parseInt(values[0]);
+			String user_name = values[1];
+			String user_joining_date_String = values[2];
+			String user_group_joning_date_String = values[3];
+			int default_activity = Integer.parseInt(values[4]);
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
+			try {
+				m.user_id = user_id;
+				m.group_id = group_id;
+				m.user_name = user_name;
+				m.user_joining_date = new Date(sdf.parse(user_joining_date_String).getTime());
+				m.user_group_joining_date = new Date(sdf.parse(user_group_joning_date_String).getTime());
+				m.default_activity = default_activity;
+			} catch (java.text.ParseException e){
+				Log.d("ParseException", "Error while Parsing: Dates");
+				ok = false;
+			}
+		}
+
+		if (ok)
+			return m;
 		return null;
 	}
 
@@ -198,7 +253,7 @@ public class DBHandler {
 		return null;
 	}
 
-	public static ArrayList<BoActivity> getActivitesFromUser(int user_id) {
+	public static ArrayList<BoActivity> getAllActivitesFromUser(int user_id) {
 
 		Log.d("DBHandler", "getActivitesFromUser for user_id = " + user_id);
 		
@@ -252,6 +307,7 @@ public class DBHandler {
 				a.bonus_points = bonus_points;
 			} catch (java.text.ParseException e){
 				Log.d("ParseException", "Error while Parsing: " + dateString);
+				ok = false;
 			}
 
 			result.add(a);

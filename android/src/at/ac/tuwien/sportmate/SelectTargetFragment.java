@@ -192,11 +192,11 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 	private void initTargets(){
 		
 		//daten aus db
-		ausdauer_count = member.getWeeklyCategoryMins(1); 
-		kraft_count = member.getWeeklyCategoryMins(2);
-		ballspiel_count = member.getWeeklyCategoryMins(3);
-		gym_count = member.getWeeklyCategoryMins(4);
-		leichte_count = member.getWeeklyCategoryMins(5);
+		ausdauer_count = member.getWeeklyTargetCategoryMins(1); 
+		kraft_count = member.getWeeklyTargetCategoryMins(2);
+		ballspiel_count = member.getWeeklyTargetCategoryMins(3);
+		gym_count = member.getWeeklyTargetCategoryMins(4);
+		leichte_count = member.getWeeklyTargetCategoryMins(5);
 		
 		ac.setText(String.format("%3d min", ausdauer_count));
 		kc.setText(String.format("%3d min", kraft_count));

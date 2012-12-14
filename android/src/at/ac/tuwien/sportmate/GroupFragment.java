@@ -60,23 +60,23 @@ public class GroupFragment extends Fragment implements EventInterface {
 		
 		BoGroupMember member1 = group.groupMembers.get(0);
 		member1.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member1.user_id);
-		member1.activities = DBHandler.getActivitesFromUser(member1.user_id);
+		member1.activities = DBHandler.getAllActivitesFromUser(member1.user_id);
 		
 		BoGroupMember member2 = group.groupMembers.get(1);
 		member2.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member2.user_id);
-		member2.activities = DBHandler.getActivitesFromUser(member2.user_id);
+		member2.activities = DBHandler.getAllActivitesFromUser(member2.user_id);
 		
 		BoGroupMember member3 = group.groupMembers.get(2);
 		member3.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member3.user_id);
-		member3.activities = DBHandler.getActivitesFromUser(member3.user_id);
+		member3.activities = DBHandler.getAllActivitesFromUser(member3.user_id);
 		
 		BoGroupMember member4 = group.groupMembers.get(3);
 		member4.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member4.user_id);
-		member4.activities = DBHandler.getActivitesFromUser(member4.user_id);
+		member4.activities = DBHandler.getAllActivitesFromUser(member4.user_id);
 		
 		BoGroupMember member5 = group.groupMembers.get(4);
 		member5.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member5.user_id);
-		member5.activities = DBHandler.getActivitesFromUser(member5.user_id);
+		member5.activities = DBHandler.getAllActivitesFromUser(member5.user_id);
 		
 		
 		

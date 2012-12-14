@@ -79,6 +79,20 @@ if (isset($_REQUEST['method'])) {
 		}
 	}
 	
+	if ($_REQUEST['method'] == "getGroupMember") {
+		$result = mysql_query("SELECT * FROM `sm_groupMember` a JOIN sm_user  b ON a.user_id = b.user_id WHERE a.user_id = ".$_REQUEST['user_id']);
+
+		$antworten = array();
+		
+		while ($row=mysql_fetch_assoc($result)) {       
+			print("-new-");
+			print($row['group_id']."-!-");
+			print($row['user_name']."-!-");
+			print($row['user_joining_date']."-!-");
+			print($row['user_group_joning_date']."-!-");
+			print($row['default_activity']."\n");
+		}
+	}
 }
  
 mysql_close();
