@@ -24,7 +24,6 @@ public class MainActivity extends Activity
 	private static Fragment myCurrentFragment = null;
 	private static ActionBar actionBar;
 
-	private static Tab user;
 	private static Tab activityStart; 
 	private static Tab start; 
 
@@ -200,9 +199,7 @@ public class MainActivity extends Activity
 	
 	public static void selectUser()
 	{
-
-		actionBar.selectTab(user);
-	
+		actionBar.selectTab(member);
 	}
 	
 	public static void showStart()
@@ -213,7 +210,7 @@ public class MainActivity extends Activity
 	public static void showActivityStart() {
 		actionBar.selectTab(activityStart); 
 
-		actionBar.selectTab(member);
+		//actionBar.selectTab(member);
 
 	}
 	

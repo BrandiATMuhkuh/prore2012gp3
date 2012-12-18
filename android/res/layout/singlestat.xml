@@ -18,7 +18,8 @@
             android:padding="10dp"
             android:text="Username"
             android:textAllCaps="false"
-            android:textSize="18dp" />
+            android:textSize="18dp" 
+            android:textStyle="bold"/>
 
         <LinearLayout
             android:id="@+id/category1"

@@ -15,11 +15,13 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
-public class GroupFragment extends Fragment implements EventInterface {
+public class GroupFragment extends Fragment implements EventInterface
+{
 
 	BoGroup group = new BoGroup();
 
@@ -94,6 +96,47 @@ public class GroupFragment extends Fragment implements EventInterface {
 		QuickContactBadge badge5 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge5);
 		badge5.setBackgroundResource(R.drawable.default_user_icon);
 		badge5.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) 
+			{
+				onShowContact(v);
+			}
+		});
+		
+		LinearLayout linearLayout1 = (LinearLayout) view.findViewById(R.id.groupmember1);
+		linearLayout1.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) 
+			{
+				onShowContact(v);
+			}
+		});
+		LinearLayout linearLayout2 = (LinearLayout) view.findViewById(R.id.groupmember2);
+		linearLayout2.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) 
+			{
+				onShowContact(v);
+			}
+		});
+		LinearLayout linearLayout3 = (LinearLayout) view.findViewById(R.id.groupmember3);
+		linearLayout3.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) 
+			{
+				onShowContact(v);
+			}
+		});
+		LinearLayout linearLayout4 = (LinearLayout) view.findViewById(R.id.groupmember4);
+		linearLayout4.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) 
+			{
+				onShowContact(v);
+			}
+		});
+		LinearLayout linearLayout5 = (LinearLayout) view.findViewById(R.id.groupmember5);
+		linearLayout5.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) 
 			{
@@ -233,6 +276,26 @@ public class GroupFragment extends Fragment implements EventInterface {
 			MainActivity.selectUser();
 			break;
 		case R.id.quickContactBadge5:
+			AppData.getInstance().setCurrentViewedMember(member5);
+			MainActivity.selectUser();
+			break;
+		case R.id.groupmember1:
+			AppData.getInstance().setCurrentViewedMember(member1);
+			MainActivity.selectUser();
+			break;
+		case R.id.groupmember2:
+			AppData.getInstance().setCurrentViewedMember(member2);
+			MainActivity.selectUser();
+			break;
+		case R.id.groupmember3:
+			AppData.getInstance().setCurrentViewedMember(member3);
+			MainActivity.selectUser();
+			break;
+		case R.id.groupmember4:
+			AppData.getInstance().setCurrentViewedMember(member4);
+			MainActivity.selectUser();
+			break;
+		case R.id.groupmember5:
 			AppData.getInstance().setCurrentViewedMember(member5);
 			MainActivity.selectUser();
 			break;

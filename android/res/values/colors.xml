@@ -5,6 +5,6 @@
     <color name="spielsport_gruen">#a1dd00</color>
     <color name="ausdauer_lila">#975AE0</color>
     <color name="leichte_blau">#5AA5E0</color>
-    
+    <color name="group_member_color">#ffffff</color> 
     <color name="light_grey">#ececec</color>
 </resources>
