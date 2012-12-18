@@ -315,6 +315,26 @@ public class DBHandler {
 		return result;
 
 	}
+	
+	public static boolean updateWeeklyTargets(int user_id, int cat1_mins, int cat2_mins, int cat3_mins, int cat4_mins, int cat5_mins){
+		
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		nameValuePairs.add(new BasicNameValuePair("method", "updateWeeklyTargets"));
+		nameValuePairs.add(new BasicNameValuePair("user_id", String.valueOf(user_id)));
+		nameValuePairs.add(new BasicNameValuePair("cat1_mins", String.valueOf(cat1_mins)));
+		nameValuePairs.add(new BasicNameValuePair("cat2_mins", String.valueOf(cat2_mins)));
+		nameValuePairs.add(new BasicNameValuePair("cat3_mins", String.valueOf(cat3_mins)));
+		nameValuePairs.add(new BasicNameValuePair("cat4_mins", String.valueOf(cat4_mins)));
+		nameValuePairs.add(new BasicNameValuePair("cat5_mins", String.valueOf(cat5_mins)));
+		
+		String serverResponse = sendRequestToServer(serviceName, nameValuePairs);
+		
+		if (serverResponse.equals("ok")) {
+			return true;
+		}
+			
+		return false;
+	}
 
 	private String savePatient(String firstname, String lastname, Date bd) {
 
@@ -338,6 +358,12 @@ public class DBHandler {
 		}
 	}
 
+	/**
+	 * This method takes a list of name-value-pairs and sends them to a given http adress
+	 * @param serviceName
+	 * @param nameValuePairs
+	 * @return the answer of the web service as a string
+	 */
 	private static String sendRequestToServer(String serviceName,
 			ArrayList<NameValuePair> nameValuePairs) {
 
