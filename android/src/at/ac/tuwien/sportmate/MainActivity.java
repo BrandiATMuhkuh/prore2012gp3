@@ -22,6 +22,8 @@ public class MainActivity extends Activity
 	private static MenuItem item;
 	private static MenuItem item2;
 	private static Fragment myCurrentFragment = null;
+	private static ActionBar actionBar;
+	private static Tab user;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) 
@@ -29,7 +31,7 @@ public class MainActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		// setup action bar for tabs
-		ActionBar actionBar = getActionBar();
+		actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowHomeEnabled(false);
@@ -43,13 +45,13 @@ public class MainActivity extends Activity
 		actionBar.addTab(tab);
 
 
-		tab = actionBar
+		user = actionBar
 				.newTab()
-				.setText("SingleStatistic")
+				.setText("User")
 				.setTabListener(
 						new MyTabListener<SingleStatistic>(this, "SingleStatistic",
 								SingleStatistic.class));
-		actionBar.addTab(tab);
+		actionBar.addTab(user);
 
 
 		tab = actionBar
@@ -60,13 +62,13 @@ public class MainActivity extends Activity
 								GroupFragment.class));
 		actionBar.addTab(tab);
 
-		tab = actionBar
+		/*tab = actionBar
 				.newTab()
 				.setText("Target")
 				.setTabListener(
 						new MyTabListener<SelectTargetFragment>(this, "Target",
 								SelectTargetFragment.class));
-		actionBar.addTab(tab);
+		actionBar.addTab(tab);*/
 		
 	}
 
@@ -129,7 +131,7 @@ public class MainActivity extends Activity
 			}
 			myCurrentFragment = mFragment;
 			
-			//Tab handling
+			//MenuItem handling
 			myTab = tab.getText().toString();
 			Log.i(TAG, myTab);
 			if(menu != null)
@@ -165,6 +167,11 @@ public class MainActivity extends Activity
 
 		public void onTabReselected(Tab tab, FragmentTransaction ft) {
 		}
+	}
+	
+	public static void selectUser()
+	{
+		actionBar.selectTab(user);
 	}
 	
 	@Override
