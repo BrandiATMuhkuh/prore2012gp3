@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -18,7 +18,8 @@
     </style>
     
     <style name="CategoryTextView" parent="@android:style/TextAppearance.Medium">
-        
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

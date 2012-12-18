@@ -10,21 +10,21 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
+        android:padding="10dp"
         android:text="Username"
         android:textAllCaps="false"
-        android:textSize="18dp" 
-        android:padding="10dp"/>
+        android:textSize="18dp" />
 
     <LinearLayout
         android:id="@+id/category1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/ausdauer_lila"
-        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp" >
-        
+        android:layout_marginRight="5dp"
+        android:background="@color/ausdauer_lila"
+        android:orientation="horizontal" >
+
         <ImageView
             android:id="@+id/categoryImage1"
             android:layout_width="64dp"
@@ -34,9 +34,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp" >
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/editText1"
+                style="@style/CategoryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/ausdauer" />
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="100" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,12 +59,10 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/editText1"
-                    style="@style/CategoryTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/ausdauer" />
+                    android:text="@string/minutes" />
 
                 <TextView
                     android:id="@+id/currentMinutes1"
@@ -69,12 +82,34 @@
                     android:text="target" />
             </LinearLayout>
 
-            <ProgressBar
-                android:id="@+id/progressBar1"
-                style="@android:style/Widget.ProgressBar.Horizontal"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:progress="100" />
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/points" />
+
+                <TextView
+                    android:id="@+id/currentPoints1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="current" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seperator" />
+
+                <TextView
+                    android:id="@+id/targetPoints1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="target" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
@@ -82,10 +117,10 @@
         android:id="@+id/category2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/kraft_rot"
-        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp" >
+        android:layout_marginRight="5dp"
+        android:background="@color/kraft_rot" >
 
         <ImageView
             android:id="@+id/categoryImage2"
@@ -96,41 +131,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp" >
+            android:orientation="vertical" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/editText2"
+                style="@style/CategoryTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/editText2"
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/fitness" />
-                
-                <TextView 
-                    android:id="@+id/currentMinutes2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="current"/>
-                
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seperator"/>
-                
-                <TextView 
-                    android:id="@+id/targetMinutes2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="target"/>
-            
-            </LinearLayout>
+                android:layout_weight="1"
+                android:text="@string/fitness" />
 
             <ProgressBar
                 android:id="@+id/progressBar2"
@@ -138,6 +149,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:progress="100" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/minutes" />
+
+                <TextView
+                    android:id="@+id/currentMinutes2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="current" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seperator" />
+
+                <TextView
+                    android:id="@+id/targetMinutes2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="target" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/points" />
+
+                <TextView
+                    android:id="@+id/currentPoints2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="current" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seperator" />
+
+                <TextView
+                    android:id="@+id/targetPoints2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="target" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
@@ -145,10 +214,10 @@
         android:id="@+id/category3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/spielsport_gruen"
-        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp" >
+        android:layout_marginRight="5dp"
+        android:background="@color/spielsport_gruen" >
 
         <ImageView
             android:id="@+id/categoryImage3"
@@ -159,41 +228,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp" >
+            android:orientation="vertical" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/editText3"
+                style="@style/CategoryTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/editText3"
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/spielsport" />
-                
-                <TextView 
-                    android:id="@+id/currentMinutes3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="current"/>
-                
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seperator"/>
-                
-                <TextView 
-                    android:id="@+id/targetMinutes3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="target"/>
-            
-            </LinearLayout>
+                android:layout_weight="1"
+                android:text="@string/spielsport" />
 
             <ProgressBar
                 android:id="@+id/progressBar3"
@@ -201,6 +246,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:progress="100" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/minutes" />
+
+                <TextView
+                    android:id="@+id/currentMinutes3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="current" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seperator" />
+
+                <TextView
+                    android:id="@+id/targetMinutes3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="target" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/points" />
+
+                <TextView
+                    android:id="@+id/currentPoints3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="current" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seperator" />
+
+                <TextView
+                    android:id="@+id/targetPoints3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="target" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
@@ -208,10 +311,10 @@
         android:id="@+id/category4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gymnastik_orange"
-        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp" >
+        android:layout_marginRight="5dp"
+        android:background="@color/gymnastik_orange" >
 
         <ImageView
             android:id="@+id/categoryImage4"
@@ -222,41 +325,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
-			android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp" >
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/editText4"
+                style="@style/CategoryTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/editText4"
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/gymnastik" />
-                
-                <TextView 
-                    android:id="@+id/currentMinutes4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="current"/>
-                
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seperator"/>
-                
-                <TextView 
-                    android:id="@+id/targetMinutes4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="target"/>
-            
-            </LinearLayout>
+                android:layout_weight="1"
+                android:text="@string/gymnastik" />
 
             <ProgressBar
                 android:id="@+id/progressBar4"
@@ -264,6 +343,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:progress="100" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/minutes" />
+
+                <TextView
+                    android:id="@+id/currentMinutes4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="current" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seperator" />
+
+                <TextView
+                    android:id="@+id/targetMinutes4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="target" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/points" />
+
+                <TextView
+                    android:id="@+id/currentPoints4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="current" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seperator" />
+
+                <TextView
+                    android:id="@+id/targetPoints4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="target" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
@@ -271,10 +408,10 @@
         android:id="@+id/category5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/leichte_blau"
-        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp" >
+        android:layout_marginRight="5dp"
+        android:background="@color/leichte_blau" >
 
         <ImageView
             android:id="@+id/categoryImage5"
@@ -285,41 +422,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp" >
+            android:orientation="vertical" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/editText5"
+                style="@style/CategoryTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/editText5"
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/leichtes" />
-                
-                <TextView 
-                    android:id="@+id/currentMinutes5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="current"/>
-                
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seperator"/>
-                
-                <TextView 
-                    android:id="@+id/targetMinutes5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="target"/>
-            
-            </LinearLayout>
+                android:layout_weight="1"
+                android:text="@string/leichtes" />
 
             <ProgressBar
                 android:id="@+id/progressBar5"
@@ -327,7 +440,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:progress="100" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/minutes" />
+
+                <TextView
+                    android:id="@+id/currentMinutes5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="current" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seperator" />
+
+                <TextView
+                    android:id="@+id/targetMinutes5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="target" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/points" />
+
+                <TextView
+                    android:id="@+id/currentPoints5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="current" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seperator" />
+
+                <TextView
+                    android:id="@+id/targetPoints5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="target" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
