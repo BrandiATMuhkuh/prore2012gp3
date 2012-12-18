@@ -298,6 +298,7 @@ public class DBHandler {
 			try {
 				a.category = getCategory(category_id);
 				a.group_id = group_id;
+				a.user_id = user_id;
 				java.util.Date helpDate = sdf.parse(dateString);
 				a.date = new java.sql.Date(helpDate.getTime());
 				a.starttime = java.sql.Time.valueOf(startTimeString);
@@ -335,28 +336,28 @@ public class DBHandler {
 			
 		return false;
 	}
-
-	private String savePatient(String firstname, String lastname, Date bd) {
-
+	
+	public static boolean addActivity(BoActivity activity){
+		
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		nameValuePairs.add(new BasicNameValuePair("vorname", firstname));
-		nameValuePairs.add(new BasicNameValuePair("nachname", lastname));
-
-		// transfer Date expression into mysql format (e.g. "1987-10-4");
-		String bdString = (bd.getYear() + 1900) + "-" + (bd.getMonth() + 1)
-				+ "-" + (+bd.getDate());
-		nameValuePairs.add(new BasicNameValuePair("geburtsdatum", bdString));
-
-		String serverResponse = this.sendRequestToServer(serviceName,
-				nameValuePairs);
-
-		if (serverResponse.equals("nok") || serverResponse.equals("ok")
-				|| serverResponse == null) {
-			return null;
-		} else {
-			return serverResponse;
+		nameValuePairs.add(new BasicNameValuePair("method", "addActivity"));
+		nameValuePairs.add(new BasicNameValuePair("user_id", String.valueOf(activity.user_id)));
+		nameValuePairs.add(new BasicNameValuePair("group_id", String.valueOf(activity.group_id)));
+		nameValuePairs.add(new BasicNameValuePair("category_id", String.valueOf(activity.category.category_id)));
+		nameValuePairs.add(new BasicNameValuePair("date", activity.date.toString()));
+		nameValuePairs.add(new BasicNameValuePair("starttime", activity.starttime.toString()));
+		nameValuePairs.add(new BasicNameValuePair("duration_min", String.valueOf(activity.duration_min)));
+		
+		String serverResponse = sendRequestToServer(serviceName, nameValuePairs);
+		
+		if (serverResponse.equals("ok")) {
+			return true;
 		}
+			
+		return false;
 	}
+
+	
 
 	/**
 	 * This method takes a list of name-value-pairs and sends them to a given http adress
