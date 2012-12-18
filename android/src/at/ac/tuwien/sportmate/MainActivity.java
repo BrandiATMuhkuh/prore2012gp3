@@ -17,7 +17,9 @@ public class MainActivity extends Activity
 	private static String myTab = "";
 	private final static String TAG = "MainActivity";
 	private static Menu menu;
-	
+	private static MenuItem item;
+	private static MenuItem item2;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class MainActivity extends Activity
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowHomeEnabled(false);
-		
+
 		/*Tab tab = actionBar
 				.newTab()
 				.setText("First tab")
@@ -43,7 +45,7 @@ public class MainActivity extends Activity
 						new MyTabListener<ImageFragment>(this, "album",
 								ImageFragment.class));
 		actionBar.addTab(tab);*/
-		
+
 		Tab tab = actionBar
 				.newTab()
 				.setText("Start")
@@ -51,8 +53,8 @@ public class MainActivity extends Activity
 						new MyTabListener<StartFragment>(this, "Start",
 								StartFragment.class));
 		actionBar.addTab(tab);
-		
-		
+
+
 		tab = actionBar
 				.newTab()
 				.setText("SingleStatistic")
@@ -69,30 +71,35 @@ public class MainActivity extends Activity
 						new MyTabListener<GroupFragment>(this, "Group",
 								GroupFragment.class));
 		actionBar.addTab(tab);
-		
+
 		tab = actionBar
-		.newTab()
-		.setText("Target")
-		.setTabListener(
-				new MyTabListener<SelectTargetFragment>(this, "Group",
-						SelectTargetFragment.class));
+				.newTab()
+				.setText("Target")
+				.setTabListener(
+						new MyTabListener<SelectTargetFragment>(this, "Target",
+								SelectTargetFragment.class));
 		actionBar.addTab(tab);
-		
+
 	}
-	
-	
+
+
 	//Add Options Menu
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) 
 	{
 		this.menu = menu;
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.options_menu, menu);
-	    return true;
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.options_menu, menu);
+		item = menu.findItem(R.id.menu_setting);
+		item2 = menu.findItem(R.id.menu_save);
+		item.setTitle("");
+		item2.setTitle("");
+		return true;
 	}
 
 	public static class MyTabListener<T extends Fragment> implements
-			TabListener {
+	TabListener 
+	{
 		private Fragment mFragment;
 		private final Activity mActivity;
 		private final String mTag;
@@ -123,14 +130,29 @@ public class MainActivity extends Activity
 			Log.i(TAG, myTab);
 			if(menu != null)
 			{
-				MenuItem item = menu.findItem(R.id.menu_setting);
-				MenuItem item2 = menu.findItem(R.id.menu_save);
-				item.setTitle(myTab);
-				item2.setTitle(myTab);
+				if(myTab == "Start")
+				{
+					item.setTitle("");
+					item2.setTitle("");
+				} else if(myTab == "SingleStatistic")
+				{
+					item.setTitle("");
+					item2.setTitle("");
+				} else if(myTab == "Group")
+				{
+					item.setTitle("");
+					item2.setTitle("Edit");
+				} else if(myTab == "Target")
+				{
+					item.setTitle("");
+					item2.setTitle("");
+				}
+
 			}
-			
+
 			// Check if the fragment is already initialized
-			if (mFragment == null) {
+			if (mFragment == null) 
+			{
 				// If not, instantiate and add it to the activity
 				mFragment = Fragment.instantiate(mActivity, mClass.getName());
 				ft.add(android.R.id.content, mFragment, mTag);
