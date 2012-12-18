@@ -22,6 +22,8 @@ public class GroupFragment extends Fragment implements EventInterface {
 	
 	BoGroup group = new BoGroup();
 	
+	private final static String TAG = "GroupFragment";
+	
 	BoGroupMember member1;
 	BoGroupMember member2;
 	BoGroupMember member3;
@@ -167,5 +169,10 @@ public class GroupFragment extends Fragment implements EventInterface {
 		member5 = group.groupMembers.get(4);
 		member5.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member5.user_id);
 		member5.activities = DBHandler.getAllActivitesFromUser(member5.user_id);
+	}
+	
+	public void saveDate()
+	{
+		Log.d(TAG, "I am in GroupFragment");
 	}
 }

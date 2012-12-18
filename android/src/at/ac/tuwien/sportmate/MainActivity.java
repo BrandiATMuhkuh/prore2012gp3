@@ -1,5 +1,7 @@
 package at.ac.tuwien.sportmate;
 
+import java.util.ArrayList;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
@@ -19,9 +21,11 @@ public class MainActivity extends Activity
 	private static Menu menu;
 	private static MenuItem item;
 	private static MenuItem item2;
-
+	private static Fragment myCurrentFragment = null;
+	
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		// setup action bar for tabs
@@ -29,22 +33,6 @@ public class MainActivity extends Activity
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowHomeEnabled(false);
-
-		/*Tab tab = actionBar
-				.newTab()
-				.setText("First tab")
-				.setTabListener(
-						new MyTabListener<DetailFragment>(this, "artist",
-								DetailFragment.class));
-		actionBar.addTab(tab);*/
-
-		/*tab = actionBar
-				.newTab()
-				.setText("Second Tab")
-				.setTabListener(
-						new MyTabListener<ImageFragment>(this, "album",
-								ImageFragment.class));
-		actionBar.addTab(tab);*/
 
 		Tab tab = actionBar
 				.newTab()
@@ -79,7 +67,7 @@ public class MainActivity extends Activity
 						new MyTabListener<SelectTargetFragment>(this, "Target",
 								SelectTargetFragment.class));
 		actionBar.addTab(tab);
-
+		
 	}
 
 
@@ -90,10 +78,11 @@ public class MainActivity extends Activity
 		this.menu = menu;
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.options_menu, menu);
-		item = menu.findItem(R.id.menu_setting);
-		item2 = menu.findItem(R.id.menu_save);
+		item = menu.findItem(R.id.menu_item1);
+		item2 = menu.findItem(R.id.menu_item2);
 		item.setTitle("");
 		item2.setTitle("");
+		
 		return true;
 	}
 
@@ -125,6 +114,21 @@ public class MainActivity extends Activity
 
 		public void onTabSelected(Tab tab, FragmentTransaction ft) 
 		{
+
+			// Check if the fragment is already initialized
+			if (mFragment == null) 
+			{
+				// If not, instantiate and add it to the activity
+				mFragment = Fragment.instantiate(mActivity, mClass.getName());
+				ft.add(android.R.id.content, mFragment, mTag);
+			} else {
+				// If it exists, simply attach it in order to show it
+				ft.setCustomAnimations(android.R.animator.fade_in,
+						R.animator.animationtest);
+				ft.attach(mFragment);
+			}
+			myCurrentFragment = mFragment;
+			
 			//Tab handling
 			myTab = tab.getText().toString();
 			Log.i(TAG, myTab);
@@ -149,19 +153,6 @@ public class MainActivity extends Activity
 				}
 
 			}
-
-			// Check if the fragment is already initialized
-			if (mFragment == null) 
-			{
-				// If not, instantiate and add it to the activity
-				mFragment = Fragment.instantiate(mActivity, mClass.getName());
-				ft.add(android.R.id.content, mFragment, mTag);
-			} else {
-				// If it exists, simply attach it in order to show it
-				ft.setCustomAnimations(android.R.animator.fade_in,
-						R.animator.animationtest);
-				ft.attach(mFragment);
-			}
 		}
 
 		public void onTabUnselected(Tab tab, FragmentTransaction ft) {
@@ -174,5 +165,25 @@ public class MainActivity extends Activity
 
 		public void onTabReselected(Tab tab, FragmentTransaction ft) {
 		}
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		if(myCurrentFragment.getClass().equals(GroupFragment.class))
+		{
+			GroupFragment groupFragment = (GroupFragment) myCurrentFragment;
+			
+		    // Handle item selection
+		    switch (item.getItemId()) 
+		    {
+		        case R.id.menu_item1:
+		            return true;
+		        case R.id.menu_item2:
+		        	groupFragment.saveDate(); //Methode aus GroupFragment ausführen
+		            return true;
+		    }
+		}
+	    return false;
 	}
 }

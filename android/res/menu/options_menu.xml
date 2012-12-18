@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/menu_setting"
+        android:id="@+id/menu_item1"
         android:showAsAction="ifRoom|withText"
         android:title="Item 1"/>
     <item
@@ -13,7 +13,7 @@
         android:showAsAction="ifRoom|withText"
         android:title=""/>
     <item
-        android:id="@+id/menu_save"
+        android:id="@+id/menu_item2"
         android:showAsAction="ifRoom|withText"
         android:title="Item 2"/>
 
