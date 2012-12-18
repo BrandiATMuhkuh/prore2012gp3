@@ -10,9 +10,9 @@
         android:orientation="horizontal" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="5dip"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:src="@drawable/ausdauer" />
 
         <Button
@@ -45,9 +45,9 @@
         android:orientation="horizontal" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="5dip"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:src="@drawable/kraft" />
 
         <Button
@@ -80,10 +80,10 @@
         android:orientation="horizontal" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="5dip"
-            android:src="@drawable/ballspiel" />
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ball" />
 
         <Button
             android:id="@+id/ballspiel_down"
@@ -115,9 +115,9 @@
         android:orientation="horizontal" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="5dip"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:src="@drawable/gymnastik" />
 
         <Button
@@ -150,9 +150,9 @@
         android:orientation="horizontal" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="5dip"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:src="@drawable/leichte" />
 
         <Button

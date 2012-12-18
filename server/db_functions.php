@@ -66,6 +66,24 @@ if (isset($_REQUEST['method'])) {
 		}
 	}
 	
+	else if ($_REQUEST['method'] == "getWeeklyActivitiesFromUser") {
+		$result = mysql_query("SELECT * FROM `sm_activities` WHERE  week(date)=week(now()) AND user_id = ".$_REQUEST['user_id']);
+
+		$antworten = array();
+		
+		while ($row=mysql_fetch_assoc($result)) {       
+			print("-new-");
+			print($row['category_id']."-!-");
+			print($row['group_id']."-!-");
+			print($row['date']."-!-");
+			print($row['starttime']."-!-");
+			print($row['duration_min']."-!-");
+			print($row['intensity']."-!-");
+			print($row['points']."-!-");
+			print($row['bonus_points']."\n");
+		}
+	}
+	
 	else if ($_REQUEST['method'] == "getCategory") {
 		$result = mysql_query("SELECT * FROM sm_category WHERE category_id = ".$_REQUEST['category_id']);
 

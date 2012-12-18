@@ -317,6 +317,70 @@ public class DBHandler {
 
 	}
 	
+	public static ArrayList<BoActivity> getWeeklyActivitiesFromUser(int user_id) {
+
+		Log.d("DBHandler", "getWeeklyActivitiesFromUser for user_id = " + user_id);
+		
+		boolean ok = true;
+
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		nameValuePairs.add(new BasicNameValuePair("method",
+				"getWeeklyActivitiesFromUser"));
+		nameValuePairs.add(new BasicNameValuePair("user_id", String
+				.valueOf(user_id)));
+
+		String serverResponse = sendRequestToServer(serviceName, nameValuePairs);
+
+		if (serverResponse == null || serverResponse.equals("nok")) {
+			return null;
+		}
+
+		Scanner sc = new Scanner(serverResponse);
+		sc.useDelimiter(ServerResponseHandler.instance().getLineDelimiter());
+		String line = "";
+
+		ArrayList<BoActivity> result = new ArrayList<BoActivity>();
+
+		while (sc.hasNext()) {
+			line = sc.next();
+			// Log.d("ServerResponse", line);
+			String[] values = line.split("-!-");
+
+			int category_id = Integer.parseInt(values[0]);
+			int group_id = Integer.parseInt(values[1]);
+			String dateString = values[2];
+			String startTimeString = values[3];
+			int duration_min = Integer.parseInt(values[4]);
+			int intensity = Integer.parseInt(values[5]);
+			double points = Double.parseDouble(values[5]);
+			double bonus_points = Double.parseDouble(values[6]);
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+			BoActivity a = new BoActivity();
+			
+			try {
+				a.category = getCategory(category_id);
+				a.group_id = group_id;
+				a.user_id = user_id;
+				java.util.Date helpDate = sdf.parse(dateString);
+				a.date = new java.sql.Date(helpDate.getTime());
+				a.starttime = java.sql.Time.valueOf(startTimeString);
+				a.duration_min = duration_min;
+				a.intensity = intensity;
+				a.points = points;
+				a.bonus_points = bonus_points;
+			} catch (java.text.ParseException e){
+				Log.d("ParseException", "Error while Parsing: " + dateString);
+				ok = false;
+			}
+
+			result.add(a);
+		}
+		return result;
+
+	}
+	
 	public static boolean updateWeeklyTargets(int user_id, int cat1_mins, int cat2_mins, int cat3_mins, int cat4_mins, int cat5_mins){
 		
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
