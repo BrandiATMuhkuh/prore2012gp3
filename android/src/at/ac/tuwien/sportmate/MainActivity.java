@@ -24,6 +24,8 @@ public class MainActivity extends Activity
 	private static Fragment myCurrentFragment = null;
 	private static ActionBar actionBar;
 	private static Tab user;
+	private static Tab activityStart; 
+	private static Tab start; 
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) 
@@ -36,13 +38,13 @@ public class MainActivity extends Activity
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowHomeEnabled(false);
 
-		Tab tab = actionBar
+		start = actionBar
 				.newTab()
 				.setText("Start")
 				.setTabListener(
 						new MyTabListener<StartFragment>(this, "Start",
 								StartFragment.class));
-		actionBar.addTab(tab);
+		actionBar.addTab(start);
 
 
 		user = actionBar
@@ -53,8 +55,14 @@ public class MainActivity extends Activity
 								SingleStatistic.class));
 		actionBar.addTab(user);
 
+		activityStart =  actionBar
+				.newTab()
+				.setText("Start")
+				.setTabListener(
+						new MyTabListener<ActivityStartFragment>(this, "ActivityStart",
+								ActivityStartFragment.class));
 
-		tab = actionBar
+		Tab tab = actionBar
 				.newTab()
 				.setText("Group")
 				.setTabListener(
@@ -172,6 +180,16 @@ public class MainActivity extends Activity
 	public static void selectUser()
 	{
 		actionBar.selectTab(user);
+	
+	}
+	
+	public static void showStart()
+	{
+		actionBar.selectTab(start);
+	}
+	
+	public static void showActivityStart() {
+		actionBar.selectTab(activityStart); 
 	}
 	
 	@Override
