@@ -23,10 +23,15 @@ public class MainActivity extends Activity
 	private static MenuItem item2;
 	private static Fragment myCurrentFragment = null;
 	private static ActionBar actionBar;
+
 	private static Tab user;
 	private static Tab activityStart; 
 	private static Tab start; 
+
+	private static Tab member; //Profile of other members
+	private static Tab user; //my profile
 	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) 
 	{
@@ -47,13 +52,22 @@ public class MainActivity extends Activity
 		actionBar.addTab(start);
 
 
+		
 		user = actionBar
 				.newTab()
 				.setText("User")
 				.setTabListener(
-						new MyTabListener<SingleStatistic>(this, "SingleStatistic",
+						new MyTabListener<SingleStatistic>(this, "User",
 								SingleStatistic.class));
 		actionBar.addTab(user);
+		
+		member = actionBar
+				.newTab()
+				.setText("GroupMember")
+				.setTabListener(
+						new MyTabListener<SingleStatistic>(this, "GroupMember",
+								SingleStatistic.class));
+		//actionBar.addTab(user);
 
 		activityStart =  actionBar
 				.newTab()
@@ -69,6 +83,9 @@ public class MainActivity extends Activity
 						new MyTabListener<GroupFragment>(this, "Group",
 								GroupFragment.class));
 		actionBar.addTab(tab);
+
+		
+		myTab = tab.getText().toString();
 
 		/*tab = actionBar
 				.newTab()
@@ -148,7 +165,7 @@ public class MainActivity extends Activity
 				{
 					item.setTitle("");
 					item2.setTitle("");
-				} else if(myTab == "SingleStatistic")
+				} else if(myTab == "User")
 				{
 					item.setTitle("");
 					item2.setTitle("");
@@ -160,6 +177,10 @@ public class MainActivity extends Activity
 				{
 					item.setTitle("");
 					item2.setTitle("");
+				} else if(myTab == "GroupMember")
+				{
+					item.setTitle("");
+					item2.setTitle("My Profile");
 				}
 
 			}
@@ -179,6 +200,7 @@ public class MainActivity extends Activity
 	
 	public static void selectUser()
 	{
+
 		actionBar.selectTab(user);
 	
 	}
@@ -190,22 +212,34 @@ public class MainActivity extends Activity
 	
 	public static void showActivityStart() {
 		actionBar.selectTab(activityStart); 
+
+		actionBar.selectTab(member);
+
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{
-		if(myCurrentFragment.getClass().equals(GroupFragment.class))
+		if(myTab.equals("Group"))
 		{
 			GroupFragment groupFragment = (GroupFragment) myCurrentFragment;
-			
-		    // Handle item selection
-		    switch (item.getItemId()) 
+
+			switch (item.getItemId()) 
 		    {
 		        case R.id.menu_item1:
 		            return true;
 		        case R.id.menu_item2:
-		        	groupFragment.saveDate(); //Methode aus GroupFragment ausführen
+		        	groupFragment.saveData();
+		            return true;
+		    }
+		} else if(myTab.equals("GroupMember"))
+		{
+			switch (item.getItemId()) 
+		    {
+		        case R.id.menu_item1:
+		            return true;
+		        case R.id.menu_item2:
+		        	actionBar.selectTab(user);
 		            return true;
 		    }
 		}

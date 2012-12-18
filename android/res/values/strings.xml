@@ -22,5 +22,9 @@
      
      <string name="loading">Lade Daten...</string>
      
+     <string name="minutes">Minuten</string>
+     <string name="points">Punkte</string>
+    	
+     
      <string name="gesamtLabel">Punkte:</string>
 </resources>

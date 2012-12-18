@@ -164,4 +164,28 @@ public class BoGroupMember {
 		if (percentage > 100) return 100;
 		else return (int)percentage;
 	}
+	
+	public int calculateWeeklyCategoryPoints(int category_id){
+		int points = 0;
+		
+		for (BoActivity a: activities){
+			if (a.category.category_id == category_id){
+				points += a.duration_min * a.category.category_intensity;
+			}
+		}
+		
+		return points;
+	}
+	
+	public int calculateWeeklyCategoryTargetPoints(int category_id){
+		int points = 0;
+		
+		for (BoWeeklyTarget w: weeklyTargets){
+			if (w.category.category_id == category_id){
+				points += w.weekly_target_min * w.category.category_intensity;
+			}
+		}
+		
+		return points;
+	}
 }
