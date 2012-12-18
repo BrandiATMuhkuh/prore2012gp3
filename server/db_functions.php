@@ -116,9 +116,29 @@ if (isset($_REQUEST['method'])) {
 		}
 	}
 	
+	else if ($_REQUEST['method'] == "getActiveGroupMembers") {
+		$result = mysql_query("SELECT count(*) as activeMembers FROM `sm_groupMember` WHERE activeSport=1 AND group_id=".$_REQUEST['group_id']." AND user_id<>".$_REQUEST['user_id']);
+
+		$antworten = array();
+		
+		while ($row=mysql_fetch_assoc($result)) {       
+			print("-new-");
+			print($row['activeMembers']."\n");
+		}
+	}
+	
 	else if ($_REQUEST['method'] == "addActivity") {
 		
 		$q = mysql_query("INSERT INTO sm_activities (category_id, group_id, user_id, date, starttime, duration_min, intensity, points, bonus_points) VALUES(".$_REQUEST['category_id'].", ".$_REQUEST['group_id'].", ".$_REQUEST['user_id'].", '".$_REQUEST['date']."', '".$_REQUEST['time']."', ".$_REQUEST['duration_min'].", 1, 1, 1)");
+		
+		if($q) print("ok");
+		else print("nok");
+		
+	}
+	
+	else if ($_REQUEST['method'] == "setActive") {
+		
+		$q = mysql_query("UPDATE sm_groupMember SET activeSport=".$_REQUEST['active']." WHERE user_id=".$_REQUEST['user_id']);
 		
 		if($q) print("ok");
 		else print("nok");

@@ -45,28 +45,28 @@
 
                 <TextView
                     android:id="@+id/editText1"
+                    style="@style/CategoryTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/ausdauer" />
-                
-                <TextView 
+
+                <TextView
                     android:id="@+id/currentMinutes1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="current"/>
-                
-                <TextView 
+                    android:text="current" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/seperator"/>
-                
-                <TextView 
+                    android:text="@string/seperator" />
+
+                <TextView
                     android:id="@+id/targetMinutes1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="target"/>
-            
+                    android:text="target" />
             </LinearLayout>
 
             <ProgressBar
@@ -107,6 +107,7 @@
 
                 <TextView
                     android:id="@+id/editText2"
+                    style="@style/CategoryTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -169,6 +170,7 @@
 
                 <TextView
                     android:id="@+id/editText3"
+                    style="@style/CategoryTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -231,6 +233,7 @@
 
                 <TextView
                     android:id="@+id/editText4"
+                    style="@style/CategoryTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -293,6 +296,7 @@
 
                 <TextView
                     android:id="@+id/editText5"
+                    style="@style/CategoryTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
