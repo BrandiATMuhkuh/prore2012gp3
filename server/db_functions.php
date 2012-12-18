@@ -71,16 +71,20 @@ if (isset($_REQUEST['method'])) {
 
 		$antworten = array();
 		
-		while ($row=mysql_fetch_assoc($result)) {       
-			print("-new-");
-			print($row['category_id']."-!-");
-			print($row['group_id']."-!-");
-			print($row['date']."-!-");
-			print($row['starttime']."-!-");
-			print($row['duration_min']."-!-");
-			print($row['intensity']."-!-");
-			print($row['points']."-!-");
-			print($row['bonus_points']."\n");
+		if (count($result) > 0){
+			while ($row=mysql_fetch_assoc($result)) {       
+				print("-new-");
+				print($row['category_id']."-!-");
+				print($row['group_id']."-!-");
+				print($row['date']."-!-");
+				print($row['starttime']."-!-");
+				print($row['duration_min']."-!-");
+				print($row['intensity']."-!-");
+				print($row['points']."-!-");
+				print($row['bonus_points']."\n");
+			}
+		} else {
+			print("-empty-");
 		}
 	}
 	

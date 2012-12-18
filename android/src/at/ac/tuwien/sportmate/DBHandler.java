@@ -330,6 +330,8 @@ public class DBHandler {
 				.valueOf(user_id)));
 
 		String serverResponse = sendRequestToServer(serviceName, nameValuePairs);
+		
+		Log.d("ServerResponseHIER", serverResponse);
 
 		if (serverResponse == null || serverResponse.equals("nok")) {
 			return null;
@@ -340,7 +342,7 @@ public class DBHandler {
 		String line = "";
 
 		ArrayList<BoActivity> result = new ArrayList<BoActivity>();
-
+		if (!serverResponse.equals("")){
 		while (sc.hasNext()) {
 			line = sc.next();
 			// Log.d("ServerResponse", line);
@@ -376,6 +378,7 @@ public class DBHandler {
 			}
 
 			result.add(a);
+		}
 		}
 		return result;
 
@@ -456,13 +459,13 @@ public class DBHandler {
 			is.close();
 
 			if (result.equals("ok")) {
-				Log.d("SendRequestToServer", "Server return is: " + result);
+				//Log.d("SendRequestToServer", "Server return is: " + result);
 				return "ok";
 			} else if (result.equals("nok")) {
-				Log.d("SendRequestToServer", "Server return is: " + result);
+				//Log.d("SendRequestToServer", "Server return is: " + result);
 				return null;
 			} else {
-				Log.d("SendRequestToServer", "Server return is: " + result);
+				//Log.d("SendRequestToServer", "Server return is: " + result);
 				return result;
 			}
 

@@ -17,6 +17,7 @@ public class ServerResponseHandler extends AsyncTask<Void, Void, String>{
 	
 	private String lineDelimiter;
 	private String newDataIndicator;
+	private String emptyIndicator;
 	
 	
 	public static ServerResponseHandler instance(){
@@ -30,6 +31,7 @@ public class ServerResponseHandler extends AsyncTask<Void, Void, String>{
 	public ServerResponseHandler(){
 		this.lineDelimiter = "\n";
 		this.newDataIndicator = "-new-";
+		this.emptyIndicator = "-empty-";
 	}
 	
 	public String getOutput() {
@@ -47,8 +49,11 @@ public class ServerResponseHandler extends AsyncTask<Void, Void, String>{
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1")); 
 	        String line = null;
 	        
-	        //"ID Frage A0-A1-A2-A3-A4 P0-P1-P2-P3-P4 Fragenset" 
 	        while ((line = reader.readLine()) != null) {
+	        	if (line.startsWith(emptyIndicator)){
+	        		return "";
+	        	}
+	        	
 	        	if (line.startsWith(newDataIndicator)) {
 	        		line = line.replaceAll(newDataIndicator, "");
 	        		sb.append(lineDelimiter);

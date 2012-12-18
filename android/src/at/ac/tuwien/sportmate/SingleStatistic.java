@@ -36,7 +36,7 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		
 		
 		//Username Header
-		EditText username = (EditText) view.findViewById(R.id.userName);
+		TextView username = (TextView) view.findViewById(R.id.userName);
 		username.setText(member.getUser_name());
 		
 		//Current Minutes Views

@@ -4,22 +4,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <EditText
+    <TextView
         android:id="@+id/userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:editable="false"
         android:ems="10"
         android:gravity="center"
         android:text="Username"
         android:textAllCaps="false"
-        android:textSize="18dp" />
+        android:textSize="18dp" 
+        android:padding="10dp"/>
 
     <LinearLayout
         android:id="@+id/category1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:background="@color/ausdauer_lila"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp" >
         
         <ImageView
             android:id="@+id/categoryImage1"
@@ -39,11 +43,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <EditText
+                <TextView
                     android:id="@+id/editText1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:editable="false"
                     android:layout_weight="1"
                     android:text="@string/ausdauer" />
                 
@@ -78,7 +81,11 @@
     <LinearLayout
         android:id="@+id/category2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@color/kraft_rot"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp" >
 
         <ImageView
             android:id="@+id/categoryImage2"
@@ -98,11 +105,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <EditText
+                <TextView
                     android:id="@+id/editText2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:editable="false"
                     android:layout_weight="1"
                     android:text="@string/fitness" />
                 
@@ -137,7 +143,11 @@
     <LinearLayout
         android:id="@+id/category3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@color/spielsport_gruen"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp" >
 
         <ImageView
             android:id="@+id/categoryImage3"
@@ -157,11 +167,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <EditText
+                <TextView
                     android:id="@+id/editText3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:editable="false"
                     android:layout_weight="1"
                     android:text="@string/spielsport" />
                 
@@ -196,7 +205,11 @@
     <LinearLayout
         android:id="@+id/category4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@color/gymnastik_orange"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp" >
 
         <ImageView
             android:id="@+id/categoryImage4"
@@ -216,11 +229,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <EditText
+                <TextView
                     android:id="@+id/editText4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:editable="false"
                     android:layout_weight="1"
                     android:text="@string/gymnastik" />
                 
@@ -255,7 +267,11 @@
     <LinearLayout
         android:id="@+id/category5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@color/leichte_blau"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp" >
 
         <ImageView
             android:id="@+id/categoryImage5"
@@ -275,11 +291,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <EditText
+                <TextView
                     android:id="@+id/editText5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:editable="false"
                     android:layout_weight="1"
                     android:text="@string/leichtes" />
                 
