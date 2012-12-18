@@ -18,7 +18,12 @@
     </style>
     
     <style name="CategoryTextView" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@color/light_grey</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="StandardTextView" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">@color/light_grey</item>
         <item name="android:textStyle">bold</item>
     </style>
 
