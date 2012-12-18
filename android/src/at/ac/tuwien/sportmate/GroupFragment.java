@@ -207,7 +207,7 @@ public class GroupFragment extends Fragment implements EventInterface {
 		member5.activities = DBHandler.getWeeklyActivitiesFromUser(member5.user_id);
 	}
 
-	public void saveDate()
+	public void saveData()
 	{
 		Log.d(TAG, "I am in GroupFragment");
 	}
