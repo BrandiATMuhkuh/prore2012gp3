@@ -1,337 +1,341 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/groupName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="center"
-        android:text="Group Name"
-        android:textAllCaps="false"
-        android:textSize="18dp" 
-        android:padding="10dp"
-        android:textStyle="bold"/>
+    android:layout_height="match_parent" >
 
     <LinearLayout
-        android:id="@+id/groupmember1"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" 
-        android:background="@color/group_member_color"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:clickable = "true">
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <QuickContactBadge
-            android:id="@+id/quickContactBadge1"
-            android:layout_width="64dp"
-            android:layout_height="64dp" 
-            android:onClick="onShowContact" />
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/groupName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
+            android:ems="10"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Group Name"
+            android:textAllCaps="false"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/groupmember1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp" >
+            android:background="@color/group_member_color"
+            android:clickable="true"
+            android:orientation="horizontal" >
+
+            <QuickContactBadge
+                android:id="@+id/quickContactBadge1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:onClick="onShowContact" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/username1"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:layout_weight="1"
-                    android:text="User 1" />
-                
-                <TextView 
-                    android:id="@+id/currentPoints1"
-                    android:layout_width="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/username1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:editable="false"
+                        android:text="User 1" />
+
+                    <TextView
+                        android:id="@+id/currentPoints1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="current" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seperator" />
+
+                    <TextView
+                        android:id="@+id/targetPoints1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="target" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="current"/>
-                
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seperator"/>
-                
-                <TextView 
-                    android:id="@+id/targetPoints1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="target"/>
-            
+                    android:progress="100" />
             </LinearLayout>
-
-            <ProgressBar
-                android:id="@+id/progressBar1"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:progress="100" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/groupmember2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/group_member_color"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:clickable = "true" >
-
-        <QuickContactBadge
-            android:id="@+id/quickContactBadge2"
-            android:layout_width="64dp"
-            android:layout_height="64dp" 
-            android:onClick="onShowContact" />
 
         <LinearLayout
+            android:id="@+id/groupmember2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp" >
+            android:background="@color/group_member_color"
+            android:clickable="true" >
+
+            <QuickContactBadge
+                android:id="@+id/quickContactBadge2"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:onClick="onShowContact" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/username2"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:layout_weight="1"
-                    android:text="User 2" />
-                
-                <TextView 
-                    android:id="@+id/currentPoints2"
-                    android:layout_width="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/username2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:editable="false"
+                        android:text="User 2" />
+
+                    <TextView
+                        android:id="@+id/currentPoints2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="current" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seperator" />
+
+                    <TextView
+                        android:id="@+id/targetPoints2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="target" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="current"/>
-                
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seperator"/>
-                
-                <TextView 
-                    android:id="@+id/targetPoints2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="target"/>
-            
+                    android:progress="100" />
             </LinearLayout>
-
-            <ProgressBar
-                android:id="@+id/progressBar2"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:progress="100" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/groupmember3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/group_member_color"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp" >
-
-        <QuickContactBadge
-            android:id="@+id/quickContactBadge3"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:onClick="onShowContact" />
 
         <LinearLayout
+            android:id="@+id/groupmember3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp" >
+            android:background="@color/group_member_color"
+            android:clickable="true">
+
+            <QuickContactBadge
+                android:id="@+id/quickContactBadge3"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:onClick="onShowContact" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/username3"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:layout_weight="1"
-                    android:text="User 3" />
-                
-                <TextView 
-                    android:id="@+id/currentPoints3"
-                    android:layout_width="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/username3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:editable="false"
+                        android:text="User 3" />
+
+                    <TextView
+                        android:id="@+id/currentPoints3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="current" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seperator" />
+
+                    <TextView
+                        android:id="@+id/targetPoints3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="target" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="current"/>
-                
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seperator"/>
-                
-                <TextView 
-                    android:id="@+id/targetPoints3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="target"/>
-            
+                    android:progress="100" />
             </LinearLayout>
-
-            <ProgressBar
-                android:id="@+id/progressBar3"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:progress="100" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/groupmember4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/group_member_color"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp" >
-
-        <QuickContactBadge
-            android:id="@+id/quickContactBadge4"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:onClick="onShowContact" />
 
         <LinearLayout
+            android:id="@+id/groupmember4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
-			android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/username4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:layout_weight="1"
-                    android:text="User 4" />
-                
-                <TextView 
-                    android:id="@+id/currentPoints4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="current"/>
-                
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seperator"/>
-                
-                <TextView 
-                    android:id="@+id/targetPoints4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="target"/>
-            
-            </LinearLayout>
-
-            <ProgressBar
-                android:id="@+id/progressBar4"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:progress="100" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/groupmember5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/group_member_color"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp" >
-
-        <QuickContactBadge
-            android:id="@+id/quickContactBadge5"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:onClick="onShowContact" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp" >
+            android:background="@color/group_member_color" 
+            android:clickable="true" >
+
+            <QuickContactBadge
+                android:id="@+id/quickContactBadge4"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:onClick="onShowContact" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/username5"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:layout_weight="1"
-                    android:text="User 5" />
-                
-                <TextView 
-                    android:id="@+id/currentPoints5"
-                    android:layout_width="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/username4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:editable="false"
+                        android:text="User 4" />
+
+                    <TextView
+                        android:id="@+id/currentPoints4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="current" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seperator" />
+
+                    <TextView
+                        android:id="@+id/targetPoints4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="target" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="current"/>
-                
-                <TextView 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seperator"/>
-                
-                <TextView 
-                    android:id="@+id/targetPoints5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="target"/>
-            
+                    android:progress="100" />
             </LinearLayout>
+        </LinearLayout>
 
-            <ProgressBar
-                android:id="@+id/progressBar5"
-                style="@android:style/Widget.ProgressBar.Horizontal"
+        <LinearLayout
+            android:id="@+id/groupmember5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/group_member_color"
+            android:clickable="true" >
+
+            <QuickContactBadge
+                android:id="@+id/quickContactBadge5"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:onClick="onShowContact" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:progress="100" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/username5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:editable="false"
+                        android:text="User 5" />
+
+                    <TextView
+                        android:id="@+id/currentPoints5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="current" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seperator" />
+
+                    <TextView
+                        android:id="@+id/targetPoints5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="target" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar5"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="100" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

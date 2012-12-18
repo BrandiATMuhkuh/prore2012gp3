@@ -20,7 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
-public class GroupFragment extends Fragment implements EventInterface
+public class GroupFragment extends Fragment implements EventInterface, OnClickListener
 {
 
 	BoGroup group = new BoGroup();
@@ -55,94 +55,44 @@ public class GroupFragment extends Fragment implements EventInterface
 		//Contact Badges Instanciate
 		QuickContactBadge badge1 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge1);
 		badge1.setBackgroundResource(R.drawable.default_user_icon);
-		badge1.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				onShowContact(v);
-			}
-		});
+		badge1.setOnClickListener(this);
 
 		QuickContactBadge badge2 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge2);
 		badge2.setBackgroundResource(R.drawable.default_user_icon);
-		badge2.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				onShowContact(v);
-			}
-		});
+		badge2.setOnClickListener(this);
 
 		QuickContactBadge badge3 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge3);
 		badge3.setBackgroundResource(R.drawable.default_user_icon);
-		badge3.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				onShowContact(v);
-			}
-		});
+		badge3.setOnClickListener(this);
 
 		QuickContactBadge badge4 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge4);
 		badge4.setBackgroundResource(R.drawable.default_user_icon);
-		badge4.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				onShowContact(v);
-			}
-		});
+		badge4.setOnClickListener(this);
 
 		QuickContactBadge badge5 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge5);
 		badge5.setBackgroundResource(R.drawable.default_user_icon);
-		badge5.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				onShowContact(v);
-			}
-		});
+		badge5.setOnClickListener(this);
+		
 		
 		LinearLayout linearLayout1 = (LinearLayout) view.findViewById(R.id.groupmember1);
-		linearLayout1.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				onShowContact(v);
-			}
-		});
+		linearLayout1.setOnClickListener(this);
+		//linearLayout1.setBackgroundResource(android.R.drawable.list_selector_background);
+		
 		LinearLayout linearLayout2 = (LinearLayout) view.findViewById(R.id.groupmember2);
-		linearLayout2.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				onShowContact(v);
-			}
-		});
+		linearLayout2.setOnClickListener(this);
+		//linearLayout2.setBackgroundResource(android.R.drawable.list_selector_background);
+		
 		LinearLayout linearLayout3 = (LinearLayout) view.findViewById(R.id.groupmember3);
-		linearLayout3.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				onShowContact(v);
-			}
-		});
+		linearLayout3.setOnClickListener(this);
+		//linearLayout3.setBackgroundResource(android.R.drawable.list_selector_background);
+		
 		LinearLayout linearLayout4 = (LinearLayout) view.findViewById(R.id.groupmember4);
-		linearLayout4.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				onShowContact(v);
-			}
-		});
+		linearLayout4.setOnClickListener(this);
+		//linearLayout4.setBackgroundResource(android.R.drawable.list_selector_background);
+		
 		LinearLayout linearLayout5 = (LinearLayout) view.findViewById(R.id.groupmember5);
-		linearLayout5.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				onShowContact(v);
-			}
-		});
+		linearLayout5.setOnClickListener(this);
+		//linearLayout5.setBackgroundResource(android.R.drawable.list_selector_background);
 
 		//Set Current Points
 		TextView currentPoints1 = (TextView) view.findViewById(R.id.currentPoints1);
@@ -300,5 +250,10 @@ public class GroupFragment extends Fragment implements EventInterface
 			MainActivity.selectUser();
 			break;
 		}
+	}
+	
+	public void onClick(View v)
+	{
+		onShowContact(v);
 	}
 }
