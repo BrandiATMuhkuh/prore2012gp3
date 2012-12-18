@@ -6,7 +6,7 @@ public class BoCategory {
 	String category_name; 
 	double category_intensity; 
 
-	BoCategory() {
+	public BoCategory() {
 		
 	}
 	
@@ -16,6 +16,8 @@ public class BoCategory {
 		this.category_name = category_name; 
 		this.category_intensity = category_intensity; 
 	}
+
+
 
 	public int getCategory_id() {
 		return category_id;
