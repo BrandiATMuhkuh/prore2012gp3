@@ -384,6 +384,55 @@ public class DBHandler {
 
 	}
 	
+	public static int getActiveGroupMembers(int user_id, int group_id){
+		
+		boolean ok = true;
+		
+		int activeGroupMembers = 0;
+		
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		nameValuePairs.add(new BasicNameValuePair("method", "getActiveGroupMembers"));
+		nameValuePairs.add(new BasicNameValuePair("user_id", String.valueOf(user_id)));
+		nameValuePairs.add(new BasicNameValuePair("user_id", String.valueOf(group_id)));
+		
+		String serverResponse = DBHandler.sendRequestToServer(serviceName,
+				nameValuePairs);
+
+		if (serverResponse == null || serverResponse.equals("nok")) {
+			ok = false;
+		}
+
+		Scanner sc = new Scanner(serverResponse);
+		sc.useDelimiter(ServerResponseHandler.instance().getLineDelimiter());
+		String line = "";
+		
+		while (sc.hasNext()) {
+			line = sc.next();
+			// Log.d("ServerResponse", line);
+			String[] values = line.split("-!-");
+			
+			activeGroupMembers = Integer.parseInt(values[0]);
+		}
+		
+		return activeGroupMembers;
+	}
+	
+	public static boolean setActive(int user_id, int active){
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		nameValuePairs.add(new BasicNameValuePair("method", "setActive"));
+		nameValuePairs.add(new BasicNameValuePair("user_id", String.valueOf(user_id)));
+		nameValuePairs.add(new BasicNameValuePair("user_id", String.valueOf(active)));
+		
+		String serverResponse = sendRequestToServer(serviceName, nameValuePairs);
+		
+		if (serverResponse.equals("ok")) {
+			return true;
+		}
+			
+		return false;
+		
+	}
+	
 	public static boolean updateWeeklyTargets(int user_id, int cat1_mins, int cat2_mins, int cat3_mins, int cat4_mins, int cat5_mins){
 		
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
@@ -423,6 +472,8 @@ public class DBHandler {
 			
 		return false;
 	}
+	
+	
 
 	
 
