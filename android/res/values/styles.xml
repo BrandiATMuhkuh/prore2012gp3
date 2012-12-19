@@ -25,5 +25,6 @@
     <style name="StandardTextView" parent="@android:style/TextAppearance.Small">
         <item name="android:textColor">@color/dark_grey</item>
     </style>
+    
 
 </resources>

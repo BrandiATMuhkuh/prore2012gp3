@@ -8,6 +8,6 @@
     <color name="group_member_color">#ffffff</color> 
     <color name="light_grey">#ececec</color>
     <color name="dark_grey">#555555</color>
-    <color name="progress_background">#ececec</color>
+    <color name="progress_background">#555555</color>
     <color name="progress_foreground">#33b5e5</color>
 </resources>
