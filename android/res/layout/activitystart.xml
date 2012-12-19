@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lblGroupMembers"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
-    <LinearLayout
-        android:id="@+id/vg"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        
+	 <!-- ..............startzeit.............. -->
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical" >
 
         <TextView
             android:id="@+id/lblStartzeit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Startzeit: " />
+            android:text="@string/starttime" />
 
         <TextView
             android:id="@+id/lblStartzeitOut"
@@ -22,18 +24,87 @@
                android:layout_width="wrap_content"
         android:layout_height="wrap_content"
             />
+       </LinearLayout>
+        <!-- ............ zeit seit sport.......... -->
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/lblSportzeit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time" />
+
+        <TextView
+            android:id="@+id/lblSportzeitOut"
+            android:text="" 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+            />
+       </LinearLayout>
+       
+       <!-- ..........Punkte ............. -->
+
+       <LinearLayout
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical" >
+
         <TextView
             android:id="@+id/lblPunkte"
-            android:text="Punkte:"
+            android:text="@string/points"
             android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         />
-
-        <ImageView
-            android:id="@+id/imgStopActivity"
-            android:layout_width="108dp"
-            android:layout_height="66dp"
-            android:src="@drawable/stopactivity" />
+	        <TextView
+            android:id="@+id/lblPunkteOut"
+            android:text=""
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        />
+        
+	</LinearLayout>
+     <!--  ........... Zusatzpunkte ................. -->
 
- </LinearLayout>
+       <LinearLayout
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/lblZusatzpunkte"
+            android:text="Zusatzpunkte"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        />
+
+ 	 <TextView
+            android:id="@+id/lblZusatzpunkteOut"
+            android:text=""
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        />
+        
+	</LinearLayout>
+	<LinearLayout
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical" >
+
+           <TextView
+               android:id="@+id/lblGroupMembersOut"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+           
+    </LinearLayout>
+       
+	<!-- ........... button zum stop activity ............... -->
+	<Button
+               android:id="@+id/stopActivity"
+               android:layout_width="112dp"
+               android:layout_height="119dp"
+               android:background="@drawable/stopactivity" />
 </LinearLayout>

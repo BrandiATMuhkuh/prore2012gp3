@@ -24,7 +24,9 @@
      
      <string name="minutes">Minuten</string>
      <string name="points">Punkte</string>
-    	
+     <string name="starttime">Startzeit</string>	
+     <string name="time">Zeit</string>
+     
      
      <string name="gesamtLabel">Punkte:</string>
 </resources>
