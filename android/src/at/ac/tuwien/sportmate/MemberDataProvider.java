@@ -13,7 +13,7 @@ public  class MemberDataProvider {
 	ArrayList<BoGroupMember> members;
 	
 
-	public MemberDataProvider() {
+	private MemberDataProvider() {
 		
 	}
 	
