@@ -516,7 +516,7 @@ public class DBHandler {
 				//Log.d("SendRequestToServer", "Server return is: " + result);
 				return null;
 			} else {
-				//Log.d("SendRequestToServer", "Server return is: " + result);
+				Log.d("SendRequestToServer", "Server return is: " + result);
 				return result;
 			}
 

@@ -26,6 +26,8 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 
 	BoGroup group = new BoGroup();
 
+	AppData data;
+	
 	private final static String TAG = "GroupFragment";
 
 	BoGroupMember member1;
@@ -39,7 +41,16 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		this.loadDataFromDB(1); //TODO
+		data = AppData.getInstance();
+		
+		group = data.getCurrentGroup();
+
+		member1 = data.getCurrentGroup().groupMembers.get(0);
+		member2 = data.getCurrentGroup().groupMembers.get(1);
+		member3 = data.getCurrentGroup().groupMembers.get(2);
+		member4 = data.getCurrentGroup().groupMembers.get(3);
+		member5 = data.getCurrentGroup().groupMembers.get(4);
+		
 	}
 
 	@Override
@@ -181,31 +192,6 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		super.onStop();
 	}
 
-	private void loadDataFromDB(int user_id){
-		group = DBHandler.getGroupFromUser(user_id); 
-		group.groupMembers = DBHandler.getUsersFromGroup(group.group_id);
-
-		member1 = group.groupMembers.get(0);
-		member1.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member1.user_id);
-		member1.activities = DBHandler.getWeeklyActivitiesFromUser(member1.user_id);
-
-		member2 = group.groupMembers.get(1);
-		member2.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member2.user_id);
-		member2.activities = DBHandler.getWeeklyActivitiesFromUser(member2.user_id);
-
-		member3 = group.groupMembers.get(2);
-		member3.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member3.user_id);
-		member3.activities = DBHandler.getWeeklyActivitiesFromUser(member3.user_id);
-
-		member4 = group.groupMembers.get(3);
-		member4.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member4.user_id);
-		member4.activities = DBHandler.getWeeklyActivitiesFromUser(member4.user_id);
-
-		member5 = group.groupMembers.get(4);
-		member5.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member5.user_id);
-		member5.activities = DBHandler.getWeeklyActivitiesFromUser(member5.user_id);
-	}
-
 	public void saveData()
 	{
 		Log.d(TAG, "I am in GroupFragment");
@@ -216,43 +202,43 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		switch (v.getId()) 
 		{
 		case R.id.quickContactBadge1:
-			AppData.getInstance().setCurrentViewedMember(member1);
+			data.setCurrentViewedMember(member1);
 			MainActivity.selectUser();
 			break;
 		case R.id.quickContactBadge2:
-			AppData.getInstance().setCurrentViewedMember(member2);
+			data.setCurrentViewedMember(member2);
 			MainActivity.selectUser();
 			break;
 		case R.id.quickContactBadge3:
-			AppData.getInstance().setCurrentViewedMember(member3);
+			data.setCurrentViewedMember(member3);
 			MainActivity.selectUser();
 			break;
 		case R.id.quickContactBadge4:
-			AppData.getInstance().setCurrentViewedMember(member4);
+			data.setCurrentViewedMember(member4);
 			MainActivity.selectUser();
 			break;
 		case R.id.quickContactBadge5:
-			AppData.getInstance().setCurrentViewedMember(member5);
+			data.setCurrentViewedMember(member5);
 			MainActivity.selectUser();
 			break;
 		case R.id.groupmember1:
-			AppData.getInstance().setCurrentViewedMember(member1);
+			data.setCurrentViewedMember(member1);
 			MainActivity.selectUser();
 			break;
 		case R.id.groupmember2:
-			AppData.getInstance().setCurrentViewedMember(member2);
+			data.setCurrentViewedMember(member2);
 			MainActivity.selectUser();
 			break;
 		case R.id.groupmember3:
-			AppData.getInstance().setCurrentViewedMember(member3);
+			data.setCurrentViewedMember(member3);
 			MainActivity.selectUser();
 			break;
 		case R.id.groupmember4:
-			AppData.getInstance().setCurrentViewedMember(member4);
+			data.setCurrentViewedMember(member4);
 			MainActivity.selectUser();
 			break;
 		case R.id.groupmember5:
-			AppData.getInstance().setCurrentViewedMember(member5);
+			data.setCurrentViewedMember(member5);
 			MainActivity.selectUser();
 			break;
 		}

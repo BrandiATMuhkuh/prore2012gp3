@@ -30,6 +30,8 @@ public class MainActivity extends Activity
 	private static Tab member; //Profile of other members
 	private static Tab user; //my profile
 	
+	AppData data;
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) 
@@ -93,6 +95,13 @@ public class MainActivity extends Activity
 						new MyTabListener<SelectTargetFragment>(this, "Target",
 								SelectTargetFragment.class));
 		actionBar.addTab(tab);*/
+		
+		
+		//load all weekly data From DB
+		data = AppData.getInstance();
+		data.setCurrentMember(DBHandler.getGroupMember(1));
+		data.loadData();
+		
 		
 	}
 

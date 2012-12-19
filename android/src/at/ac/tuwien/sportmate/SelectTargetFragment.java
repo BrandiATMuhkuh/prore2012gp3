@@ -16,6 +16,8 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 	
 	private View view;
 	
+	AppData data;
+	
 	BoGroupMember member;
 	
 	private int ausdauer_count;
@@ -38,27 +40,11 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		this.loadDataFromDB(1);
-	}
-
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-
+		data = AppData.getInstance();
+		
+		member = data.getCurrentMember();
 	}
 	
-	@Override
-	public void onResume() {
-		SportMateApplication.getApplication().registerListener(this.getClass().getName(), this);
-		super.onResume();
-	}
-	
-	@Override
-	public void onStop() {
-		SportMateApplication.getApplication().unregisterListener(this.getClass().getName());
-		super.onStop();
-	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -170,6 +156,12 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 		return view;
 	}
 	
+	@Override
+	public void onResume() {
+		SportMateApplication.getApplication().registerListener(this.getClass().getName(), this);
+		super.onResume();
+	}
+	
 	private void refreshPoints(){
 		//Gesamtcount
 		Log.d(this.getClass().getSimpleName(), "refreshing Points");
@@ -200,14 +192,15 @@ public class SelectTargetFragment extends Fragment implements EventInterface {
 		refreshPoints();
 		
 	}
+	
+	@Override
+	public void onStop() {
+		SportMateApplication.getApplication().unregisterListener(this.getClass().getName());
+		super.onStop();
+	}
 
 	@Override
 	public void eventA() {
 		System.out.println("testEventStartetInClass: "+this.getClass().getName());
-	}
-	
-	private void loadDataFromDB(int user_id){
-		member = DBHandler.getGroupMember(user_id);
-		member.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(member.getUser_id());
 	}
 }

@@ -18,6 +18,8 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	TextView username;
 
 	private final static String TAG = "SingleStatistic";
+	
+	AppData data;
 
 	TextView currentMinutes1;
 	TextView currentMinutes2;
@@ -47,7 +49,9 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	public void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 
-		this.loadDataFromDB(1); //TODO
+		data = AppData.getInstance();
+		member = data.getCurrentMember();
+		
 	}
 
 	@Override
@@ -59,7 +63,7 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		//Username Header
 		username = (TextView) view.findViewById(R.id.userName);
 		username.setText(member.getUser_name());
-		AppData.getInstance().setCurrentMember(member);
+		//AppData.getInstance().setCurrentMember(member);
 
 		//Current Minutes Views
 		currentMinutes1 = (TextView) view.findViewById(R.id.currentMinutes1);
@@ -153,10 +157,10 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	public void onResume()
 	{
 		super.onResume();
-		if(AppData.getInstance().getCurrentViewedMember() != null 
-				&& AppData.getInstance().getCurrentViewedMember() != AppData.getInstance().getCurrentMember())
+		if(data.getCurrentViewedMember() != null 
+				&& data.getCurrentViewedMember() != data.getCurrentMember())
 		{
-			member = AppData.getInstance().getCurrentViewedMember();
+			member = data.getCurrentViewedMember();
 
 			username.setText(member.getUser_name());
 
@@ -184,14 +188,8 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	public void onPause()
 	{
 		super.onPause();
-		member = AppData.getInstance().getCurrentMember();
-		AppData.getInstance().setCurrentViewedMember(AppData.getInstance().getCurrentMember());
+		member = data.getCurrentMember();
+		data.setCurrentViewedMember(data.getCurrentMember());
 	}
-
-	private void loadDataFromDB(int user_id){
-		memberId = user_id; 
-		member = DBHandler.getGroupMember(memberId); 
-		member.activities = DBHandler.getWeeklyActivitiesFromUser(memberId);
-		member.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(memberId);
-	}
+	
 }
