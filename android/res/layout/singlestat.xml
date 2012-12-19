@@ -13,13 +13,18 @@
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:gravity="center"
             android:padding="10dp"
             android:text="Username"
             android:textAllCaps="false"
             android:textSize="18dp" 
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:background="@color/group_member_color"/>
 
         <LinearLayout
             android:id="@+id/category1"
@@ -28,7 +33,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/ausdauer_lila"
+            android:background="@color/group_member_color"
             android:orientation="horizontal" >
 
             <ImageView
@@ -134,7 +139,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/kraft_rot" >
+            android:background="@color/group_member_color" >
 
             <ImageView
                 android:id="@+id/categoryImage2"
@@ -239,7 +244,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/spielsport_gruen" >
+            android:background="@color/group_member_color" >
 
             <ImageView
                 android:id="@+id/categoryImage3"
@@ -344,7 +349,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/gymnastik_orange" >
+            android:background="@color/group_member_color" >
 
             <ImageView
                 android:id="@+id/categoryImage4"
@@ -449,7 +454,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/leichte_blau" >
+            android:background="@color/group_member_color" >
 
             <ImageView
                 android:id="@+id/categoryImage5"

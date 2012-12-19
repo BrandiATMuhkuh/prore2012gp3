@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.QuickContactBadge;
@@ -53,23 +54,23 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		View view = inflater.inflate(R.layout.group, container, false);
 
 		//Contact Badges Instanciate
-		QuickContactBadge badge1 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge1);
+		ImageView badge1 = (ImageView) view.findViewById(R.id.quickContactBadge1);
 		badge1.setBackgroundResource(R.drawable.default_user_icon);
 		badge1.setOnClickListener(this);
 
-		QuickContactBadge badge2 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge2);
+		ImageView badge2 = (ImageView) view.findViewById(R.id.quickContactBadge2);
 		badge2.setBackgroundResource(R.drawable.default_user_icon);
 		badge2.setOnClickListener(this);
 
-		QuickContactBadge badge3 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge3);
+		ImageView badge3 = (ImageView) view.findViewById(R.id.quickContactBadge3);
 		badge3.setBackgroundResource(R.drawable.default_user_icon);
 		badge3.setOnClickListener(this);
 
-		QuickContactBadge badge4 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge4);
+		ImageView badge4 = (ImageView) view.findViewById(R.id.quickContactBadge4);
 		badge4.setBackgroundResource(R.drawable.default_user_icon);
 		badge4.setOnClickListener(this);
 
-		QuickContactBadge badge5 = (QuickContactBadge) view.findViewById(R.id.quickContactBadge5);
+		ImageView badge5 = (ImageView) view.findViewById(R.id.quickContactBadge5);
 		badge5.setBackgroundResource(R.drawable.default_user_icon);
 		badge5.setOnClickListener(this);
 		
@@ -129,18 +130,23 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		//Progressbars Instantiate
 		ProgressBar progressBar1 = (ProgressBar) view.findViewById(R.id.progressBar1);
 		progressBar1.setProgress(member1.calculateWeeklyPercentage());
+		progressBar1.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		ProgressBar progressBar2 = (ProgressBar) view.findViewById(R.id.progressBar2);
 		progressBar2.setProgress(member2.calculateWeeklyPercentage());
+		progressBar2.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		ProgressBar progressBar3 = (ProgressBar) view.findViewById(R.id.progressBar3);
 		progressBar3.setProgress(member3.calculateWeeklyPercentage());
+		progressBar3.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		ProgressBar progressBar4 = (ProgressBar) view.findViewById(R.id.progressBar4);
 		progressBar4.setProgress(member4.calculateWeeklyPercentage());
+		progressBar4.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		ProgressBar progressBar5 = (ProgressBar) view.findViewById(R.id.progressBar5);
 		progressBar5.setProgress(member5.calculateWeeklyPercentage());
+		progressBar5.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		//EditText load names
 		TextView editText1 = (TextView) view.findViewById(R.id.username1);

@@ -13,13 +13,18 @@
             android:id="@+id/groupName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:gravity="center"
             android:padding="10dp"
             android:text="Group Name"
             android:textAllCaps="false"
             android:textSize="18dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@color/group_member_color" />
 
         <LinearLayout
             android:id="@+id/groupmember1"
@@ -32,18 +37,24 @@
             android:clickable="true"
             android:orientation="horizontal" >
 
-            <QuickContactBadge
+            <ImageView
                 android:id="@+id/quickContactBadge1"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:onClick="onShowContact" />
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+            	android:layout_marginLeft="3dp"
+            	android:layout_marginRight="3dp"
+                android:clickable="false" 
+                android:focusable="false"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -95,15 +106,19 @@
             android:background="@color/group_member_color"
             android:clickable="true" >
 
-            <QuickContactBadge
+            <ImageView
                 android:id="@+id/quickContactBadge2"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:onClick="onShowContact" />
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+            	android:layout_marginLeft="3dp"
+            	android:layout_marginRight="3dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:orientation="vertical" >
@@ -158,15 +173,19 @@
             android:background="@color/group_member_color"
             android:clickable="true">
 
-            <QuickContactBadge
+            <ImageView
                 android:id="@+id/quickContactBadge3"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:onClick="onShowContact" />
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+            	android:layout_marginLeft="3dp"
+            	android:layout_marginRight="3dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:orientation="vertical" >
@@ -221,15 +240,19 @@
             android:background="@color/group_member_color" 
             android:clickable="true" >
 
-            <QuickContactBadge
+            <ImageView
                 android:id="@+id/quickContactBadge4"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:onClick="onShowContact" />
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+            	android:layout_marginLeft="3dp"
+            	android:layout_marginRight="3dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:orientation="vertical" >
@@ -284,15 +307,19 @@
             android:background="@color/group_member_color"
             android:clickable="true" >
 
-            <QuickContactBadge
+            <ImageView
                 android:id="@+id/quickContactBadge5"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:onClick="onShowContact" />
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+            	android:layout_marginLeft="3dp"
+            	android:layout_marginRight="3dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:orientation="vertical" >
