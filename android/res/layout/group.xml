@@ -17,14 +17,15 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
-            android:background="@color/group_member_color"
+            android:background="@drawable/groupmember_selector"
             android:ems="10"
             android:gravity="center"
             android:padding="10dp"
             android:text="Group Name"
             android:textAllCaps="false"
             android:textSize="18dp"
-            android:textStyle="bold" />
+            android:textStyle="bold" 
+            android:clickable="false"/>
 
         <LinearLayout
             android:id="@+id/groupmember1"

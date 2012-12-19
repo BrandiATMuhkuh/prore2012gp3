@@ -17,14 +17,15 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
+            android:background="@drawable/groupmember_selector"
+            android:clickable="false"
             android:ems="10"
             android:gravity="center"
             android:padding="10dp"
             android:text="Username"
             android:textAllCaps="false"
-            android:textSize="18dp" 
-            android:textStyle="bold"
-            android:background="@color/group_member_color"/>
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/category1"
@@ -33,9 +34,10 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="3dp"
-            android:background="@color/group_member_color"
-            android:orientation="horizontal" >
+            android:background="@drawable/groupmember_selector"
+            android:clickable="false"
+            android:orientation="horizontal"
+            android:padding="3dp" >
 
             <ImageView
                 android:id="@+id/categoryImage1"
@@ -134,15 +136,16 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
+          <LinearLayout
             android:id="@+id/category2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="3dp"
-            android:background="@color/group_member_color" >
+            android:background="@drawable/groupmember_selector"
+            android:clickable="false"
+            android:padding="3dp" >
 
             <ImageView
                 android:id="@+id/categoryImage2"
@@ -241,15 +244,16 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
+       <LinearLayout
             android:id="@+id/category3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="3dp"
-            android:background="@color/group_member_color" >
+            android:background="@drawable/groupmember_selector"
+            android:clickable="false"
+            android:padding="3dp" >
 
             <ImageView
                 android:id="@+id/categoryImage3"
@@ -348,15 +352,16 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
+      <LinearLayout
             android:id="@+id/category4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="3dp"
-            android:background="@color/group_member_color" >
+            android:background="@drawable/groupmember_selector"
+            android:clickable="false"
+            android:padding="3dp" >
 
             <ImageView
                 android:id="@+id/categoryImage4"
@@ -462,8 +467,9 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="3dp"
-            android:background="@color/group_member_color" >
+            android:background="@drawable/groupmember_selector"
+            android:clickable="false"
+            android:padding="3dp" >
 
             <ImageView
                 android:id="@+id/categoryImage5"
