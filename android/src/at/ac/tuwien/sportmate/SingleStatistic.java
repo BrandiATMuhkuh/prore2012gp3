@@ -191,7 +191,7 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	private void loadDataFromDB(int user_id){
 		memberId = user_id; 
 		member = DBHandler.getGroupMember(memberId); 
-		member.activities = DBHandler.getAllActivitesFromUser(memberId);
+		member.activities = DBHandler.getWeeklyActivitiesFromUser(memberId);
 		member.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(memberId);
 	}
 }
