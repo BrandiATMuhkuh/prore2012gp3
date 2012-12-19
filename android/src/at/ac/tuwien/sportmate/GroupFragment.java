@@ -76,23 +76,23 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		
 		LinearLayout linearLayout1 = (LinearLayout) view.findViewById(R.id.groupmember1);
 		linearLayout1.setOnClickListener(this);
-		//linearLayout1.setBackgroundResource(android.R.drawable.list_selector_background);
+		linearLayout1.setBackgroundResource(R.drawable.groupmember_selector);
 		
 		LinearLayout linearLayout2 = (LinearLayout) view.findViewById(R.id.groupmember2);
 		linearLayout2.setOnClickListener(this);
-		//linearLayout2.setBackgroundResource(android.R.drawable.list_selector_background);
+		linearLayout2.setBackgroundResource(R.drawable.groupmember_selector);
 		
 		LinearLayout linearLayout3 = (LinearLayout) view.findViewById(R.id.groupmember3);
 		linearLayout3.setOnClickListener(this);
-		//linearLayout3.setBackgroundResource(android.R.drawable.list_selector_background);
+		linearLayout3.setBackgroundResource(R.drawable.groupmember_selector);
 		
 		LinearLayout linearLayout4 = (LinearLayout) view.findViewById(R.id.groupmember4);
 		linearLayout4.setOnClickListener(this);
-		//linearLayout4.setBackgroundResource(android.R.drawable.list_selector_background);
+		linearLayout4.setBackgroundResource(R.drawable.groupmember_selector);
 		
 		LinearLayout linearLayout5 = (LinearLayout) view.findViewById(R.id.groupmember5);
 		linearLayout5.setOnClickListener(this);
-		//linearLayout5.setBackgroundResource(android.R.drawable.list_selector_background);
+		linearLayout5.setBackgroundResource(R.drawable.groupmember_selector);
 
 		//Set Current Points
 		TextView currentPoints1 = (TextView) view.findViewById(R.id.currentPoints1);
