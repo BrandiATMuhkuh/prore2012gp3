@@ -13,6 +13,11 @@
             android:id="@+id/groupName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/group_member_color"
             android:ems="10"
             android:gravity="center"
             android:padding="10dp"
@@ -28,21 +33,24 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:padding="3dp"
             android:background="@color/group_member_color"
             android:clickable="true"
             android:orientation="horizontal" >
 
-            <QuickContactBadge
+            <ImageView
                 android:id="@+id/quickContactBadge1"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:onClick="onShowContact" />
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:clickable="false"
+                android:focusable="false" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -52,6 +60,7 @@
 
                     <TextView
                         android:id="@+id/username1"
+                        style="@style/CategoryTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -60,17 +69,20 @@
 
                     <TextView
                         android:id="@+id/currentPoints1"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="current" />
 
                     <TextView
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/seperator" />
 
                     <TextView
                         android:id="@+id/targetPoints1"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="target" />
@@ -92,20 +104,21 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:padding="3dp"
             android:background="@color/group_member_color"
             android:clickable="true" >
 
-            <QuickContactBadge
+            <ImageView
                 android:id="@+id/quickContactBadge2"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:onClick="onShowContact" />
+                android:layout_width="85dp"
+                android:layout_height="85dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -115,6 +128,7 @@
 
                     <TextView
                         android:id="@+id/username2"
+                        style="@style/CategoryTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -123,17 +137,20 @@
 
                     <TextView
                         android:id="@+id/currentPoints2"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="current" />
 
                     <TextView
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/seperator" />
 
                     <TextView
                         android:id="@+id/targetPoints2"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="target" />
@@ -155,20 +172,21 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:padding="3dp"
             android:background="@color/group_member_color"
-            android:clickable="true">
+            android:clickable="true" >
 
-            <QuickContactBadge
+            <ImageView
                 android:id="@+id/quickContactBadge3"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:onClick="onShowContact" />
+                android:layout_width="85dp"
+                android:layout_height="85dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -178,6 +196,7 @@
 
                     <TextView
                         android:id="@+id/username3"
+                        style="@style/CategoryTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -186,17 +205,20 @@
 
                     <TextView
                         android:id="@+id/currentPoints3"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="current" />
 
                     <TextView
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/seperator" />
 
                     <TextView
                         android:id="@+id/targetPoints3"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="target" />
@@ -218,20 +240,21 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/group_member_color" 
+            android:padding="3dp"
+            android:background="@color/group_member_color"
             android:clickable="true" >
 
-            <QuickContactBadge
+            <ImageView
                 android:id="@+id/quickContactBadge4"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:onClick="onShowContact" />
+                android:layout_width="85dp"
+                android:layout_height="85dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -241,6 +264,7 @@
 
                     <TextView
                         android:id="@+id/username4"
+                        style="@style/CategoryTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -249,17 +273,20 @@
 
                     <TextView
                         android:id="@+id/currentPoints4"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="current" />
 
                     <TextView
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/seperator" />
 
                     <TextView
                         android:id="@+id/targetPoints4"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="target" />
@@ -281,20 +308,21 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:padding="3dp"
             android:background="@color/group_member_color"
             android:clickable="true" >
 
-            <QuickContactBadge
+            <ImageView
                 android:id="@+id/quickContactBadge5"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:onClick="onShowContact" />
+                android:layout_width="85dp"
+                android:layout_height="85dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -304,6 +332,7 @@
 
                     <TextView
                         android:id="@+id/username5"
+                        style="@style/CategoryTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -312,17 +341,20 @@
 
                     <TextView
                         android:id="@+id/currentPoints5"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="current" />
 
                     <TextView
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/seperator" />
 
                     <TextView
                         android:id="@+id/targetPoints5"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="target" />

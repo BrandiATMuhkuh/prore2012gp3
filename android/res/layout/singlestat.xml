@@ -13,13 +13,18 @@
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:gravity="center"
             android:padding="10dp"
             android:text="Username"
             android:textAllCaps="false"
             android:textSize="18dp" 
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:background="@color/group_member_color"/>
 
         <LinearLayout
             android:id="@+id/category1"
@@ -28,14 +33,15 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/ausdauer_lila"
+            android:padding="3dp"
+            android:background="@color/group_member_color"
             android:orientation="horizontal" >
 
             <ImageView
                 android:id="@+id/categoryImage1"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ausdauer" />
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/ausdauer_square" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -134,13 +140,14 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/kraft_rot" >
+            android:padding="3dp"
+            android:background="@color/group_member_color" >
 
             <ImageView
                 android:id="@+id/categoryImage2"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/kraft" />
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/kraft_square" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -239,13 +246,14 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/spielsport_gruen" >
+            android:padding="3dp"
+            android:background="@color/group_member_color" >
 
             <ImageView
                 android:id="@+id/categoryImage3"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ball" />
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/ball_square" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -344,13 +352,14 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/gymnastik_orange" >
+            android:padding="3dp"
+            android:background="@color/group_member_color" >
 
             <ImageView
                 android:id="@+id/categoryImage4"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/gymnastik" />
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/gymnastik_square" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -449,13 +458,14 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/leichte_blau" >
+            android:padding="3dp"
+            android:background="@color/group_member_color" >
 
             <ImageView
                 android:id="@+id/categoryImage5"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/leichte" />
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/leichte_square" />
 
             <LinearLayout
                 android:layout_width="match_parent"

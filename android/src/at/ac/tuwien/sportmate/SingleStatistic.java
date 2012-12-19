@@ -128,18 +128,23 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		//Progress bars
 		progressBar1 = (ProgressBar)view.findViewById(R.id.progressBar1);
 		progressBar1.setProgress(member.calculateWeeklyCategoryPercentage(1));
+		progressBar1.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		progressBar2 = (ProgressBar)view.findViewById(R.id.progressBar2);
 		progressBar2.setProgress(member.calculateWeeklyCategoryPercentage(2));
+		progressBar2.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		progressBar3 = (ProgressBar)view.findViewById(R.id.progressBar3);
 		progressBar3.setProgress(member.calculateWeeklyCategoryPercentage(3));
+		progressBar3.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		progressBar4 = (ProgressBar)view.findViewById(R.id.progressBar4);
 		progressBar4.setProgress(member.calculateWeeklyCategoryPercentage(4));
+		progressBar4.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		progressBar5 = (ProgressBar)view.findViewById(R.id.progressBar5);
 		progressBar5.setProgress(member.calculateWeeklyCategoryPercentage(5));
+		progressBar5.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		return view;
 	}
@@ -186,7 +191,7 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	private void loadDataFromDB(int user_id){
 		memberId = user_id; 
 		member = DBHandler.getGroupMember(memberId); 
-		member.activities = DBHandler.getAllActivitesFromUser(memberId);
+		member.activities = DBHandler.getWeeklyActivitiesFromUser(memberId);
 		member.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(memberId);
 	}
 }
