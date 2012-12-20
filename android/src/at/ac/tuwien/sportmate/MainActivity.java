@@ -135,13 +135,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			} else if(myTab == "Group")
 			{
 				item.setTitle("");
+				item2.setEnabled(true);
 				item2.setTitle("Edit");
-			}if(showMember)
+			}if(myTab == "User" &&showMember)
 			{
 				item.setTitle("");
+				item2.setEnabled(true);
 				item2.setTitle("My Profile");
 			}
-		}
+		}		
 	}
 
 	@Override
@@ -206,6 +208,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				single.updateView();
 				showMember = false;
 				item2.setTitle("");
+				item2.setEnabled(false);
 				return true;
 			}
 		}

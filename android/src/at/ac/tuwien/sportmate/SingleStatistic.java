@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class SingleStatistic extends Fragment implements EventInterface {
@@ -38,6 +39,8 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	ProgressBar progressBar3;
 	ProgressBar progressBar4;
 	ProgressBar progressBar5;
+	
+	ScrollView scrollView;
 
 	@Override
 	public void eventA() {
@@ -68,6 +71,8 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		username.setText(member.getUser_name());
 		//AppData.getInstance().setCurrentMember(member);
 
+		scrollView = (ScrollView) view.findViewById(R.id.singleScroll);
+		
 		//Current Minutes Views
 		currentMinutes1 = (TextView) view.findViewById(R.id.currentMinutes1);
 		currentMinutes1.setText(String.valueOf(member.getCategoryMinutes(1)));
@@ -219,5 +224,7 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		progressBar3.setProgress(member.calculateWeeklyCategoryPercentage(3));
 		progressBar4.setProgress(member.calculateWeeklyCategoryPercentage(4));
 		progressBar5.setProgress(member.calculateWeeklyCategoryPercentage(5));
+		
+		scrollView.fullScroll(ScrollView.FOCUS_UP);
 	}
 }
