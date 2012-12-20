@@ -11,6 +11,7 @@
     <string name="green">Green</string>
     <string name="blue">Blue</string>
      <string name="hello">Hello World, MainActivity!</string>
+     <string name="chooseCategory">Wähle deine Kategorie</string>
      
      <string name="ausdauer">Ausdauersport</string>
      <string name="fitness">Fitness</string>

@@ -17,6 +17,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class StartFragment extends Fragment implements EventInterface, OnClickListener
 {
@@ -25,6 +26,8 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 	private int offset_y = 0;
 	
 	View view;
+	
+	TextView header;
 
 	ImageView image1;
 	ImageView image2;
@@ -51,6 +54,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 	{
 		super.onCreate(savedInstanceState);
 		
+		
 		categoryViews = new ArrayList<LinearLayout>();
 	}
 
@@ -59,6 +63,8 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		view = inflater.inflate(R.layout.start, container, false);
+		
+		header = (TextView) view.findViewById(R.id.chooseCategory);
 		
 		category1 = (LinearLayout)view.findViewById(R.id.categoryChoose1);
 		category2 = (LinearLayout)view.findViewById(R.id.categoryChoose2);
@@ -207,6 +213,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			@Override
 			public void onAnimationEnd(Animation animation) {
 				for(LinearLayout ll: categoryViews){
+					header.setVisibility(View.GONE);
 					if (ll.getId() != selectedView.getId()){
 						ll.setVisibility(View.GONE);
 					}
@@ -228,6 +235,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 		});
 		aa.setDuration(500);
 		
+		header.startAnimation(aa);
 		for(LinearLayout ll: categoryViews){
 			if (ll.getId() != v.getId()){
 				ll.startAnimation(aa);
@@ -236,8 +244,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 		
 		
 		
-		
-		// then animate the view translating from (0, 0)
+		// translateToTop
 		TranslateAnimation ta = new TranslateAnimation(0, 0, 0, -oldY);
 		ta.setDuration(500);
 		view.startAnimation(ta);
