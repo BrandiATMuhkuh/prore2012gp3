@@ -1,5 +1,7 @@
 package at.ac.tuwien.sportmate;
 
+import java.util.ArrayList;
+
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +10,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,24 +23,54 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 	private View selected_item = null;
 	private int offset_x = 0;
 	private int offset_y = 0;
+	
+	View view;
 
 	ImageView image1;
 	ImageView image2;
 	ImageView image3;
 	ImageView image4;
 	ImageView image5;
+	
+	LinearLayout category1;
+	LinearLayout category2;
+	LinearLayout category3;
+	LinearLayout category4;
+	LinearLayout category5;
+	
+	ArrayList<LinearLayout> categoryViews;
 
 	@Override
 	public void eventA() {
 		// TODO Auto-generated method stub
 
 	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+		
+		categoryViews = new ArrayList<LinearLayout>();
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View view = inflater.inflate(R.layout.start, container, false);
+		view = inflater.inflate(R.layout.start, container, false);
+		
+		category1 = (LinearLayout)view.findViewById(R.id.categoryChoose1);
+		category2 = (LinearLayout)view.findViewById(R.id.categoryChoose2);
+		category3 = (LinearLayout)view.findViewById(R.id.categoryChoose3);
+		category4 = (LinearLayout)view.findViewById(R.id.categoryChoose4);
+		category5 = (LinearLayout)view.findViewById(R.id.categoryChoose5);
+		
+		categoryViews.add(category1);
+		categoryViews.add(category2);
+		categoryViews.add(category3);
+		categoryViews.add(category4);
+		categoryViews.add(category5);
 
 		image1 = (ImageView) view.findViewById(R.id.categoryImageMain1);
 		image1.setOnClickListener(this);
@@ -110,6 +146,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose2:
 			AppData.getInstance().setDefaultSportCategory(2);
@@ -118,6 +155,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose3:
 			AppData.getInstance().setDefaultSportCategory(3);
@@ -126,6 +164,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image2.setBackgroundResource(R.drawable.kraft_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose4:
 			AppData.getInstance().setDefaultSportCategory(4);
@@ -134,6 +173,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image2.setBackgroundResource(R.drawable.kraft_square);
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose5:
 			AppData.getInstance().setDefaultSportCategory(5);
@@ -142,7 +182,67 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image2.setBackgroundResource(R.drawable.kraft_square);
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
+			selectCategoryView(v);
 			break;
 		}
+	}
+	
+	private void selectCategoryView(View v){
+		
+		final View selectedView = v;
+		
+		float oldX = v.getX();
+		float oldY = v.getY();
+		
+		// first set the view's location to the end position
+		//v.setLayoutParams(image1.getLayoutParams());  // set to (x, y)
+		 
+		Log.d("StartFragment", "clicked View.getX(): " + oldX);
+		Log.d("StartFragment", "clicked View.getY(): " + oldY);
+		
+		AlphaAnimation aa = new AlphaAnimation(1, 0);
+		aa.setAnimationListener(new AnimationListener() {
+			
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				for(LinearLayout ll: categoryViews){
+					if (ll.getId() != selectedView.getId()){
+						ll.setVisibility(View.GONE);
+					}
+				}
+				
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		aa.setDuration(500);
+		
+		for(LinearLayout ll: categoryViews){
+			if (ll.getId() != v.getId()){
+				ll.startAnimation(aa);
+			}
+		}
+		
+		
+		
+		
+		// then animate the view translating from (0, 0)
+		TranslateAnimation ta = new TranslateAnimation(0, 0, 0, -oldY);
+		ta.setDuration(500);
+		view.startAnimation(ta);
+		
+		
+		
 	}
 }

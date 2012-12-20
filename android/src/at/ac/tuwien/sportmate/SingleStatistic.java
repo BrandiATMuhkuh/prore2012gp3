@@ -50,7 +50,10 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		super.onCreate(savedInstanceState);
 
 		data = AppData.getInstance();
-		member = data.getCurrentMember();
+		
+		member = data.getCurrentViewedMember();
+		
+		if (member == null) member = data.getCurrentMember();
 		
 	}
 
