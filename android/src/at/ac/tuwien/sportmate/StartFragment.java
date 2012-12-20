@@ -43,6 +43,8 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 	
 	ArrayList<LinearLayout> categoryViews;
 
+	boolean animationDone = false;
+	
 	@Override
 	public void eventA() {
 		// TODO Auto-generated method stub
@@ -197,43 +199,69 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 		
 		final View selectedView = v;
 		
-		float oldX = v.getX();
-		float oldY = v.getY();
+		final float positionY = v.getY();
 		
-		// first set the view's location to the end position
-		//v.setLayoutParams(image1.getLayoutParams());  // set to (x, y)
-		 
-		Log.d("StartFragment", "clicked View.getX(): " + oldX);
-		Log.d("StartFragment", "clicked View.getY(): " + oldY);
 		
-		AlphaAnimation aa = new AlphaAnimation(1, 0);
-		aa.setAnimationListener(new AnimationListener() {
+		
+		
+		
+		final TranslateAnimation ta = new TranslateAnimation(0, 0, 0, -positionY);
+		ta.setDuration(500);
+		ta.setAnimationListener(new AnimationListener() {
 			
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
 			
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				for(LinearLayout ll: categoryViews){
-					header.setVisibility(View.GONE);
-					if (ll.getId() != selectedView.getId()){
+				header.setVisibility(View.GONE);
+				for (LinearLayout ll: categoryViews) {
+					if (ll.getId()!=selectedView.getId()){
 						ll.setVisibility(View.GONE);
 					}
 				}
+				
+			}
+		});
+		
+		final AlphaAnimation aa = new AlphaAnimation(1, 0);
+		aa.setDuration(500);
+		aa.setAnimationListener(new AnimationListener() {
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				//after views disappeared, animate selected view to top
+				
+				header.setAlpha(0);
+				for (LinearLayout ll: categoryViews){
+					if (ll.getId()!=selectedView.getId()) {
+						ll.setAlpha(0);
+					}	
+				}
+				
+				selectedView.startAnimation(ta);
 				
 			}
 
 			@Override
 			public void onAnimationRepeat(Animation animation) {
 				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
 			public void onAnimationStart(Animation animation) {
 				// TODO Auto-generated method stub
-				
 			}
 		});
-		aa.setDuration(500);
 		
 		header.startAnimation(aa);
 		for(LinearLayout ll: categoryViews){
@@ -244,10 +272,8 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 		
 		
 		
-		// translateToTop
-		TranslateAnimation ta = new TranslateAnimation(0, 0, 0, -oldY);
-		ta.setDuration(500);
-		view.startAnimation(ta);
+		
+		
 		
 		
 		
