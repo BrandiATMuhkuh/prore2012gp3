@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Text;
 
-import android.app.Fragment;
 import android.net.ParseException;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -248,4 +248,4 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 	{
 		onShowContact(v);
 	}
-}
+}	

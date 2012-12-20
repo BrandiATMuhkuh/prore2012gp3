@@ -1,8 +1,8 @@
 package at.ac.tuwien.sportmate;
 
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -159,6 +159,7 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	@Override
 	public void onResume()
 	{
+		Log.v(TAG, "onResume");
 		super.onResume();
 		if(data.getCurrentViewedMember() != null 
 				&& data.getCurrentViewedMember() != data.getCurrentMember())
@@ -195,4 +196,28 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		data.setCurrentViewedMember(data.getCurrentMember());
 	}
 	
+	public void updateView()
+	{
+		member = data.getCurrentViewedMember();
+
+		username.setText(member.getUser_name());
+
+		currentMinutes1.setText(String.valueOf(member.getCategoryMinutes(1)));
+		currentMinutes2.setText(String.valueOf(member.getCategoryMinutes(2)));
+		currentMinutes3.setText(String.valueOf(member.getCategoryMinutes(3)));
+		currentMinutes4.setText(String.valueOf(member.getCategoryMinutes(4)));
+		currentMinutes5.setText(String.valueOf(member.getCategoryMinutes(5)));
+
+		targetMinutes1.setText(String.valueOf(member.getWeeklyTargetCategoryMins(1)));
+		targetMinutes2.setText(String.valueOf(member.getWeeklyTargetCategoryMins(2)));
+		targetMinutes3.setText(String.valueOf(member.getWeeklyTargetCategoryMins(3)));
+		targetMinutes4.setText(String.valueOf(member.getWeeklyTargetCategoryMins(4)));
+		targetMinutes5.setText(String.valueOf(member.getWeeklyTargetCategoryMins(5)));
+
+		progressBar1.setProgress(member.calculateWeeklyCategoryPercentage(1));
+		progressBar2.setProgress(member.calculateWeeklyCategoryPercentage(2));
+		progressBar3.setProgress(member.calculateWeeklyCategoryPercentage(3));
+		progressBar4.setProgress(member.calculateWeeklyCategoryPercentage(4));
+		progressBar5.setProgress(member.calculateWeeklyCategoryPercentage(5));
+	}
 }
