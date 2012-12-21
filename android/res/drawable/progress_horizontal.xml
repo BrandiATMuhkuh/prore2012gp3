@@ -11,6 +11,9 @@
                 android:centerY="0"
                 android:endColor="@color/progress_background"
                 android:startColor="@color/progress_background" />
+            <stroke
+        		android:width="2px"
+        		android:color="@color/light_grey" />
         </shape>
     </item>
     <item android:id="@android:id/secondaryProgress">
@@ -38,6 +41,9 @@
                     android:centerY="@color/progress_foreground"
                     android:endColor="@color/progress_foreground"
                     android:startColor="@color/progress_foreground" />
+                <stroke
+        		android:width="2px"
+        		android:color="@color/light_grey" />
             </shape>
         </clip>
     </item>
