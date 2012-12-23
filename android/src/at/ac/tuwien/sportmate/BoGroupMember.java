@@ -149,7 +149,7 @@ public class BoGroupMember {
 	
 	public int calculateWeeklyPercentage(){
 		
-		double percentage = ((double)calculateAllPoints()/(double)calculateWeeklyTargetPoints()) * 100;
+		double percentage = ((double)calculateWeeklyPoints()/(double)calculateWeeklyTargetPoints()) * 100;
 		
 		if (percentage > 100) return 100;
 		else return (int)percentage;
@@ -184,6 +184,18 @@ public class BoGroupMember {
 			if (w.category.category_id == category_id){
 				points += w.weekly_target_min * w.category.category_intensity;
 			}
+		}
+		
+		return points;
+	}
+	
+	public int calculateWeeklyPoints(){
+		int points = 0;
+		
+		for (BoActivity a: activities){
+			
+			points += a.duration_min * a.category.category_intensity;
+			
 		}
 		
 		return points;

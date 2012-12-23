@@ -3,6 +3,8 @@ package at.ac.tuwien.sportmate;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.util.Log;
+
 public class BoGroup {
 
 	int group_id; 
@@ -50,5 +52,34 @@ public class BoGroup {
 
 	public void setGroup_name(String group_name) {
 		this.group_name = group_name;
+	}
+	
+	public int calculateWeeklyPercentage() {
+		
+		double groupPercentage = 0;
+		for (BoGroupMember m: groupMembers) {
+			groupPercentage += (double)m.calculateWeeklyPercentage()/(double)groupMembers.size();
+		}
+		
+		return (int)groupPercentage;
+	
+	}
+	
+	public int getWeeklyPoints() {
+		int points = 0;
+		for (BoGroupMember m: groupMembers) {
+			points += m.calculateWeeklyPoints();
+		}
+		
+		return points;
+	}
+	
+	public int getWeeklyTargetPoints() {
+		int points = 0;
+		for (BoGroupMember m: groupMembers) {
+			points += m.calculateWeeklyTargetPoints();
+		}
+		
+		return points;
 	}
 }

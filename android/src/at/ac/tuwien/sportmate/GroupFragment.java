@@ -64,6 +64,14 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.group, container, false);
 
+		//group Percentage
+		TextView groupPercentage = (TextView)view.findViewById(R.id.groupPercentage);
+		groupPercentage.setText(String.valueOf(data.getCurrentGroup().calculateWeeklyPercentage()) + "%");
+		
+		ProgressBar groupProgress = (ProgressBar)view.findViewById(R.id.groupProgress);
+		groupProgress.setProgress(data.getCurrentGroup().calculateWeeklyPercentage());
+		
+		
 		//Contact Badges Instanciate
 		ImageView badge1 = (ImageView) view.findViewById(R.id.quickContactBadge1);
 		badge1.setBackgroundResource(R.drawable.default_user_icon);
@@ -86,6 +94,7 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		badge5.setOnClickListener(this);
 		
 		
+		//Linear layouts for selectors
 		LinearLayout linearLayout1 = (LinearLayout) view.findViewById(R.id.groupmember1);
 		linearLayout1.setOnClickListener(this);
 		linearLayout1.setBackgroundResource(R.drawable.groupmember_selector);

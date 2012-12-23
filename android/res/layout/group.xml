@@ -17,15 +17,16 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
+            android:layout_weight="1"
             android:background="@drawable/groupmember_selector"
+            android:clickable="false"
             android:ems="10"
             android:gravity="center"
             android:padding="10dp"
             android:text="Group Name"
             android:textAllCaps="false"
             android:textSize="18dp"
-            android:textStyle="bold" 
-            android:clickable="false"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/groupmember1"
@@ -34,10 +35,49 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="3dp"
             android:background="@color/group_member_color"
             android:clickable="true"
-            android:orientation="horizontal" >
+            android:orientation="vertical"
+            android:padding="8dp" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/CategoryTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Gruppenziel:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    style="@style/CategoryTextView"
+                    android:id="@+id/groupPercentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="55%" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/groupProgress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/groupmember1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/group_member_color"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="3dp" >
 
             <ImageView
                 android:id="@+id/quickContactBadge1"
@@ -105,9 +145,9 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="3dp"
             android:background="@color/group_member_color"
-            android:clickable="true" >
+            android:clickable="true"
+            android:padding="3dp" >
 
             <ImageView
                 android:id="@+id/quickContactBadge2"
@@ -173,9 +213,9 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="3dp"
             android:background="@color/group_member_color"
-            android:clickable="true" >
+            android:clickable="true"
+            android:padding="3dp" >
 
             <ImageView
                 android:id="@+id/quickContactBadge3"
@@ -241,9 +281,9 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="3dp"
             android:background="@color/group_member_color"
-            android:clickable="true" >
+            android:clickable="true"
+            android:padding="3dp" >
 
             <ImageView
                 android:id="@+id/quickContactBadge4"
@@ -309,9 +349,9 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="3dp"
             android:background="@color/group_member_color"
-            android:clickable="true" >
+            android:clickable="true"
+            android:padding="3dp" >
 
             <ImageView
                 android:id="@+id/quickContactBadge5"

@@ -205,7 +205,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 		
 		
 		
-		final TranslateAnimation ta = new TranslateAnimation(0, 0, 0, -positionY);
+		final TranslateAnimation ta = new TranslateAnimation(0, 0, 0, -positionY+5);
 		ta.setDuration(500);
 		ta.setAnimationListener(new AnimationListener() {
 			
