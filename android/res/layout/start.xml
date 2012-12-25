@@ -25,14 +25,14 @@
             android:textAllCaps="false"
             android:textSize="18dp"
             android:textStyle="bold" />
-        
+
         <LinearLayout
             android:id="@+id/categoryChoose1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/groupmember_selector"
             android:clickable="true"
             android:orientation="horizontal"
@@ -51,9 +51,9 @@
             android:id="@+id/categoryChoose2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/groupmember_selector"
             android:clickable="true"
             android:orientation="horizontal"
@@ -72,9 +72,9 @@
             android:id="@+id/categoryChoose3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/groupmember_selector"
             android:clickable="true"
             android:orientation="horizontal"
@@ -93,9 +93,9 @@
             android:id="@+id/categoryChoose4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/groupmember_selector"
             android:clickable="true"
             android:orientation="horizontal"
@@ -114,9 +114,9 @@
             android:id="@+id/categoryChoose5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/groupmember_selector"
             android:clickable="true"
             android:orientation="horizontal"
@@ -129,6 +129,115 @@
                 android:background="@drawable/leichte_square"
                 android:clickable="false"
                 android:focusable="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/currentInformation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="3dp" 
+            android:background="@drawable/groupmember_selector" >
+
+            <!-- ..............startzeit.............. -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/lblStartzeit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/starttime" />
+
+                <TextView
+                    android:id="@+id/lblStartzeitOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+            </LinearLayout>
+            <!-- ............ zeit seit sport.......... -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/lblSportzeit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time" />
+
+                <TextView
+                    android:id="@+id/lblSportzeitOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+            </LinearLayout>
+
+            <!-- ..........Punkte ............. -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/lblPunkte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/points" />
+
+                <TextView
+                    android:id="@+id/lblPunkteOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+            </LinearLayout>
+            <!-- ........... Zusatzpunkte ................. -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/lblBonus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gruppenbonus" />
+
+                <TextView
+                    android:id="@+id/lblBonusOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/lblGroupMembersOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- ........... button zum stop activity ............... -->
+
+            <Button
+                android:id="@+id/stopActivity"
+                android:layout_width="112dp"
+                android:layout_height="119dp"
+                android:background="@drawable/stopactivity" />
         </LinearLayout>
     </LinearLayout>
 

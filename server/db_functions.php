@@ -101,6 +101,19 @@ if (isset($_REQUEST['method'])) {
 		}
 	}
 	
+	else if ($_REQUEST['method'] == "getCategories") {
+		$result = mysql_query("SELECT * FROM sm_category");
+
+		$antworten = array();
+		
+		while ($row=mysql_fetch_assoc($result)) {       
+			print("-new-");
+			print($row['category_id']."-!-");
+			print($row['category_name']."-!-");
+			print($row['category_intensity']."\n");
+		}
+	}
+	
 	else if ($_REQUEST['method'] == "getGroupMember") {
 		$result = mysql_query("SELECT * FROM `sm_groupMember` a JOIN sm_user  b ON a.user_id = b.user_id WHERE a.user_id = ".$_REQUEST['user_id']);
 
@@ -116,7 +129,7 @@ if (isset($_REQUEST['method'])) {
 		}
 	}
 	
-	else if ($_REQUEST['method'] == "getActiveGroupMembers") {
+	else if ($_REQUEST['method'] == "getActiveGroupMemberCount") {
 		$result = mysql_query("SELECT count(*) as activeMembers FROM `sm_groupMember` WHERE activeSport=1 AND group_id=".$_REQUEST['group_id']." AND user_id<>".$_REQUEST['user_id']);
 
 		$antworten = array();
@@ -124,6 +137,18 @@ if (isset($_REQUEST['method'])) {
 		while ($row=mysql_fetch_assoc($result)) {       
 			print("-new-");
 			print($row['activeMembers']."\n");
+		}
+	}
+	
+	else if ($_REQUEST['method'] == "getActiveGroupMembers") {
+		$result = mysql_query("SELECT * FROM sm_groupMember a JOIN sm_user b ON a.user_id=b.user_id WHERE activeSport=1 AND a.group_id=".$_REQUEST['group_id']." AND b.user_id<>".$_REQUEST['user_id']);
+
+		$antworten = array();
+		
+		while ($row=mysql_fetch_assoc($result)) {       
+			print("-new-");
+			print($row['user_id']."-!-");
+			print($row['user_name']."\n");
 		}
 	}
 	
@@ -155,6 +180,16 @@ if (isset($_REQUEST['method'])) {
 		$q5 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat5_mins']." WHERE category_id=5 AND user_id=".$user_id);
 
 		if($q1 and $q2 and $q3 and $q4 and $q5) print("ok");
+		else print("nok");
+		
+	}
+	
+	else if ($_REQUEST['method'] == "updateUserDefaultCategory") {
+		
+		$q = mysql_query("UPDATE sm_user SET default_activity=".$_REQUEST['categroy_id']." WHERE user_id=".$_REQUEST['user_id']);
+		
+
+		if($q) print("ok");
 		else print("nok");
 		
 	}

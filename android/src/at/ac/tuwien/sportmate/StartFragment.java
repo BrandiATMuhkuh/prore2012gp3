@@ -1,9 +1,13 @@
 package at.ac.tuwien.sportmate;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Timer;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -25,9 +29,12 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 	private int offset_x = 0;
 	private int offset_y = 0;
 	
+	private BoCategory selectedCategory;
+	
 	View view;
 	
 	TextView header;
+	LinearLayout currentInformation;
 
 	ImageView image1;
 	ImageView image2;
@@ -45,6 +52,16 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 
 	boolean animationDone = false;
 	
+	TextView lblStarttimeOut, lblTimeOut, lblPointsOut, lblGroupmembersOut, lblBonusOut;
+	Button btnStop;
+	long start_time, stop_time, duration;
+	int count_groupMembersDuringActivity = -1; 
+	boolean STOP;
+	Handler handler;
+	Timer timerActivityStart;
+	
+	double points, bonusPoints;
+	
 	@Override
 	public void eventA() {
 		// TODO Auto-generated method stub
@@ -56,8 +73,10 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 	{
 		super.onCreate(savedInstanceState);
 		
-		
+		handler = new Handler();
 		categoryViews = new ArrayList<LinearLayout>();
+		
+		selectedCategory = null;
 	}
 
 	@Override
@@ -67,6 +86,8 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 		view = inflater.inflate(R.layout.start, container, false);
 		
 		header = (TextView) view.findViewById(R.id.chooseCategory);
+		currentInformation = (LinearLayout) view.findViewById(R.id.currentInformation);
+		currentInformation.setVisibility(View.GONE);
 		
 		category1 = (LinearLayout)view.findViewById(R.id.categoryChoose1);
 		category2 = (LinearLayout)view.findViewById(R.id.categoryChoose2);
@@ -106,6 +127,8 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 		LinearLayout linearLayout5 = (LinearLayout) view.findViewById(R.id.categoryChoose5);
 		linearLayout5.setOnClickListener(this);
 
+		/*
+		 * Nicht mehr aktuell -> Default über Sternsymbol
 		switch(AppData.getInstance().getDefaultSportCategory())
 		{
 		case 1:
@@ -124,6 +147,38 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image5.setBackgroundResource(R.drawable.leichte_banner);
 			break;
 		}
+		*/
+		
+		
+		STOP = false;
+		// ..................... Controls finden ................
+
+		btnStop = (Button) view.findViewById(R.id.stopActivity);
+		lblStarttimeOut = (TextView) view.findViewById(R.id.lblStartzeitOut);
+		lblTimeOut = (TextView) view.findViewById(R.id.lblSportzeitOut);
+		lblPointsOut = (TextView) view.findViewById(R.id.lblPunkteOut);
+		lblGroupmembersOut = (TextView) view.findViewById(R.id.lblGroupMembersOut);
+		lblBonusOut = (TextView) view.findViewById(R.id.lblBonusOut);
+
+		
+
+		// / ..............listeners....................
+		/* ................. stop button klick auf stopbutton................ */
+		btnStop.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				STOP = true;
+
+				// berechnungen durchführen.
+				stop_time = System.currentTimeMillis();
+
+				duration = stop_time - start_time;
+
+			}
+		});
+
+		
 
 		return view;
 	}
@@ -132,21 +187,6 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 	{
 		switch (v.getId()) 
 		{
-		case R.id.categoryImageMain1:
-			MainActivity.showActivityStart();
-			break;
-		case R.id.categoryImageMain2:
-			MainActivity.showActivityStart();
-			break;
-		case R.id.categoryImageMain3:
-			MainActivity.showActivityStart();
-			break;
-		case R.id.categoryImageMain4:
-			MainActivity.showActivityStart();
-			break;
-		case R.id.categoryImageMain5:
-			MainActivity.showActivityStart();
-			break;
 		case R.id.categoryChoose1:
 			AppData.getInstance().setDefaultSportCategory(1);
 			image1.setBackgroundResource(R.drawable.ausdauer_banner);
@@ -154,6 +194,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectedCategory = AppData.getInstance().getCategories().get(1);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose2:
@@ -163,6 +204,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectedCategory = AppData.getInstance().getCategories().get(2);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose3:
@@ -172,6 +214,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image2.setBackgroundResource(R.drawable.kraft_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectedCategory = AppData.getInstance().getCategories().get(3);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose4:
@@ -181,6 +224,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image2.setBackgroundResource(R.drawable.kraft_square);
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectedCategory = AppData.getInstance().getCategories().get(4);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose5:
@@ -190,20 +234,18 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image2.setBackgroundResource(R.drawable.kraft_square);
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
+			selectedCategory = AppData.getInstance().getCategories().get(5);
 			selectCategoryView(v);
 			break;
 		}
 	}
+	
 	
 	private void selectCategoryView(View v){
 		
 		final View selectedView = v;
 		
 		final float positionY = v.getY();
-		
-		
-		
-		
 		
 		final TranslateAnimation ta = new TranslateAnimation(0, 0, 0, -positionY+5);
 		ta.setDuration(500);
@@ -229,6 +271,11 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 						ll.setVisibility(View.GONE);
 					}
 				}
+				
+				// Show Timer and Buttons
+				currentInformation.setVisibility(View.VISIBLE);
+				setTimerTicker(view);
+				setGroupMembersDuringActivity(view); 
 				
 			}
 		});
@@ -272,10 +319,90 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 		
 		
 		
+	}
+	
+	public void setGroupMembersDuringActivity(View view) {
+		// Do something long
+
+		Runnable runnable = new Runnable() {
+			String sOut = ""; 
+			@Override
+			public void run() {
+				while (!STOP) {
+					
+					// da DB-fkt aufrufen
+					BoGroupMember member = AppData.getInstance().getCurrentMember(); 
+					if (member != null) {
+						System.out.println(member.toString()); 
+						//count_groupMembersDuringActivity = DBHandler.getActiveGroupMembers(member.user_id, member.group_id); 
+						count_groupMembersDuringActivity = AppData.getInstance().getActiveMembers().size();
+						
+					}
+					handler.post(new Runnable() {
+						@Override
+						public void run() {
+							// ticker setzen
+							if (count_groupMembersDuringActivity == 1)
+								sOut = String.format("Aktuell macht 1 weiteres Gruppenmitglied Sport", count_groupMembersDuringActivity); 
+							else 
+								sOut = String.format("Aktuell machen %d weitere Gruppenmitglieder Sport", count_groupMembersDuringActivity); 
+							
+							lblGroupmembersOut.setText(sOut);
+						}
+					});
+					try {
+						// nicht vergessen.. jetzte sekunde erst setzen. 
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+		};
+		new Thread(runnable).start();
+	}
+	
+	public void setTimerTicker(View view) {
+		// Do something long
+
+		// aktuelle startzeit bestimmen
+		start_time = System.currentTimeMillis();
+		lblStarttimeOut.setText(DateFormat.format("dd.MM.yyyy hh:mm", new Date(
+				start_time)));
 		
-		
-		
-		
-		
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				while (!STOP) {
+					
+					stop_time = System.currentTimeMillis();
+					duration = stop_time - start_time;
+					
+					handler.post(new Runnable() {
+						@Override
+						public void run() {
+							// ticker setzen
+							lblTimeOut.setText(DateFormat.format("mm:ss",
+									new Date(duration)));
+							//points = (duration/1000) * ((1000.0/3600.0)*selectedCategory.getCategory_intensity());
+							points += (((1000.0/3600.0)*selectedCategory.getCategory_intensity()));
+							lblPointsOut.setText(String.valueOf((int)points));
+							
+							bonusPoints += ((1000.0/3600.0)*(count_groupMembersDuringActivity*0.1));
+							lblBonusOut.setText(String.valueOf((int)bonusPoints));
+						}
+					});
+					try {
+						// nicht vergessen.. jetzte sekunde erst setzen. 
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+		};
+		new Thread(runnable).start();
 	}
 }

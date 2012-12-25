@@ -1,5 +1,9 @@
 package at.ac.tuwien.sportmate;
 
+import java.util.ArrayList;
+
+import android.view.View;
+
 public class AppData 
 {
 	private static AppData instance = null;
@@ -20,6 +24,12 @@ public class AppData
 	 * The current Member that the user wants to look at.
 	 * */
 	private BoGroupMember currentViewedMember;
+	
+	private ArrayList<BoCategory> categories;
+	
+	private int activeGroupMemberCount;
+	
+	private ArrayList<BoGroupMember> activeMembers = new ArrayList<BoGroupMember>();
 	
 	/**
 	 * The default Sport category of the user.
@@ -67,6 +77,31 @@ public class AppData
 		this.defaultSportCategory = defaultSportCategory;
 	}
 	
+	
+	public ArrayList<BoCategory> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(ArrayList<BoCategory> categories) {
+		this.categories = categories;
+	}
+
+	public int getActiveGroupMemberCount() {
+		return activeGroupMemberCount;
+	}
+
+	public void setActiveGroupMemberCount(int activeGroupMemberCount) {
+		this.activeGroupMemberCount = activeGroupMemberCount;
+	}
+
+	public ArrayList<BoGroupMember> getActiveMembers() {
+		return activeMembers;
+	}
+
+	public void setActiveMembers(ArrayList<BoGroupMember> activeMembers) {
+		this.activeMembers = activeMembers;
+	}
+
 	public void loadData(){
 		if (currentMember != null){
 			
@@ -83,6 +118,8 @@ public class AppData
 				m.activities = DBHandler.getWeeklyActivitiesFromUser(m.user_id);
 				m.weeklyTargets = DBHandler.getWeeklyTargetsFromUser(m.user_id);
 			}
+			
+			categories = DBHandler.getCategories();
 		}
 	}
 	

@@ -110,7 +110,7 @@ public class ActivityStartFragment extends Fragment implements EventInterface {
 					BoGroupMember member = AppData.getInstance().getCurrentMember(); 
 					if (member != null) {
 						System.out.println(member.toString()); 
-						count_groupMembersDuringActivity = DBHandler.getActiveGroupMembers(member.user_id, member.group_id); 
+						count_groupMembersDuringActivity = DBHandler.getActiveGroupMemberCount(member.user_id, member.group_id); 
 					
 					}
 					handler.post(new Runnable() {
