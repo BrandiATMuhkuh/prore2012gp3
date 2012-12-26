@@ -520,7 +520,7 @@ public class DBHandler {
 		nameValuePairs.add(new BasicNameValuePair("method", "setActive"));
 		nameValuePairs.add(new BasicNameValuePair("user_id", String
 				.valueOf(user_id)));
-		nameValuePairs.add(new BasicNameValuePair("user_id", String
+		nameValuePairs.add(new BasicNameValuePair("active", String
 				.valueOf(active)));
 
 		String serverResponse = sendRequestToServer(serviceName, nameValuePairs);

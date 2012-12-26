@@ -263,6 +263,7 @@ public class StartFragment extends Fragment implements EventInterface,
 		case R.id.stopActivity:
 			STOP = true;
 			PAUSE = false;
+			DBHandler.setActive(AppData.getInstance().getCurrentMember().getUser_id(), 0);
 			this.saveActivity();
 			this.resetLayout();
 			break;
@@ -303,14 +304,12 @@ public class StartFragment extends Fragment implements EventInterface,
 				}
 
 				// Show Timer and Buttons
+				
+				
 				currentInformation.setVisibility(View.VISIBLE);
+				
 				setTimerTicker(view);
-
-				setGroupMembersDuringActivity(view);
-
-
 				setGroupMembersDuringActivity(view); 
-				MainActivity.showStart();
 				
 
 			}
@@ -353,14 +352,8 @@ public class StartFragment extends Fragment implements EventInterface,
 			}
 		}
 
-		/*
-		 * //set Button Colors switch (selectedCategory.getCategory_id()){ case
-		 * 1: btnStop.setBackgroundResource(R.color.ausdauer_lila); break; case
-		 * 2: btnStop.setBackgroundResource(R.color.kraft_rot); break; case 3:
-		 * btnStop.setBackgroundResource(R.color.spielsport_gruen); break; case
-		 * 4: btnStop.setBackgroundResource(R.color.gymnastik_orange); break;
-		 * case 5: btnStop.setBackgroundResource(R.color.leichte_blau); break; }
-		 */
+		//set User active
+		DBHandler.setActive(AppData.getInstance().getCurrentMember().getUser_id(), 1);
 
 	}
 
@@ -377,7 +370,7 @@ public class StartFragment extends Fragment implements EventInterface,
 					// da DB-fkt aufrufen
 					member = AppData.getInstance().getCurrentMember();
 					if (member != null) {
-						System.out.println(member.toString());
+						//System.out.println(member.toString());
 						// count_groupMembersDuringActivity =
 						// DBHandler.getActiveGroupMembers(member.user_id,
 						// member.group_id);
