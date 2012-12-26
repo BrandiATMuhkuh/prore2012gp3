@@ -525,5 +525,4 @@ public class StartFragment extends Fragment implements EventInterface,
 		AppData.getInstance().loadData();
 		
 	}
-	
 }

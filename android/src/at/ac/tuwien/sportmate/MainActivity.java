@@ -378,4 +378,11 @@ ActionBar.TabListener {
 		mNotificationManager.notify(mId, notification);
 
 	}
+	
+	@Override
+	public void onStop(){
+		DBHandler.setActive(AppData.getInstance().getCurrentMember().getUser_id(), 0);
+		super.onStop();
+		
+	}
 }
