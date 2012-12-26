@@ -100,41 +100,40 @@ public class BoGroupMember {
 		this.default_activity = default_activity;
 	}
 
-	public int calculateWeeklyTargetPoints() {
+	public int getWeeklyMinutes() {
 
-		int sum = 0;
-		for (BoWeeklyTarget w : this.weeklyTargets) {
-			sum += w.getCategory().getCategory_intensity()
-					* w.weekly_target_min;
-		}
-		return sum;
-	}
-
-	public int getWeeklyTargetCategoryMins(int category_id) {
-		int mins = 0;
-		String name = "category_name";
-		for (BoWeeklyTarget w : weeklyTargets) {
-			if (w.category.category_id == category_id) {
-				mins = w.weekly_target_min;
-				name = w.category.category_name;
-			}
-		}
-		//Log.d(name + " target mins: ", "" + mins);
-		return mins;
-	}
-
-	public int calculateAllPoints() {
-
-		int points = 0;
+		int minutes = 0;
 
 		for (BoActivity a : activities) {
-			points += a.category.category_intensity * a.duration_min;
+			minutes += a.duration_min;
 		}
 
-		return points;
+		return minutes;
 	}
+
+	public int getWeeklyTargetMinutes() {
+
+		int minutes = 0;
+
+		for (BoWeeklyTarget w : weeklyTargets) {
+			minutes += w.weekly_target_min;
+		}
+
+		return minutes;
+	}
+
+	public int calculateWeeklyPercentage() {
 	
-	public int getCategoryMinutes(int category_id) {
+		double percentage = ((double) calculateWeeklyPoints() / (double) calculateWeeklyTargetPoints()) * 100;
+	
+		if (percentage > 100)
+			return 100;
+		else
+			return (int) percentage;
+	
+	}
+
+	public int getWeeklyCategoryMinutes(int category_id) {
 
 		int minutes = 0;
 
@@ -146,58 +145,89 @@ public class BoGroupMember {
 
 		return minutes;
 	}
-	
-	public int calculateWeeklyPercentage(){
-		
-		double percentage = ((double)calculateWeeklyPoints()/(double)calculateWeeklyTargetPoints()) * 100;
-		
-		if (percentage > 100) return 100;
-		else return (int)percentage;
-		
+
+	public int getWeeklyTargetCategoryMins(int category_id) {
+		int mins = 0;
+		String name = "category_name";
+		for (BoWeeklyTarget w : weeklyTargets) {
+			if (w.category.category_id == category_id) {
+				mins = w.weekly_target_min;
+				name = w.category.category_name;
+			}
+		}
+		// Log.d(name + " target mins: ", "" + mins);
+		return mins;
 	}
-	
-	public int calculateWeeklyCategoryPercentage(int category_id){
-		
-		double percentage = ((double)getCategoryMinutes(category_id)/(double)getWeeklyTargetCategoryMins(category_id)) * 100;
-	
+
+	public int calculateWeeklyCategoryPercentage(int category_id) {
+
+		double percentage = ((double) getWeeklyCategoryMinutes(category_id) / (double) getWeeklyTargetCategoryMins(category_id)) * 100;
+
 		Log.d("Test", "calculateWeeklyCategoryPercentage: " + percentage);
-		if (percentage > 100) return 100;
-		else return (int)percentage;
+		if (percentage > 100)
+			return 100;
+		else
+			return (int) percentage;
 	}
-	
-	public int calculateWeeklyCategoryPoints(int category_id){
+
+	public int calculateAllPoints() {
+
 		int points = 0;
-		
-		for (BoActivity a: activities){
-			if (a.category.category_id == category_id){
-				points += a.duration_min * a.category.category_intensity;
+
+		for (BoActivity a : activities) {
+			points += a.category.category_intensity * a.duration_min
+					* (1000 / 60);
+		}
+
+		return points;
+	}
+
+	public int calculateWeeklyPoints() {
+		double points = 0;
+
+		for (BoActivity a : activities) {
+
+			points += a.category.category_intensity * a.duration_min
+					* (1000.0 / 60.0);
+
+		}
+
+		return (int) points;
+	}
+
+	public int calculateWeeklyTargetPoints() {
+
+		double points = 0;
+		for (BoWeeklyTarget w : this.weeklyTargets) {
+			points += w.getCategory().getCategory_intensity()
+					* w.weekly_target_min * (1000.0/60);
+		}
+		return (int)points;
+	}
+
+	public int calculateWeeklyCategoryPoints(int category_id) {
+		double points = 0;
+
+		for (BoActivity a : activities) {
+			if (a.category.category_id == category_id) {
+				points += a.duration_min * a.category.category_intensity
+						* (1000.0 / 60.0);
 			}
 		}
-		
-		return points;
+
+		return (int) points;
 	}
-	
-	public int calculateWeeklyCategoryTargetPoints(int category_id){
-		int points = 0;
-		
-		for (BoWeeklyTarget w: weeklyTargets){
-			if (w.category.category_id == category_id){
-				points += w.weekly_target_min * w.category.category_intensity;
+
+	public int calculateWeeklyCategoryTargetPoints(int category_id) {
+		double points = 0;
+
+		for (BoWeeklyTarget w : weeklyTargets) {
+			if (w.category.category_id == category_id) {
+				points += w.weekly_target_min * w.category.category_intensity
+						* (1000.0 / 60.0);
 			}
 		}
-		
-		return points;
-	}
-	
-	public int calculateWeeklyPoints(){
-		int points = 0;
-		
-		for (BoActivity a: activities){
-			
-			points += a.duration_min * a.category.category_intensity;
-			
-		}
-		
-		return points;
+
+		return (int) points;
 	}
 }

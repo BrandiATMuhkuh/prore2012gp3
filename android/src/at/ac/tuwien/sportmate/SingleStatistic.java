@@ -75,19 +75,19 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		
 		//Current Minutes Views
 		currentMinutes1 = (TextView) view.findViewById(R.id.currentMinutes1);
-		currentMinutes1.setText(String.valueOf(member.getCategoryMinutes(1)));
+		currentMinutes1.setText(String.valueOf(member.getWeeklyCategoryMinutes(1)));
 
 		currentMinutes2 = (TextView) view.findViewById(R.id.currentMinutes2);
-		currentMinutes2.setText(String.valueOf(member.getCategoryMinutes(2)));
+		currentMinutes2.setText(String.valueOf(member.getWeeklyCategoryMinutes(2)));
 
 		currentMinutes3 = (TextView) view.findViewById(R.id.currentMinutes3);
-		currentMinutes3.setText(String.valueOf(member.getCategoryMinutes(3)));
+		currentMinutes3.setText(String.valueOf(member.getWeeklyCategoryMinutes(3)));
 
 		currentMinutes4 = (TextView) view.findViewById(R.id.currentMinutes4);
-		currentMinutes4.setText(String.valueOf(member.getCategoryMinutes(4)));
+		currentMinutes4.setText(String.valueOf(member.getWeeklyCategoryMinutes(4)));
 
 		currentMinutes5 = (TextView) view.findViewById(R.id.currentMinutes5);
-		currentMinutes5.setText(String.valueOf(member.getCategoryMinutes(5)));
+		currentMinutes5.setText(String.valueOf(member.getWeeklyCategoryMinutes(5)));
 
 		//Target Minutes Views
 		targetMinutes1 = (TextView) view.findViewById(R.id.targetMinutes1);
@@ -173,11 +173,11 @@ public class SingleStatistic extends Fragment implements EventInterface {
 
 			username.setText(member.getUser_name());
 
-			currentMinutes1.setText(String.valueOf(member.getCategoryMinutes(1)));
-			currentMinutes2.setText(String.valueOf(member.getCategoryMinutes(2)));
-			currentMinutes3.setText(String.valueOf(member.getCategoryMinutes(3)));
-			currentMinutes4.setText(String.valueOf(member.getCategoryMinutes(4)));
-			currentMinutes5.setText(String.valueOf(member.getCategoryMinutes(5)));
+			currentMinutes1.setText(String.valueOf(member.getWeeklyCategoryMinutes(1)));
+			currentMinutes2.setText(String.valueOf(member.getWeeklyCategoryMinutes(2)));
+			currentMinutes3.setText(String.valueOf(member.getWeeklyCategoryMinutes(3)));
+			currentMinutes4.setText(String.valueOf(member.getWeeklyCategoryMinutes(4)));
+			currentMinutes5.setText(String.valueOf(member.getWeeklyCategoryMinutes(5)));
 
 			targetMinutes1.setText(String.valueOf(member.getWeeklyTargetCategoryMins(1)));
 			targetMinutes2.setText(String.valueOf(member.getWeeklyTargetCategoryMins(2)));
@@ -207,11 +207,11 @@ public class SingleStatistic extends Fragment implements EventInterface {
 
 		username.setText(member.getUser_name());
 
-		currentMinutes1.setText(String.valueOf(member.getCategoryMinutes(1)));
-		currentMinutes2.setText(String.valueOf(member.getCategoryMinutes(2)));
-		currentMinutes3.setText(String.valueOf(member.getCategoryMinutes(3)));
-		currentMinutes4.setText(String.valueOf(member.getCategoryMinutes(4)));
-		currentMinutes5.setText(String.valueOf(member.getCategoryMinutes(5)));
+		currentMinutes1.setText(String.valueOf(member.getWeeklyCategoryMinutes(1)));
+		currentMinutes2.setText(String.valueOf(member.getWeeklyCategoryMinutes(2)));
+		currentMinutes3.setText(String.valueOf(member.getWeeklyCategoryMinutes(3)));
+		currentMinutes4.setText(String.valueOf(member.getWeeklyCategoryMinutes(4)));
+		currentMinutes5.setText(String.valueOf(member.getWeeklyCategoryMinutes(5)));
 
 		targetMinutes1.setText(String.valueOf(member.getWeeklyTargetCategoryMins(1)));
 		targetMinutes2.setText(String.valueOf(member.getWeeklyTargetCategoryMins(2)));

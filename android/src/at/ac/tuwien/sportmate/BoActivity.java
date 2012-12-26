@@ -92,5 +92,13 @@ public class BoActivity {
 	}
 	public void setBonus_points(double bonus_points) {
 		this.bonus_points = bonus_points;
+	}
+
+	public BoCategory getCategory() {
+		return category;
+	}
+
+	public void setCategory(BoCategory category) {
+		this.category = category;
 	} 
 }
