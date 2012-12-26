@@ -53,7 +53,6 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 	boolean animationDone = false;
 	
 	TextView lblStarttimeOut, lblTimeOut, lblPointsOut, lblGroupmembersOut, lblBonusOut;
-	Button btnStop;
 	long start_time, stop_time, duration;
 	int count_groupMembersDuringActivity = -1; 
 	boolean STOP;
@@ -153,34 +152,23 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 		STOP = false;
 		// ..................... Controls finden ................
 
-		btnStop = (Button) view.findViewById(R.id.stopActivity);
 		lblStarttimeOut = (TextView) view.findViewById(R.id.lblStartzeitOut);
 		lblTimeOut = (TextView) view.findViewById(R.id.lblSportzeitOut);
 		lblPointsOut = (TextView) view.findViewById(R.id.lblPunkteOut);
 		lblGroupmembersOut = (TextView) view.findViewById(R.id.lblGroupMembersOut);
 		lblBonusOut = (TextView) view.findViewById(R.id.lblBonusOut);
 
-		
-
-		// / ..............listeners....................
-		/* ................. stop button klick auf stopbutton................ */
-		btnStop.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-
-				STOP = true;
-
-				// berechnungen durchführen.
-				stop_time = System.currentTimeMillis();
-
-				duration = stop_time - start_time;
-
-			}
-		});
-
-		
-
 		return view;
+	}
+	
+	public void stopActivity()
+	{
+		STOP = true;
+
+		// berechnungen durchführen.
+		stop_time = System.currentTimeMillis();
+
+		duration = stop_time - start_time;
 	}
 
 	public void onClick(View v)
@@ -276,6 +264,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 				currentInformation.setVisibility(View.VISIBLE);
 				setTimerTicker(view);
 				setGroupMembersDuringActivity(view); 
+				MainActivity.showStart();
 				
 			}
 		});
