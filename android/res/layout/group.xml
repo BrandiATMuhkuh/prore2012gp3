@@ -9,36 +9,37 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/groupName"
+        <LinearLayout
+            android:id="@+id/groupProgressLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
-            android:layout_weight="1"
             android:background="@drawable/groupmember_selector"
             android:clickable="false"
-            android:ems="10"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Group Name"
-            android:textAllCaps="false"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/groupmember1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@color/group_member_color"
-            android:clickable="true"
             android:orientation="vertical"
             android:padding="8dp" >
+
+            <TextView
+                android:id="@+id/groupName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:ems="10"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Group Name"
+                android:textAllCaps="false"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@color/dark_grey" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -53,8 +54,8 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    style="@style/CategoryTextView"
                     android:id="@+id/groupPercentage"
+                    style="@style/CategoryTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="55%" />
