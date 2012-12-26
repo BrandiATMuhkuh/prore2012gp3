@@ -142,6 +142,7 @@
             android:orientation="vertical"
             android:padding="3dp" >
 
+
             <!-- ..............startzeit.............. -->
 
             <LinearLayout

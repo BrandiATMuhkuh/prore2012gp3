@@ -596,6 +596,7 @@ public class DBHandler {
 				activity.starttime.toString()));
 		nameValuePairs.add(new BasicNameValuePair("duration_min", String
 				.valueOf(activity.duration_min)));
+		
 
 		String serverResponse = sendRequestToServer(serviceName, nameValuePairs);
 

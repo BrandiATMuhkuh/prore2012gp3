@@ -28,7 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends FragmentActivity implements
-		ActionBar.TabListener {
+ActionBar.TabListener {
 	private static String myTab = "";
 	private final static String TAG = "MainActivity";
 	private static MenuItem item;
@@ -39,14 +39,15 @@ public class MainActivity extends FragmentActivity implements
 	private static Tab activityStart;
 	private static Tab start;
 	private static Tab user; // my profile
-	private static boolean showMember;
+	private static boolean showMember; //true if user selects a member from GroupFragment 
+	private static boolean running;
 
 	private static ViewPager mViewPager;
 
 	AppData data;
-	
+
 	NotificationManager mNotificationManager;
-	
+
 	static AppSectionsPagerAdapter mAppSectionsPagerAdapter;
 
 	@Override
@@ -61,9 +62,9 @@ public class MainActivity extends FragmentActivity implements
 
 		// check DB for active members and write into appData
 		this.countActiveGroupMembers();
-		
+
 		mNotificationManager = (NotificationManager) this
-		.getSystemService(Context.NOTIFICATION_SERVICE);
+				.getSystemService(Context.NOTIFICATION_SERVICE);
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections
@@ -80,14 +81,14 @@ public class MainActivity extends FragmentActivity implements
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mAppSectionsPagerAdapter);
 		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						// When swiping between pages, select the
-						// corresponding tab.
-						getActionBar().setSelectedNavigationItem(position);
-					}
-				});
+		.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				// When swiping between pages, select the
+				// corresponding tab.
+				getActionBar().setSelectedNavigationItem(position);
+			}
+		});
 
 		start = actionBar.newTab().setText("Start").setTabListener(this);
 		actionBar.addTab(start);
@@ -101,7 +102,7 @@ public class MainActivity extends FragmentActivity implements
 		Tab tab = actionBar.newTab().setText("Group").setTabListener(this);
 		actionBar.addTab(tab);
 
-		myTab = tab.getText().toString();
+		myTab = "Start";
 
 		/*
 		 * tab = actionBar .newTab() .setText("Target") .setTabListener( new
@@ -126,20 +127,30 @@ public class MainActivity extends FragmentActivity implements
 		// MenuItem handling
 		myTab = tab.getText().toString();
 
-		if (item != null && item2 != null) {
-			if (myTab == "Start") {
-				item.setTitle("");
-				item2.setTitle("");
-			} else if (myTab == "User") {
-				item.setTitle("");
-				item2.setTitle("");
+		if (item != null && item2 != null) 
+		{
+			item.setTitle("");
+			item.setEnabled(false);
+			item2.setTitle("");
+			item2.setEnabled(false);
+
+			if (myTab == "Start" && running) 
+			{
+				item.setEnabled(true);
+				item.setTitle("Pause");
+				item2.setEnabled(true);
+				item2.setTitle("Stop");
+			} else if (myTab == "User") 
+			{
 			} else if (myTab == "Group") {
 				item.setTitle("");
+				item.setEnabled(false);
 				item2.setEnabled(true);
 				item2.setTitle("Edit");
 			}
 			if (myTab == "User" && showMember) {
 				item.setTitle("");
+				item.setEnabled(false);
 				item2.setEnabled(true);
 				item2.setTitle("My Profile");
 			}
@@ -171,8 +182,13 @@ public class MainActivity extends FragmentActivity implements
 		mViewPager.setCurrentItem(1);
 	}
 
-	public static void showStart() {
-		mViewPager.setCurrentItem(0);
+	public static void showStart() 
+	{
+		item.setEnabled(true);
+		item.setTitle("Pause");
+		item2.setEnabled(true);
+		item2.setTitle("Stop");
+		running = true;
 	}
 
 	public static void showActivityStart() {
@@ -180,8 +196,10 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (myTab.equals("Group")) {
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		if (myTab == "Group") 
+		{
 			GroupFragment gf = (GroupFragment) mAppSectionsPagerAdapter
 					.getActiveFragment(mViewPager, 2);
 
@@ -204,6 +222,19 @@ public class MainActivity extends FragmentActivity implements
 				showMember = false;
 				item2.setTitle("");
 				item2.setEnabled(false);
+				return true;
+			}
+		} else if (running && myTab == "Start")
+		{
+			StartFragment start = (StartFragment) mAppSectionsPagerAdapter
+					.getActiveFragment(mViewPager, 0);
+			switch (item.getItemId()) 
+			{
+			case R.id.menu_item1:
+				return true;
+			case R.id.menu_item2:
+				start.stopActivity();
+				running = false;
 				return true;
 			}
 		}
@@ -262,25 +293,25 @@ public class MainActivity extends FragmentActivity implements
 							.getCurrentMember();
 					if (member != null) {
 						//System.out.println(member.toString());
-						
+
 						ArrayList<BoGroupMember> activeMembers = DBHandler.getActiveGroupMembers(
 								member.user_id, member.group_id);
-						
+
 						boolean notify = false;
 						if (activeMembers.size() != AppData.getInstance()
 								.getActiveGroupMemberCount() && activeMembers.size()>0) {
 							notify = true;
 						}
-						
+
 						if (activeMembers.size() == 0) mNotificationManager.cancel(1);
-						
+
 						AppData.getInstance().setActiveMembers(activeMembers);
 						AppData.getInstance().setActiveGroupMemberCount(activeMembers.size());
-						
+
 						if (notify) showNotificationForActiveMembers();
-						
-						
-						
+
+
+
 
 					}
 
@@ -310,12 +341,12 @@ public class MainActivity extends FragmentActivity implements
 		} else {
 			s += " macht gerade Sport";
 		}
-		
+
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
 				this)
-				.setSmallIcon(R.drawable.logo_app)
-				.setContentTitle(s)
-				.setContentText("Mach jetzt mit und sicher dir Bonuspunkte");
+		.setSmallIcon(R.drawable.logo_app)
+		.setContentTitle(s)
+		.setContentText("Mach jetzt mit und sicher dir Bonuspunkte");
 
 		// Creates an explicit intent for an Activity in your app
 		Intent resultIntent = new Intent(this, MainActivity.class);
@@ -334,7 +365,7 @@ public class MainActivity extends FragmentActivity implements
 				PendingIntent.FLAG_UPDATE_CURRENT);
 		//mBuilder.setContentIntent(resultPendingIntent);
 
-		
+
 
 		// added:
 		Notification notification = mBuilder.build();
@@ -345,6 +376,6 @@ public class MainActivity extends FragmentActivity implements
 
 		// mId allows you to update the notification later on.
 		mNotificationManager.notify(mId, notification);
-		
+
 	}
 }

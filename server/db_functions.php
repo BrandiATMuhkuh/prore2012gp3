@@ -154,7 +154,7 @@ if (isset($_REQUEST['method'])) {
 	
 	else if ($_REQUEST['method'] == "addActivity") {
 		
-		$q = mysql_query("INSERT INTO sm_activities (category_id, group_id, user_id, date, starttime, duration_min, intensity, points, bonus_points) VALUES(".$_REQUEST['category_id'].", ".$_REQUEST['group_id'].", ".$_REQUEST['user_id'].", '".$_REQUEST['date']."', '".$_REQUEST['time']."', ".$_REQUEST['duration_min'].", 1, 1, 1)");
+		$q = mysql_query("INSERT INTO sm_activities (category_id, group_id, user_id, date, starttime, duration_min, intensity, points, bonus_points) VALUES(".$_REQUEST['category_id'].", ".$_REQUEST['group_id'].", ".$_REQUEST['user_id'].", '".$_REQUEST['date']."', '".$_REQUEST['starttime']."', ".$_REQUEST['duration_min'].", 1, 1, 1)");
 		
 		if($q) print("ok");
 		else print("nok");

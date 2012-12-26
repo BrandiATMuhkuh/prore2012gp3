@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Timer;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -61,6 +60,7 @@ public class StartFragment extends Fragment implements EventInterface,
 	TextView lblStarttimeOut, lblTimeOut, lblPointsOut, lblGroupmembersOut,
 			lblBonusOut;
 	Button btnPause, btnStop;
+
 	long start_time, stop_time, duration;
 	long pause_start, pause_stop, pause_duration;
 	int count_groupMembersDuringActivity = -1;
@@ -157,14 +157,17 @@ public class StartFragment extends Fragment implements EventInterface,
 		PAUSE = false;
 		// ..................... Controls finden ................
 
+
 		btnPause = (Button) view.findViewById(R.id.pauseActivity);
 		btnStop = (Button) view.findViewById(R.id.stopActivity);
+
 		lblStarttimeOut = (TextView) view.findViewById(R.id.lblStartzeitOut);
 		lblTimeOut = (TextView) view.findViewById(R.id.lblSportzeitOut);
 		lblPointsOut = (TextView) view.findViewById(R.id.lblPunkteOut);
 		lblGroupmembersOut = (TextView) view
 				.findViewById(R.id.lblGroupMembersOut);
 		lblBonusOut = (TextView) view.findViewById(R.id.lblBonusOut);
+
 
 		btnStop.setVisibility(View.GONE);
 
@@ -193,6 +196,16 @@ public class StartFragment extends Fragment implements EventInterface,
 		
 
 		return view;
+	}
+	
+	public void stopActivity()
+	{
+		STOP = true;
+
+		// berechnungen durchführen.
+		stop_time = System.currentTimeMillis();
+
+		duration = stop_time - start_time;
 	}
 
 	public void onClick(View v) {
@@ -292,7 +305,13 @@ public class StartFragment extends Fragment implements EventInterface,
 				// Show Timer and Buttons
 				currentInformation.setVisibility(View.VISIBLE);
 				setTimerTicker(view);
+
 				setGroupMembersDuringActivity(view);
+
+
+				setGroupMembersDuringActivity(view); 
+				MainActivity.showStart();
+				
 
 			}
 		});
@@ -502,17 +521,16 @@ public class StartFragment extends Fragment implements EventInterface,
 		new_activity.setGroup_id(AppData.getInstance().getCurrentGroup().getGroup_id());
 		new_activity.setUser_id(AppData.getInstance().getCurrentMember().getUser_id());
 		new_activity.setDate(new Date(System.currentTimeMillis()));
-		new_activity.setStarttime(new java.sql.Time(start_time));
+		new_activity.setStarttime(new Time(start_time));
 		new_activity.setDuration_min((int)duration/1000/60);
-		new_activity.setIntensity(selectedCategory.getCategory_intensity());
-		new_activity.setPoints(points);
-		new_activity.setBonus_points(bonusPoints);
+		//new_activity.setIntensity(selectedCategory.getCategory_intensity());
+		//new_activity.setPoints(points);
+		//new_activity.setBonus_points(bonusPoints);
 		
 		DBHandler.addActivity(new_activity);
 		
 		AppData.getInstance().loadData();
 		
-		selectedCategory = null;
 	}
 	
 }

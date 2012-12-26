@@ -70,7 +70,7 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		
 		ProgressBar groupProgress = (ProgressBar)view.findViewById(R.id.groupProgress);
 		groupProgress.setProgress(data.getCurrentGroup().calculateWeeklyPercentage());
-		
+		groupProgress.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 		
 		//Contact Badges Instanciate
 		ImageView badge1 = (ImageView) view.findViewById(R.id.quickContactBadge1);
@@ -94,7 +94,7 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		badge5.setOnClickListener(this);
 		
 		
-		//Linear layouts for selectors
+		//Linear layouts for selectorså		
 		LinearLayout linearLayout1 = (LinearLayout) view.findViewById(R.id.groupmember1);
 		linearLayout1.setOnClickListener(this);
 		linearLayout1.setBackgroundResource(R.drawable.groupmember_selector);
