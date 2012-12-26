@@ -194,7 +194,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
-			selectedCategory = AppData.getInstance().getCategories().get(1);
+			selectedCategory = AppData.getInstance().getCategories().get(0);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose2:
@@ -204,7 +204,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
-			selectedCategory = AppData.getInstance().getCategories().get(2);
+			selectedCategory = AppData.getInstance().getCategories().get(1);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose3:
@@ -214,7 +214,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image2.setBackgroundResource(R.drawable.kraft_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
-			selectedCategory = AppData.getInstance().getCategories().get(3);
+			selectedCategory = AppData.getInstance().getCategories().get(2);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose4:
@@ -224,7 +224,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image2.setBackgroundResource(R.drawable.kraft_square);
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image5.setBackgroundResource(R.drawable.leichte_square);
-			selectedCategory = AppData.getInstance().getCategories().get(4);
+			selectedCategory = AppData.getInstance().getCategories().get(3);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose5:
@@ -234,7 +234,7 @@ public class StartFragment extends Fragment implements EventInterface, OnClickLi
 			image2.setBackgroundResource(R.drawable.kraft_square);
 			image3.setBackgroundResource(R.drawable.ball_square);
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			selectedCategory = AppData.getInstance().getCategories().get(5);
+			selectedCategory = AppData.getInstance().getCategories().get(4);
 			selectCategoryView(v);
 			break;
 		}
