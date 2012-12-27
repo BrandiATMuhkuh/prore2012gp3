@@ -22,8 +22,8 @@ int g_6 = 8;
 int g_7 = 9;
 
 //einzel vortschritt
-int e_1 = 10;
-int e_2 = 11;
+int e_1 = A4;
+int e_2 = A3;
 int e_3 = 12;
 int e_4 = 13;
 int e_5 = A0;
@@ -32,14 +32,18 @@ int e_7 = A2;
 
 
 //notify
-int g_n = A3;
-int e_n = A4;
+int g_n = 11;
+int e_n = 10;
 int g_nOn = false;
 int e_nOn = false;
 int e_nVal = 0;
 int g_nVal = 0;
 int e_nSwUp = true;
 int g_nSwUp = true;
+
+//fading
+int fadeValue = 0;
+boolean fadeUp = true;
 
 //testrun
 int testrun = 1;
@@ -133,6 +137,86 @@ void loop()
     testrun = 0;
   }
   
+  //pwm
+  //fadeUp
+  //fadeValue
+  
+  if(fadeUp == true){
+    // fade in from min to max in increments of 5 points: 
+    // sets the value (range from 0 to 255):
+    if(g_nOn == true){
+      analogWrite(g_n, fadeValue);
+    }
+    
+    if(e_nOn == true){
+      analogWrite(e_n, fadeValue);
+    }
+    // wait for 30 milliseconds to see the dimming effect    
+    fadeValue +=5;
+    
+    if(fadeValue>=255){
+      fadeUp = false;
+    }
+    
+    delay(30);       
+  }
+  
+  if(fadeUp == false){
+    // fade in from min to max in increments of 5 points: 
+    // sets the value (range from 0 to 255):
+    if(g_nOn == true){
+      analogWrite(g_n, fadeValue);
+    }
+    
+    if(e_nOn == true){
+      analogWrite(e_n, fadeValue);
+    }
+    // wait for 30 milliseconds to see the dimming effect    
+    fadeValue -=5;
+    
+    if(fadeValue<=0){
+      fadeUp = true;
+    }
+    
+    delay(30);  
+  }
+  
+  //test pwm
+  //pwmTest();
+}
+
+void pwmTest(){
+  //g_7 = pin 9 kann PWM
+  //e_1 = pin 10 kann PWM
+  //e_2 = pin 11 kann PWM
+  
+  // fade in from min to max in increments of 5 points:
+  for(int fadeValue = 0 ; fadeValue <= 255; fadeValue +=5) { 
+    // sets the value (range from 0 to 255):
+    if(g_nOn == true){
+      analogWrite(g_n, fadeValue);
+    }
+    
+    if(e_nOn == true){
+      analogWrite(e_n, fadeValue);
+    }
+    // wait for 30 milliseconds to see the dimming effect    
+    delay(30);                            
+  } 
+
+  // fade out from max to min in increments of 5 points:
+  for(int fadeValue = 255 ; fadeValue >= 0; fadeValue -=5) { 
+    // sets the value (range from 0 to 255):
+    if(g_nOn == true){
+      analogWrite(g_n, fadeValue);
+    }
+    
+    if(e_nOn == true){
+      analogWrite(e_n, fadeValue);
+    }     
+    // wait for 30 milliseconds to see the dimming effect    
+    delay(30);                            
+  } 
 }
 
 void setAllProgLeds(int onOff){
@@ -440,15 +524,15 @@ void setGroupNotificatinoLight(byte flag, byte numOfValues){
   meetAndroid.send(meetAndroid.getInt());
   
   if(meetAndroid.getInt()==0){
-    //g_nOn = false;
+    g_nOn = false;
     //g_nVal = 0;
     //g_nSwUp = true;
     digitalWrite( g_n, LOW);
   }
   
   if(meetAndroid.getInt()==1){
-    //g_nOn = true;
-    digitalWrite( g_n, HIGH);
+    g_nOn = true;
+    //digitalWrite( g_n, HIGH);
   }
 }
 void setMyNotificatinoLight(byte flag, byte numOfValues){
@@ -456,15 +540,15 @@ void setMyNotificatinoLight(byte flag, byte numOfValues){
   meetAndroid.send(meetAndroid.getInt());
   
   if(meetAndroid.getInt()==0){
-    //e_nOn = false;
+    e_nOn = false;
     //e_nVal = 0;
     //e_nSwUp = true;
     digitalWrite( e_n, LOW);
   }
   
   if(meetAndroid.getInt()==1){
-    //e_nOn = true;
-    digitalWrite( e_n, HIGH);
+    e_nOn = true;
+    //digitalWrite( e_n, HIGH);
   }
 }
 
