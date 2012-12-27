@@ -102,6 +102,11 @@ public class StartFragment extends Fragment implements EventInterface,
 		category3 = (LinearLayout) view.findViewById(R.id.categoryChoose3);
 		category4 = (LinearLayout) view.findViewById(R.id.categoryChoose4);
 		category5 = (LinearLayout) view.findViewById(R.id.categoryChoose5);
+		category1.setOnClickListener(this);
+		category2.setOnClickListener(this);
+		category3.setOnClickListener(this);
+		category4.setOnClickListener(this);
+		category5.setOnClickListener(this);
 
 		categoryViews.add(category1);
 		categoryViews.add(category2);
@@ -121,26 +126,7 @@ public class StartFragment extends Fragment implements EventInterface,
 		image5.setOnClickListener(this);
 
 		currentProgress = (ProgressBar) view.findViewById(R.id.currentProgress);
-
-		LinearLayout linearLayout1 = (LinearLayout) view
-				.findViewById(R.id.categoryChoose1);
-		linearLayout1.setOnClickListener(this);
-
-		LinearLayout linearLayout2 = (LinearLayout) view
-				.findViewById(R.id.categoryChoose2);
-		linearLayout2.setOnClickListener(this);
-
-		LinearLayout linearLayout3 = (LinearLayout) view
-				.findViewById(R.id.categoryChoose3);
-		linearLayout3.setOnClickListener(this);
-
-		LinearLayout linearLayout4 = (LinearLayout) view
-				.findViewById(R.id.categoryChoose4);
-		linearLayout4.setOnClickListener(this);
-
-		LinearLayout linearLayout5 = (LinearLayout) view
-				.findViewById(R.id.categoryChoose5);
-		linearLayout5.setOnClickListener(this);
+		currentProgress.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
 		/*
 		 * Nicht mehr aktuell -> Default über Sternsymbol
@@ -169,7 +155,7 @@ public class StartFragment extends Fragment implements EventInterface,
 		lblBonusOut = (TextView) view.findViewById(R.id.lblBonusOut);
 
 
-		btnStop.setVisibility(View.GONE);
+		btnStop.setVisibility(View.VISIBLE);
 
 		// / ..............listeners....................
 		/* ................. stop button klick auf stopbutton................ */
@@ -181,12 +167,12 @@ public class StartFragment extends Fragment implements EventInterface,
 			public void onClick(View v) {
 				if (!PAUSE) {
 					PAUSE = true;
-					btnStop.setVisibility(View.VISIBLE);
+					//btnStop.setVisibility(View.VISIBLE);
 					btnPause.setText("Weiter");
 					pause_start = System.currentTimeMillis();
 				} else {
 					PAUSE = false;
-					btnStop.setVisibility(View.GONE);
+					//btnStop.setVisibility(View.GONE);
 					btnPause.setText("Pause");
 					pause_stop = System.currentTimeMillis();
 					pause_duration += pause_stop - pause_start;
@@ -259,6 +245,56 @@ public class StartFragment extends Fragment implements EventInterface,
 			image4.setBackgroundResource(R.drawable.gymnastik_square);
 			selectedCategory = AppData.getInstance().getCategories().get(4);
 			selectCategoryView(v);
+			break;
+		case R.id.categoryImageMain1:
+			AppData.getInstance().setDefaultSportCategory(1);
+			image1.setBackgroundResource(R.drawable.ausdauer_banner);
+			image2.setBackgroundResource(R.drawable.kraft_square);
+			image3.setBackgroundResource(R.drawable.ball_square);
+			image4.setBackgroundResource(R.drawable.gymnastik_square);
+			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectedCategory = AppData.getInstance().getCategories().get(0);
+			selectCategoryView(category1);
+			break;
+		case R.id.categoryImageMain2:
+			AppData.getInstance().setDefaultSportCategory(2);
+			image2.setBackgroundResource(R.drawable.kraft_banner);
+			image1.setBackgroundResource(R.drawable.ausdauer_square);
+			image3.setBackgroundResource(R.drawable.ball_square);
+			image4.setBackgroundResource(R.drawable.gymnastik_square);
+			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectedCategory = AppData.getInstance().getCategories().get(1);
+			selectCategoryView(category2);
+			break;
+		case R.id.categoryImageMain3:
+			AppData.getInstance().setDefaultSportCategory(3);
+			image3.setBackgroundResource(R.drawable.ball_banner);
+			image1.setBackgroundResource(R.drawable.ausdauer_square);
+			image2.setBackgroundResource(R.drawable.kraft_square);
+			image4.setBackgroundResource(R.drawable.gymnastik_square);
+			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectedCategory = AppData.getInstance().getCategories().get(2);
+			selectCategoryView(category3);
+			break;
+		case R.id.categoryImageMain4:
+			AppData.getInstance().setDefaultSportCategory(4);
+			image4.setBackgroundResource(R.drawable.gymnastik_banner);
+			image1.setBackgroundResource(R.drawable.ausdauer_square);
+			image2.setBackgroundResource(R.drawable.kraft_square);
+			image3.setBackgroundResource(R.drawable.ball_square);
+			image5.setBackgroundResource(R.drawable.leichte_square);
+			selectedCategory = AppData.getInstance().getCategories().get(3);
+			selectCategoryView(category4);
+			break;
+		case R.id.categoryImageMain5:
+			AppData.getInstance().setDefaultSportCategory(5);
+			image5.setBackgroundResource(R.drawable.leichte_banner);
+			image1.setBackgroundResource(R.drawable.ausdauer_square);
+			image2.setBackgroundResource(R.drawable.kraft_square);
+			image3.setBackgroundResource(R.drawable.ball_square);
+			image4.setBackgroundResource(R.drawable.gymnastik_square);
+			selectedCategory = AppData.getInstance().getCategories().get(4);
+			selectCategoryView(category5);
 			break;
 		case R.id.stopActivity:
 			STOP = true;
@@ -486,7 +522,7 @@ public class StartFragment extends Fragment implements EventInterface,
 				image3.setBackgroundResource(R.drawable.ball_square);
 				image4.setBackgroundResource(R.drawable.gymnastik_square);
 				
-				btnStop.setVisibility(View.GONE);
+				//btnStop.setVisibility(View.GONE);
 				btnPause.setText("Pause");
 				
 			}

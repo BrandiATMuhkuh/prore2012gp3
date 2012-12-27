@@ -89,6 +89,9 @@ ActionBar.TabListener {
 				getActionBar().setSelectedNavigationItem(position);
 			}
 		});
+		
+		//This means that the ViewPager will keep the Fragments in memory as long as they are less than three tabs away from the currently selected one
+		mViewPager.setOffscreenPageLimit(3);
 
 		start = actionBar.newTab().setText("Start").setTabListener(this);
 		actionBar.addTab(start);
