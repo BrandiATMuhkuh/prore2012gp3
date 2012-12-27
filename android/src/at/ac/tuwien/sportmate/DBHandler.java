@@ -399,7 +399,7 @@ public class DBHandler {
 				String dateString = values[2];
 				String startTimeString = values[3];
 				int duration_min = Integer.parseInt(values[4]);
-				int intensity = Integer.parseInt(values[5]);
+				double intensity = Double.parseDouble(values[5]);
 				double points = Double.parseDouble(values[5]);
 				double bonus_points = Double.parseDouble(values[6]);
 
@@ -596,6 +596,12 @@ public class DBHandler {
 				activity.starttime.toString()));
 		nameValuePairs.add(new BasicNameValuePair("duration_min", String
 				.valueOf(activity.duration_min)));
+		nameValuePairs.add(new BasicNameValuePair("intensity", String
+				.valueOf(activity.intensity)));
+		nameValuePairs.add(new BasicNameValuePair("points", String
+				.valueOf(activity.points)));
+		nameValuePairs.add(new BasicNameValuePair("bonus_points", String
+				.valueOf(activity.bonus_points)));
 		
 
 		String serverResponse = sendRequestToServer(serviceName, nameValuePairs);

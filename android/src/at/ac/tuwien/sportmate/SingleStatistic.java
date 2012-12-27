@@ -33,6 +33,18 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	TextView targetMinutes3;
 	TextView targetMinutes4;
 	TextView targetMinutes5;
+	
+	TextView currentPoints1;
+	TextView currentPoints2;
+	TextView currentPoints3;
+	TextView currentPoints4;
+	TextView currentPoints5;
+
+	TextView targetPoints1;
+	TextView targetPoints2;
+	TextView targetPoints3;
+	TextView targetPoints4;
+	TextView targetPoints5;
 
 	ProgressBar progressBar1;
 	ProgressBar progressBar2;
@@ -106,35 +118,35 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		targetMinutes5.setText(String.valueOf(member.getWeeklyTargetCategoryMins(5)));
 
 		//Set Current Points per Category
-		TextView currentPoints1 = (TextView) view.findViewById(R.id.currentPoints1);
+		currentPoints1 = (TextView) view.findViewById(R.id.currentPoints1);
 		currentPoints1.setText(String.valueOf(member.calculateWeeklyCategoryPoints(1)));
 
-		TextView currentPoints2 = (TextView) view.findViewById(R.id.currentPoints2);
+		currentPoints2 = (TextView) view.findViewById(R.id.currentPoints2);
 		currentPoints2.setText(String.valueOf(member.calculateWeeklyCategoryPoints(2)));
 
-		TextView currentPoints3 = (TextView) view.findViewById(R.id.currentPoints3);
+		currentPoints3 = (TextView) view.findViewById(R.id.currentPoints3);
 		currentPoints3.setText(String.valueOf(member.calculateWeeklyCategoryPoints(3)));
 
-		TextView currentPoints4 = (TextView) view.findViewById(R.id.currentPoints4);
+		currentPoints4 = (TextView) view.findViewById(R.id.currentPoints4);
 		currentPoints4.setText(String.valueOf(member.calculateWeeklyCategoryPoints(4)));
 
-		TextView currentPoints5 = (TextView) view.findViewById(R.id.currentPoints5);
+		currentPoints5 = (TextView) view.findViewById(R.id.currentPoints5);
 		currentPoints5.setText(String.valueOf(member.calculateWeeklyCategoryPoints(5)));
 
 		//Set TargetPoints per Category
-		TextView targetPoints1 = (TextView) view.findViewById(R.id.targetPoints1);
+		targetPoints1 = (TextView) view.findViewById(R.id.targetPoints1);
 		targetPoints1.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(1)));
 
-		TextView targetPoints2 = (TextView) view.findViewById(R.id.targetPoints2);
+		targetPoints2 = (TextView) view.findViewById(R.id.targetPoints2);
 		targetPoints2.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(2)));
 
-		TextView targetPoints3 = (TextView) view.findViewById(R.id.targetPoints3);
+		targetPoints3 = (TextView) view.findViewById(R.id.targetPoints3);
 		targetPoints3.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(3)));
 
-		TextView targetPoints4 = (TextView) view.findViewById(R.id.targetPoints4);
+		targetPoints4 = (TextView) view.findViewById(R.id.targetPoints4);
 		targetPoints4.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(4)));
 
-		TextView targetPoints5 = (TextView) view.findViewById(R.id.targetPoints5);
+		targetPoints5 = (TextView) view.findViewById(R.id.targetPoints5);
 		targetPoints5.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(5)));
 		
 		//Progress bars
@@ -184,6 +196,18 @@ public class SingleStatistic extends Fragment implements EventInterface {
 			targetMinutes3.setText(String.valueOf(member.getWeeklyTargetCategoryMins(3)));
 			targetMinutes4.setText(String.valueOf(member.getWeeklyTargetCategoryMins(4)));
 			targetMinutes5.setText(String.valueOf(member.getWeeklyTargetCategoryMins(5)));
+			
+			currentPoints1.setText(String.valueOf(member.calculateWeeklyCategoryPoints(1)));
+			currentPoints2.setText(String.valueOf(member.calculateWeeklyCategoryPoints(2)));
+			currentPoints3.setText(String.valueOf(member.calculateWeeklyCategoryPoints(3)));
+			currentPoints4.setText(String.valueOf(member.calculateWeeklyCategoryPoints(4)));
+			currentPoints5.setText(String.valueOf(member.calculateWeeklyCategoryPoints(5)));
+
+			targetPoints1.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(1)));
+			targetPoints2.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(2)));
+			targetPoints3.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(3)));
+			targetPoints4.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(4)));
+			targetPoints5.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(5)));
 
 			progressBar1.setProgress(member.calculateWeeklyCategoryPercentage(1));
 			progressBar2.setProgress(member.calculateWeeklyCategoryPercentage(2));
@@ -218,6 +242,18 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		targetMinutes3.setText(String.valueOf(member.getWeeklyTargetCategoryMins(3)));
 		targetMinutes4.setText(String.valueOf(member.getWeeklyTargetCategoryMins(4)));
 		targetMinutes5.setText(String.valueOf(member.getWeeklyTargetCategoryMins(5)));
+		
+		currentPoints1.setText(String.valueOf(member.calculateWeeklyCategoryPoints(1)));
+		currentPoints2.setText(String.valueOf(member.calculateWeeklyCategoryPoints(2)));
+		currentPoints3.setText(String.valueOf(member.calculateWeeklyCategoryPoints(3)));
+		currentPoints4.setText(String.valueOf(member.calculateWeeklyCategoryPoints(4)));
+		currentPoints5.setText(String.valueOf(member.calculateWeeklyCategoryPoints(5)));
+
+		targetPoints1.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(1)));
+		targetPoints2.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(2)));
+		targetPoints3.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(3)));
+		targetPoints4.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(4)));
+		targetPoints5.setText(String.valueOf(member.calculateWeeklyCategoryTargetPoints(5)));
 
 		progressBar1.setProgress(member.calculateWeeklyCategoryPercentage(1));
 		progressBar2.setProgress(member.calculateWeeklyCategoryPercentage(2));

@@ -58,7 +58,7 @@ public class StartFragment extends Fragment implements EventInterface,
 	boolean animationDone = false;
 
 	TextView lblStarttimeOut, lblTimeOut, lblPointsOut, lblGroupmembersOut,
-			lblBonusOut;
+			lblBonusOut, groupPercentage;
 	Button btnPause, btnStop;
 
 	long start_time, stop_time, duration;
@@ -128,6 +128,8 @@ public class StartFragment extends Fragment implements EventInterface,
 		currentProgress = (ProgressBar) view.findViewById(R.id.currentProgress);
 		currentProgress.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
+		groupPercentage = (TextView) view.findViewById(R.id.groupPercentage);
+		
 		/*
 		 * Nicht mehr aktuell -> Default über Sternsymbol
 		 * switch(AppData.getInstance().getDefaultSportCategory()) { case 1:
@@ -428,14 +430,22 @@ public class StartFragment extends Fragment implements EventInterface,
 												count_groupMembersDuringActivity);
 
 							lblGroupmembersOut.setText(sOut);
-
+							
+							/* Progress for selected Category
 							double progress = ((member
 									.calculateWeeklyCategoryPoints(selectedCategory
 											.getCategory_id())
 									+ points + bonusPoints) * 100)
 									/ member.calculateWeeklyCategoryTargetPoints(selectedCategory
 											.getCategory_id());
+											
+							
+							double progress = ((member
+									.calculateWeeklyPoints()
+									+ points + bonusPoints) * 100)
+									/ member.calculateWeeklyTargetPoints();
 							currentProgress.setProgress((int) progress);
+							*/
 						}
 					});
 					try {
@@ -485,6 +495,15 @@ public class StartFragment extends Fragment implements EventInterface,
 								bonusPoints += ((1000.0 / 3600.0) * (count_groupMembersDuringActivity * 0.1));
 								lblBonusOut.setText(String
 										.valueOf((int) bonusPoints));
+								
+								double progress = ((member
+										.calculateWeeklyCategoryPoints(selectedCategory
+												.getCategory_id())
+										+ points + bonusPoints) * 100)
+										/ member.calculateWeeklyCategoryTargetPoints(selectedCategory
+												.getCategory_id());
+								currentProgress.setProgress((int) progress);
+								groupPercentage.setText((int)progress+"%");
 							}
 						});
 						try {
@@ -552,9 +571,9 @@ public class StartFragment extends Fragment implements EventInterface,
 		new_activity.setDate(new Date(System.currentTimeMillis()));
 		new_activity.setStarttime(new Time(start_time));
 		new_activity.setDuration_min((int)duration/1000/60);
-		//new_activity.setIntensity(selectedCategory.getCategory_intensity());
-		//new_activity.setPoints(points);
-		//new_activity.setBonus_points(bonusPoints);
+		new_activity.setIntensity(selectedCategory.getCategory_intensity());
+		new_activity.setPoints((int)points);
+		new_activity.setBonus_points((int)bonusPoints);
 		
 		DBHandler.addActivity(new_activity);
 		
