@@ -84,7 +84,16 @@ public class ActivityStartFragment extends Fragment implements EventInterface {
 				stop_time = System.currentTimeMillis();
 
 				duration = stop_time - start_time;
-
+				
+				// an datenbank die duration schicken.
+				BoActivity newActivity  = new BoActivity(); 
+				BoGroupMember currGroupMember = AppData.getInstance().getCurrentMember(); 
+				
+				newActivity.user_id = currGroupMember.user_id; 
+				newActivity.group_id = currGroupMember.group_id; 
+				
+				//newActivity.category = new BoCategory(selectedCategoryId); 
+				DBHandler.addActivity(newActivity); 
 				// zurueck zur start-seite
 				MainActivity.showStart();
 			}
