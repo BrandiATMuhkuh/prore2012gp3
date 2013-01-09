@@ -141,6 +141,14 @@ ActionBar.TabListener {
 		mViewPager.setCurrentItem(1);
 	}
 	
+	public static void startActivity()
+	{
+		StartFragment start = (StartFragment) mAppSectionsPagerAdapter
+				.getActiveFragment(mViewPager, 0);
+		mViewPager.setCurrentItem(0);
+		start.startActivity();
+	}
+	
 	public static void updateAllViews(){
 		
 		AppData.getInstance().loadData();
