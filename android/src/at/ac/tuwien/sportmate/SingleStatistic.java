@@ -182,13 +182,13 @@ public class SingleStatistic extends Fragment implements EventInterface {
 			public void onClick(View v) 
 			{
 				data.setCurrentViewedMember(data.getCurrentMember());
+				//member = data.getCurrentViewedMember();
 				updateView();
 			}
 		});
 		
-		
 		if (member.user_id == AppData.getInstance().getCurrentMember().user_id){
-			//showProfile.setVisibility(View.GONE);
+			showProfile.setVisibility(View.GONE);
 			Log.d("Debug", "Des bist du selber");
 		} else {
 			showProfile.setVisibility(View.VISIBLE);
@@ -290,7 +290,7 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		progressBar5.setProgress(member.calculateWeeklyCategoryPercentage(5));
 		
 		if (member.user_id == AppData.getInstance().getCurrentMember().user_id){
-			//showProfile.setVisibility(View.GONE);
+			showProfile.setVisibility(View.GONE);
 			Log.d("Debug", "Des bist du selber");
 		} else {
 			showProfile.setVisibility(View.VISIBLE);
