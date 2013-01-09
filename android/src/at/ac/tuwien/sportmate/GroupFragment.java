@@ -117,19 +117,19 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 
 		//Set Current Points
 		TextView currentPoints1 = (TextView) view.findViewById(R.id.currentPoints1);
-		currentPoints1.setText(String.valueOf(member1.calculateAllPoints()));
+		currentPoints1.setText(String.valueOf(member1.calculateWeeklyPoints()));
 
 		TextView currentPoints2 = (TextView) view.findViewById(R.id.currentPoints2);
-		currentPoints2.setText(String.valueOf(member2.calculateAllPoints()));
+		currentPoints2.setText(String.valueOf(member2.calculateWeeklyPoints()));
 
 		TextView currentPoints3 = (TextView) view.findViewById(R.id.currentPoints3);
-		currentPoints3.setText(String.valueOf(member3.calculateAllPoints()));
+		currentPoints3.setText(String.valueOf(member3.calculateWeeklyPoints()));
 
 		TextView currentPoints4 = (TextView) view.findViewById(R.id.currentPoints4);
-		currentPoints4.setText(String.valueOf(member4.calculateAllPoints()));
+		currentPoints4.setText(String.valueOf(member4.calculateWeeklyPoints()));
 
 		TextView currentPoints5 = (TextView) view.findViewById(R.id.currentPoints5);
-		currentPoints5.setText(String.valueOf(member5.calculateAllPoints()));
+		currentPoints5.setText(String.valueOf(member5.calculateWeeklyPoints()));
 
 		//Set TargetPoints
 		TextView targetPoints1 = (TextView) view.findViewById(R.id.targetPoints1);

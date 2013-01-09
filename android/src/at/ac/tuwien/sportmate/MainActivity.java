@@ -311,7 +311,9 @@ ActionBar.TabListener {
 						AppData.getInstance().setActiveMembers(activeMembers);
 						AppData.getInstance().setActiveGroupMemberCount(activeMembers.size());
 
-						if (notify) showNotificationForActiveMembers();
+						if (notify) {
+							showNotificationForActiveMembers();
+						}
 
 
 
