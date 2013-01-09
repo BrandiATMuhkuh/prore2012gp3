@@ -9,23 +9,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/chooseCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="false"
-            android:ems="10"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="@string/chooseCategory"
-            android:textAllCaps="false"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
         <LinearLayout
             android:id="@+id/categoryChoose1"
             android:layout_width="match_parent"
@@ -41,8 +24,8 @@
             <ImageView
                 android:id="@+id/categoryImageMain1"
                 android:layout_width="wrap_content"
-                android:layout_height="85dp"
-                android:background="@drawable/ausdauer_square"
+                android:layout_height="90dp"
+                android:background="@drawable/ausdauer_icon"
                 android:clickable="false"
                 android:focusable="false" />
         </LinearLayout>
@@ -62,8 +45,8 @@
             <ImageView
                 android:id="@+id/categoryImageMain2"
                 android:layout_width="wrap_content"
-                android:layout_height="85dp"
-                android:background="@drawable/kraft_square"
+                android:layout_height="90dp"
+                android:background="@drawable/kraft_icon"
                 android:clickable="false"
                 android:focusable="false" />
         </LinearLayout>
@@ -83,8 +66,8 @@
             <ImageView
                 android:id="@+id/categoryImageMain3"
                 android:layout_width="wrap_content"
-                android:layout_height="85dp"
-                android:background="@drawable/ball_square"
+                android:layout_height="90dp"
+                android:background="@drawable/ballsport_icon"
                 android:clickable="false"
                 android:focusable="false" />
         </LinearLayout>
@@ -104,8 +87,8 @@
             <ImageView
                 android:id="@+id/categoryImageMain4"
                 android:layout_width="wrap_content"
-                android:layout_height="85dp"
-                android:background="@drawable/gymnastik_square"
+				android:layout_height="90dp"
+                android:background="@drawable/gymnastik_icon"
                 android:clickable="false"
                 android:focusable="false" />
         </LinearLayout>
@@ -125,8 +108,8 @@
             <ImageView
                 android:id="@+id/categoryImageMain5"
                 android:layout_width="wrap_content"
-                android:layout_height="85dp"
-                android:background="@drawable/leichte_square"
+                android:layout_height="90dp"
+                android:background="@drawable/leichte_icon"
                 android:clickable="false"
                 android:focusable="false" />
         </LinearLayout>

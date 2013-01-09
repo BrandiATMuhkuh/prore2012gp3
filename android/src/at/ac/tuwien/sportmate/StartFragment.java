@@ -36,7 +36,6 @@ public class StartFragment extends Fragment implements EventInterface,
 
 	BoGroupMember member;
 
-	TextView header;
 	LinearLayout currentInformation;
 
 	ImageView image1;
@@ -92,7 +91,6 @@ public class StartFragment extends Fragment implements EventInterface,
 		// TODO Auto-generated method stub
 		view = inflater.inflate(R.layout.start, container, false);
 
-		header = (TextView) view.findViewById(R.id.chooseCategory);
 		currentInformation = (LinearLayout) view
 				.findViewById(R.id.currentInformation);
 		currentInformation.setVisibility(View.GONE);
@@ -334,7 +332,6 @@ public class StartFragment extends Fragment implements EventInterface,
 
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				header.setVisibility(View.GONE);
 				for (LinearLayout ll : categoryViews) {
 					if (ll.getId() != selectedView.getId()) {
 						ll.setVisibility(View.GONE);
@@ -361,7 +358,6 @@ public class StartFragment extends Fragment implements EventInterface,
 			public void onAnimationEnd(Animation animation) {
 				// after views disappeared, animate selected view to top
 
-				header.setAlpha(0);
 				for (LinearLayout ll : categoryViews) {
 					if (ll.getId() != selectedView.getId()) {
 						ll.setAlpha(0);
@@ -383,7 +379,6 @@ public class StartFragment extends Fragment implements EventInterface,
 			}
 		});
 
-		header.startAnimation(aa);
 		for (LinearLayout ll : categoryViews) {
 			if (ll.getId() != v.getId()) {
 				ll.startAnimation(aa);
@@ -527,8 +522,7 @@ public class StartFragment extends Fragment implements EventInterface,
 
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				header.setAlpha(1);
-				header.setVisibility(View.VISIBLE);
+				
 				for (LinearLayout ll : categoryViews) {
 					ll.setAlpha(1);
 					ll.setVisibility(View.VISIBLE);
