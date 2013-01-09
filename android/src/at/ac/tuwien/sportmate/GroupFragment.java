@@ -74,23 +74,23 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		
 		//Contact Badges Instanciate
 		ImageView badge1 = (ImageView) view.findViewById(R.id.quickContactBadge1);
-		badge1.setBackgroundResource(R.drawable.default_user_icon);
+		badge1.setBackgroundResource(R.drawable.user_id_1);
 		badge1.setOnClickListener(this);
 
 		ImageView badge2 = (ImageView) view.findViewById(R.id.quickContactBadge2);
-		badge2.setBackgroundResource(R.drawable.default_user_icon);
+		badge2.setBackgroundResource(R.drawable.user_id_2);
 		badge2.setOnClickListener(this);
 
 		ImageView badge3 = (ImageView) view.findViewById(R.id.quickContactBadge3);
-		badge3.setBackgroundResource(R.drawable.default_user_icon);
+		badge3.setBackgroundResource(R.drawable.user_id_3);
 		badge3.setOnClickListener(this);
 
 		ImageView badge4 = (ImageView) view.findViewById(R.id.quickContactBadge4);
-		badge4.setBackgroundResource(R.drawable.default_user_icon);
+		badge4.setBackgroundResource(R.drawable.user_id_4);
 		badge4.setOnClickListener(this);
 
 		ImageView badge5 = (ImageView) view.findViewById(R.id.quickContactBadge5);
-		badge5.setBackgroundResource(R.drawable.default_user_icon);
+		badge5.setBackgroundResource(R.drawable.user_id_5);
 		badge5.setOnClickListener(this);
 		
 		
