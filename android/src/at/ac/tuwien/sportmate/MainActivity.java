@@ -236,7 +236,7 @@ ActionBar.TabListener {
 			case R.id.menu_item1:
 				return true;
 			case R.id.menu_item2:
-				start.stopActivity();
+				//start.stopActivity();
 				running = false;
 				return true;
 			}

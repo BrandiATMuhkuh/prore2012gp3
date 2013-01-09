@@ -184,16 +184,6 @@ public class StartFragment extends Fragment implements EventInterface,
 		return view;
 	}
 	
-	public void stopActivity()
-	{
-		STOP = true;
-
-		// berechnungen durchführen.
-		stop_time = System.currentTimeMillis();
-
-		duration = stop_time - start_time;
-	}
-
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.categoryChoose1:
@@ -343,6 +333,7 @@ public class StartFragment extends Fragment implements EventInterface,
 				
 				currentInformation.setVisibility(View.VISIBLE);
 				
+				STOP = false;
 				setTimerTicker(view);
 				setGroupMembersDuringActivity(view); 
 				
@@ -516,6 +507,10 @@ public class StartFragment extends Fragment implements EventInterface,
 	}
 	
 	private void resetLayout(){
+		
+		points = 0;
+		bonusPoints = 0;
+		
 		final AlphaAnimation aa = new AlphaAnimation(1, 0);
 		aa.setDuration(500);
 		aa.setAnimationListener(new AnimationListener() {
@@ -572,6 +567,8 @@ public class StartFragment extends Fragment implements EventInterface,
 		DBHandler.addActivity(new_activity);
 		
 		AppData.getInstance().loadData();
+		
+		
 		
 	}
 }
