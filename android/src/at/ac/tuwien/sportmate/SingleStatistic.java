@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -51,6 +52,8 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	ProgressBar progressBar3;
 	ProgressBar progressBar4;
 	ProgressBar progressBar5;
+	
+	Button showProfile;
 	
 	ScrollView scrollView;
 
@@ -170,6 +173,17 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		progressBar5.setProgress(member.calculateWeeklyCategoryPercentage(5));
 		progressBar5.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
+		showProfile = (Button)view.findViewById(R.id.selectMyUser);
+		showProfile.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v) 
+			{
+				data.setCurrentViewedMember(data.getCurrentMember());
+				updateView();
+			}
+		});
+		
 		return view;
 	}
 
