@@ -100,12 +100,13 @@ public class StartFragment extends Fragment implements EventInterface,
 		category3 = (LinearLayout) view.findViewById(R.id.categoryChoose3);
 		category4 = (LinearLayout) view.findViewById(R.id.categoryChoose4);
 		category5 = (LinearLayout) view.findViewById(R.id.categoryChoose5);
+
 		category1.setOnClickListener(this);
 		category2.setOnClickListener(this);
 		category3.setOnClickListener(this);
 		category4.setOnClickListener(this);
 		category5.setOnClickListener(this);
-		
+
 		categoryViews.add(category1);
 		categoryViews.add(category2);
 		categoryViews.add(category3);
@@ -124,10 +125,13 @@ public class StartFragment extends Fragment implements EventInterface,
 		image5.setOnClickListener(this);
 
 		currentProgress = (ProgressBar) view.findViewById(R.id.currentProgress);
-		currentProgress.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
+		currentProgress.setProgressDrawable(getResources().getDrawable(
+				R.drawable.progress_horizontal));
 
 		groupPercentage = (TextView) view.findViewById(R.id.groupPercentage);
-		
+
+		setCategroyImage();
+
 		/*
 		 * Nicht mehr aktuell -> Default über Sternsymbol
 		 * switch(AppData.getInstance().getDefaultSportCategory()) { case 1:
@@ -143,7 +147,6 @@ public class StartFragment extends Fragment implements EventInterface,
 		PAUSE = false;
 		// ..................... Controls finden ................
 
-
 		btnPause = (Button) view.findViewById(R.id.pauseActivity);
 		btnStop = (Button) view.findViewById(R.id.stopActivity);
 
@@ -154,146 +157,123 @@ public class StartFragment extends Fragment implements EventInterface,
 				.findViewById(R.id.lblGroupMembersOut);
 		lblBonusOut = (TextView) view.findViewById(R.id.lblBonusOut);
 
-
 		btnStop.setVisibility(View.VISIBLE);
 
 		// / ..............listeners....................
 		/* ................. stop button klick auf stopbutton................ */
 		btnStop.setOnClickListener(this);
-		
+
 		/* ................. stop button klick auf stopbutton................ */
 		btnPause.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				if (!PAUSE) {
 					PAUSE = true;
-					//btnStop.setVisibility(View.VISIBLE);
+					// btnStop.setVisibility(View.VISIBLE);
 					btnPause.setText("Weiter");
 					pause_start = System.currentTimeMillis();
 				} else {
 					PAUSE = false;
-					//btnStop.setVisibility(View.GONE);
+					// btnStop.setVisibility(View.GONE);
 					btnPause.setText("Pause");
 					pause_stop = System.currentTimeMillis();
 					pause_duration += pause_stop - pause_start;
 				}
 			}
 		});
-		
 
 		return view;
 	}
-	
+
+	public void stopActivity() {
+		STOP = true;
+
+		// berechnungen durchführen.
+		stop_time = System.currentTimeMillis();
+
+		duration = stop_time - start_time;
+	}
+
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.categoryChoose1:
 			AppData.getInstance().setDefaultSportCategory(1);
-			image1.setBackgroundResource(R.drawable.ausdauer_banner);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+
+			setActiveCategoryImage(1);
+
 			selectedCategory = AppData.getInstance().getCategories().get(0);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose2:
 			AppData.getInstance().setDefaultSportCategory(2);
-			image2.setBackgroundResource(R.drawable.kraft_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			
+			setActiveCategoryImage(2);
+			
 			selectedCategory = AppData.getInstance().getCategories().get(1);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose3:
 			AppData.getInstance().setDefaultSportCategory(3);
-			image3.setBackgroundResource(R.drawable.ball_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			
+			setActiveCategoryImage(3);
+			
 			selectedCategory = AppData.getInstance().getCategories().get(2);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose4:
 			AppData.getInstance().setDefaultSportCategory(4);
-			image4.setBackgroundResource(R.drawable.gymnastik_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			
+			setActiveCategoryImage(4);
+			
 			selectedCategory = AppData.getInstance().getCategories().get(3);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose5:
 			AppData.getInstance().setDefaultSportCategory(5);
-			image5.setBackgroundResource(R.drawable.leichte_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
+			
+			setActiveCategoryImage(5);
+			
 			selectedCategory = AppData.getInstance().getCategories().get(4);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryImageMain1:
 			AppData.getInstance().setDefaultSportCategory(1);
-			image1.setBackgroundResource(R.drawable.ausdauer_banner);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			setActiveCategoryImage(1);
 			selectedCategory = AppData.getInstance().getCategories().get(0);
 			selectCategoryView(category1);
 			break;
 		case R.id.categoryImageMain2:
 			AppData.getInstance().setDefaultSportCategory(2);
-			image2.setBackgroundResource(R.drawable.kraft_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			setActiveCategoryImage(2);
 			selectedCategory = AppData.getInstance().getCategories().get(1);
 			selectCategoryView(category2);
 			break;
 		case R.id.categoryImageMain3:
 			AppData.getInstance().setDefaultSportCategory(3);
-			image3.setBackgroundResource(R.drawable.ball_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			setActiveCategoryImage(3);
 			selectedCategory = AppData.getInstance().getCategories().get(2);
 			selectCategoryView(category3);
 			break;
 		case R.id.categoryImageMain4:
 			AppData.getInstance().setDefaultSportCategory(4);
-			image4.setBackgroundResource(R.drawable.gymnastik_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			setActiveCategoryImage(4);
 			selectedCategory = AppData.getInstance().getCategories().get(3);
 			selectCategoryView(category4);
 			break;
 		case R.id.categoryImageMain5:
 			AppData.getInstance().setDefaultSportCategory(5);
-			image5.setBackgroundResource(R.drawable.leichte_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
+			setActiveCategoryImage(5);
 			selectedCategory = AppData.getInstance().getCategories().get(4);
 			selectCategoryView(category5);
 			break;
 		case R.id.stopActivity:
 			STOP = true;
 			PAUSE = false;
-			DBHandler.setActive(AppData.getInstance().getCurrentMember().getUser_id(), 0);
+			DBHandler.setActive(AppData.getInstance().getCurrentMember()
+					.getUser_id(), 0);
 			SportMateApplication.getApplication().setMyNotificatinoLight(0);
 			this.saveActivity();
 			this.resetLayout();
-			MainActivity.updateAllViews();
 			break;
 		}
 	}
@@ -331,13 +311,11 @@ public class StartFragment extends Fragment implements EventInterface,
 				}
 
 				// Show Timer and Buttons
-				
-				
+
 				currentInformation.setVisibility(View.VISIBLE);
-				
-				STOP = false;
+
 				setTimerTicker(view);
-				setGroupMembersDuringActivity(view); 
+				setGroupMembersDuringActivity(view);
 				
 				SportMateApplication.getApplication().setMyNotificatinoLight(1);
 			}
@@ -378,8 +356,9 @@ public class StartFragment extends Fragment implements EventInterface,
 			}
 		}
 
-		//set User active
-		DBHandler.setActive(AppData.getInstance().getCurrentMember().getUser_id(), 1);
+		// set User active
+		DBHandler.setActive(AppData.getInstance().getCurrentMember()
+				.getUser_id(), 1);
 
 	}
 
@@ -396,7 +375,7 @@ public class StartFragment extends Fragment implements EventInterface,
 					// da DB-fkt aufrufen
 					member = AppData.getInstance().getCurrentMember();
 					if (member != null) {
-						//System.out.println(member.toString());
+						// System.out.println(member.toString());
 						// count_groupMembersDuringActivity =
 						// DBHandler.getActiveGroupMembers(member.user_id,
 						// member.group_id);
@@ -418,22 +397,21 @@ public class StartFragment extends Fragment implements EventInterface,
 												count_groupMembersDuringActivity);
 
 							lblGroupmembersOut.setText(sOut);
-							
-							/* Progress for selected Category
-							double progress = ((member
-									.calculateWeeklyCategoryPoints(selectedCategory
-											.getCategory_id())
-									+ points + bonusPoints) * 100)
-									/ member.calculateWeeklyCategoryTargetPoints(selectedCategory
-											.getCategory_id());
-											
-							
-							double progress = ((member
-									.calculateWeeklyPoints()
-									+ points + bonusPoints) * 100)
-									/ member.calculateWeeklyTargetPoints();
-							currentProgress.setProgress((int) progress);
-							*/
+
+							/*
+							 * Progress for selected Category double progress =
+							 * ((member
+							 * .calculateWeeklyCategoryPoints(selectedCategory
+							 * .getCategory_id()) + points + bonusPoints) * 100)
+							 * / member.calculateWeeklyCategoryTargetPoints(
+							 * selectedCategory .getCategory_id());
+							 * 
+							 * 
+							 * double progress = ((member
+							 * .calculateWeeklyPoints() + points + bonusPoints)
+							 * * 100) / member.calculateWeeklyTargetPoints();
+							 * currentProgress.setProgress((int) progress);
+							 */
 						}
 					});
 					try {
@@ -463,7 +441,7 @@ public class StartFragment extends Fragment implements EventInterface,
 				while (!STOP) {
 					if (!PAUSE) {
 						stop_time = System.currentTimeMillis();
-						
+
 						duration = stop_time - start_time;
 						duration -= pause_duration;
 
@@ -483,7 +461,7 @@ public class StartFragment extends Fragment implements EventInterface,
 								bonusPoints += ((1000.0 / 3600.0) * (count_groupMembersDuringActivity * 0.1));
 								lblBonusOut.setText(String
 										.valueOf((int) bonusPoints));
-								
+
 								double progress = ((member
 										.calculateWeeklyCategoryPoints(selectedCategory
 												.getCategory_id())
@@ -491,7 +469,7 @@ public class StartFragment extends Fragment implements EventInterface,
 										/ member.calculateWeeklyCategoryTargetPoints(selectedCategory
 												.getCategory_id());
 								currentProgress.setProgress((int) progress);
-								groupPercentage.setText((int)progress+"%");
+								groupPercentage.setText((int) progress + "%");
 							}
 						});
 						try {
@@ -507,34 +485,26 @@ public class StartFragment extends Fragment implements EventInterface,
 		};
 		new Thread(runnable).start();
 	}
-	
-	private void resetLayout(){
-		
-		points = 0;
-		bonusPoints = 0;
-		
+
+	private void resetLayout() {
 		final AlphaAnimation aa = new AlphaAnimation(1, 0);
 		aa.setDuration(500);
 		aa.setAnimationListener(new AnimationListener() {
 
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				
+
 				for (LinearLayout ll : categoryViews) {
 					ll.setAlpha(1);
 					ll.setVisibility(View.VISIBLE);
 				}
 				currentInformation.setVisibility(View.GONE);
-				
-				image5.setBackgroundResource(R.drawable.leichte_square);
-				image1.setBackgroundResource(R.drawable.ausdauer_square);
-				image2.setBackgroundResource(R.drawable.kraft_square);
-				image3.setBackgroundResource(R.drawable.ball_square);
-				image4.setBackgroundResource(R.drawable.gymnastik_square);
-				
-				//btnStop.setVisibility(View.GONE);
+
+				setCategroyImage();
+
+				// btnStop.setVisibility(View.GONE);
 				btnPause.setText("Pause");
-				
+
 			}
 
 			@Override
@@ -547,30 +517,114 @@ public class StartFragment extends Fragment implements EventInterface,
 				// TODO Auto-generated method stub
 			}
 		});
-		
+
 		selected_item.startAnimation(aa);
 		currentInformation.startAnimation(aa);
 	}
-	
-	private void saveActivity(){
-		
+
+	private void saveActivity() {
+
 		BoActivity new_activity = new BoActivity();
-		
+
 		new_activity.setCategory(selectedCategory);
-		new_activity.setGroup_id(AppData.getInstance().getCurrentGroup().getGroup_id());
-		new_activity.setUser_id(AppData.getInstance().getCurrentMember().getUser_id());
+		new_activity.setGroup_id(AppData.getInstance().getCurrentGroup()
+				.getGroup_id());
+		new_activity.setUser_id(AppData.getInstance().getCurrentMember()
+				.getUser_id());
 		new_activity.setDate(new Date(System.currentTimeMillis()));
 		new_activity.setStarttime(new Time(start_time));
-		new_activity.setDuration_min((int)duration/1000/60);
+		new_activity.setDuration_min((int) duration / 1000 / 60);
 		new_activity.setIntensity(selectedCategory.getCategory_intensity());
-		new_activity.setPoints((int)points);
-		new_activity.setBonus_points((int)bonusPoints);
-		
+		new_activity.setPoints((int) points);
+		new_activity.setBonus_points((int) bonusPoints);
+
 		DBHandler.addActivity(new_activity);
-		
-		
-		
-		
-		
+
+		AppData.getInstance().loadData();
+
+	}
+
+	private void setActiveCategoryImage(int activeCategoryID) {
+		int defaultActivityID = AppData.getInstance().getCurrentMember().default_activity;
+
+		image1.setBackgroundResource(R.drawable.ausdauer_icon);
+		image2.setBackgroundResource(R.drawable.kraft_icon);
+		image3.setBackgroundResource(R.drawable.ballsport_icon);
+		image4.setBackgroundResource(R.drawable.gymnastik_icon);
+		image5.setBackgroundResource(R.drawable.leichte_icon);
+
+		Log.d("setImage", String.valueOf(defaultActivityID));
+		Log.d("setImage", String.valueOf(activeCategoryID));
+
+		if (activeCategoryID != defaultActivityID) {
+			// depending on the default activity, set the banner
+			switch (activeCategoryID) {
+			case CategoryMappings.AUSDAUER:
+				image1.setBackgroundResource(R.drawable.ausdauer_banner);
+				break;
+			case CategoryMappings.KRAFT:
+				image2.setBackgroundResource(R.drawable.kraft_banner);
+				break;
+			case CategoryMappings.BALLSPORT:
+				image3.setBackgroundResource(R.drawable.ball_banner);
+				break;
+			case CategoryMappings.GYMNASTIK:
+				image4.setBackgroundResource(R.drawable.gymnastik_banner);
+				break;
+			case CategoryMappings.LEICHT:
+				image5.setBackgroundResource(R.drawable.leichte_banner);
+				break;
+			}
+		} else {
+			// depending on the default activity, set the banner with favorite
+			// badge
+			switch (activeCategoryID) {
+			case CategoryMappings.AUSDAUER:
+				image1.setBackgroundResource(R.drawable.ausdauer_banner_fav);
+				break;
+			case CategoryMappings.KRAFT:
+				image2.setBackgroundResource(R.drawable.kraft_banner_fav);
+				break;
+			case CategoryMappings.BALLSPORT:
+				image3.setBackgroundResource(R.drawable.ball_banner_fav);
+				break;
+			case CategoryMappings.GYMNASTIK:
+				image4.setBackgroundResource(R.drawable.gymnastik_banner_fav);
+				break;
+			case CategoryMappings.LEICHT:
+				image5.setBackgroundResource(R.drawable.leichtes_banner_fav);
+				break;
+			}
+		}
+	}
+
+	private void setCategroyImage() {
+		int defaultActivityID = AppData.getInstance().getCurrentMember().default_activity;
+
+		image1.setBackgroundResource(R.drawable.ausdauer_icon);
+		image2.setBackgroundResource(R.drawable.kraft_icon);
+		image3.setBackgroundResource(R.drawable.ballsport_icon);
+		image4.setBackgroundResource(R.drawable.gymnastik_icon);
+		image5.setBackgroundResource(R.drawable.leichte_icon);
+
+		// depending on the default activity, set the banner
+		switch (defaultActivityID) {
+		case CategoryMappings.AUSDAUER:
+			image1.setBackgroundResource(R.drawable.ausdauer_banner);
+			break;
+		case CategoryMappings.KRAFT:
+			image2.setBackgroundResource(R.drawable.kraft_banner);
+			break;
+		case CategoryMappings.BALLSPORT:
+			image3.setBackgroundResource(R.drawable.ball_banner);
+			break;
+		case CategoryMappings.GYMNASTIK:
+			image4.setBackgroundResource(R.drawable.gymnastik_banner);
+			break;
+		case CategoryMappings.LEICHT:
+			image5.setBackgroundResource(R.drawable.leichte_banner);
+			break;
+		}
+
 	}
 }
