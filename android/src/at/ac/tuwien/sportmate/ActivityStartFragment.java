@@ -94,8 +94,6 @@ public class ActivityStartFragment extends Fragment implements EventInterface {
 				
 				//newActivity.category = new BoCategory(selectedCategoryId); 
 				DBHandler.addActivity(newActivity); 
-				// zurueck zur start-seite
-				MainActivity.showStart();
 			}
 		});
 

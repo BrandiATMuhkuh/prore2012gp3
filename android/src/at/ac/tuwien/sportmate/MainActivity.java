@@ -31,8 +31,8 @@ public class MainActivity extends FragmentActivity implements
 ActionBar.TabListener {
 	private static String myTab = "";
 	private final static String TAG = "MainActivity";
-	private static MenuItem item;
-	private static MenuItem item2;
+	//private static MenuItem item;
+	//private static MenuItem item2;
 	private static Fragment myCurrentFragment = null;
 	private static ActionBar actionBar;
 
@@ -129,52 +129,11 @@ ActionBar.TabListener {
 
 		// MenuItem handling
 		myTab = tab.getText().toString();
-
-		if (item != null && item2 != null) 
-		{
-			item.setTitle("");
-			item.setEnabled(false);
-			item2.setTitle("");
-			item2.setEnabled(false);
-
-			if (myTab == "Start" && running) 
-			{
-				item.setEnabled(true);
-				item.setTitle("Pause");
-				item2.setEnabled(true);
-				item2.setTitle("Stop");
-			} else if (myTab == "User") 
-			{
-			} else if (myTab == "Group") {
-				item.setTitle("");
-				item.setEnabled(false);
-				item2.setEnabled(true);
-				item2.setTitle("Edit");
-			}
-			if (myTab == "User" && showMember) {
-				item.setTitle("");
-				item.setEnabled(false);
-				item2.setEnabled(true);
-				item2.setTitle("My Profile");
-			}
-		}
 	}
 
 	@Override
 	public void onTabReselected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
-	}
-
-	// Add Options Menu
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.options_menu, menu);
-		item = menu.findItem(R.id.menu_item1);
-		item2 = menu.findItem(R.id.menu_item2);
-		item.setTitle("");
-		item2.setTitle("");
-		return true;
 	}
 
 	public static void selectUser() {
@@ -198,63 +157,8 @@ ActionBar.TabListener {
 		groupFragment.updateView();
 	}
 
-	public static void showStart() 
-	{
-		item.setEnabled(true);
-		item.setTitle("Pause");
-		item2.setEnabled(true);
-		item2.setTitle("Stop");
-		running = true;
-	}
-
 	public static void showActivityStart() {
 		actionBar.selectTab(activityStart);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) 
-	{
-		if (myTab == "Group") 
-		{
-			GroupFragment gf = (GroupFragment) mAppSectionsPagerAdapter
-					.getActiveFragment(mViewPager, 2);
-
-			switch (item.getItemId()) {
-			case R.id.menu_item1:
-				return true;
-			case R.id.menu_item2:
-				gf.saveData();
-				return true;
-			}
-		} else if (showMember) {
-			switch (item.getItemId()) {
-			case R.id.menu_item1:
-				return true;
-			case R.id.menu_item2:
-				data.setCurrentViewedMember(data.getCurrentMember());
-				SingleStatistic single = (SingleStatistic) mAppSectionsPagerAdapter
-						.getActiveFragment(mViewPager, 1);
-				single.updateView();
-				showMember = false;
-				item2.setTitle("");
-				item2.setEnabled(false);
-				return true;
-			}
-		} else if (running && myTab == "Start")
-		{
-			StartFragment start = (StartFragment) mAppSectionsPagerAdapter
-					.getActiveFragment(mViewPager, 0);
-			switch (item.getItemId()) 
-			{
-			case R.id.menu_item1:
-				return true;
-			case R.id.menu_item2:
-				//start.stopActivity();
-				running = false;
-				return true;
-			}
-		}
-		return false;
 	}
 
 	public static class AppSectionsPagerAdapter extends FragmentPagerAdapter {
@@ -299,7 +203,8 @@ ActionBar.TabListener {
 
 	public void countActiveGroupMembers() {
 
-		Runnable runnable = new Runnable() {
+		Runnable runnable = new Runnable() 
+		{
 			@Override
 			public void run() {
 				while (true) {
@@ -319,15 +224,21 @@ ActionBar.TabListener {
 							notify = true;
 						}
 
-						if (activeMembers.size() == 0) mNotificationManager.cancel(1);
+						if (activeMembers.size() == 0) 
+						{
+							mNotificationManager.cancel(1);
+							SportMateApplication.getApplication().setGroupNotificatinoLight(0);
+						}
 
 						AppData.getInstance().setActiveMembers(activeMembers);
 						AppData.getInstance().setActiveGroupMemberCount(activeMembers.size());
 
-						if (notify) {
+						if (notify) 
+						{
 							showNotificationForActiveMembers();
+							SportMateApplication.getApplication().setGroupNotificatinoLight(1);
+							
 						}
-
 
 
 

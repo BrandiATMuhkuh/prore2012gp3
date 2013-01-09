@@ -105,7 +105,7 @@ public class StartFragment extends Fragment implements EventInterface,
 		category3.setOnClickListener(this);
 		category4.setOnClickListener(this);
 		category5.setOnClickListener(this);
-
+		
 		categoryViews.add(category1);
 		categoryViews.add(category2);
 		categoryViews.add(category3);
@@ -290,6 +290,7 @@ public class StartFragment extends Fragment implements EventInterface,
 			STOP = true;
 			PAUSE = false;
 			DBHandler.setActive(AppData.getInstance().getCurrentMember().getUser_id(), 0);
+			SportMateApplication.getApplication().setMyNotificatinoLight(0);
 			this.saveActivity();
 			this.resetLayout();
 			MainActivity.updateAllViews();
@@ -338,7 +339,7 @@ public class StartFragment extends Fragment implements EventInterface,
 				setTimerTicker(view);
 				setGroupMembersDuringActivity(view); 
 				
-
+				SportMateApplication.getApplication().setMyNotificatinoLight(1);
 			}
 		});
 
