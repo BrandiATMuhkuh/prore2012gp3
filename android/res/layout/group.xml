@@ -110,6 +110,32 @@
                         android:text="User 1" />
 
                     <TextView
+                        android:id="@+id/percentage1"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="%" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="100" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/points" />
+
+                    <TextView
                         android:id="@+id/currentPoints1"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
@@ -129,13 +155,6 @@
                         android:layout_height="wrap_content"
                         android:text="target" />
                 </LinearLayout>
-
-                <ProgressBar
-                    android:id="@+id/progressBar1"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progress="100" />
             </LinearLayout>
         </LinearLayout>
 
@@ -176,8 +195,33 @@
                         android:layout_weight="1"
                         android:editable="false"
                         android:text="User 2" />
-
+                    
                     <TextView
+                        android:id="@+id/percentage2"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="%" />
+
+                    
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="100" />
+                
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/points" />
+                
+                <TextView
                         android:id="@+id/currentPoints2"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
@@ -196,14 +240,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="target" />
-                </LinearLayout>
-
-                <ProgressBar
-                    android:id="@+id/progressBar2"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progress="100" />
+                    </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -244,8 +281,33 @@
                         android:layout_weight="1"
                         android:editable="false"
                         android:text="User 3" />
-
+                    
                     <TextView
+                        android:id="@+id/percentage3"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="%" />
+
+                    
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="100" />
+                
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/points" />
+                
+                <TextView
                         android:id="@+id/currentPoints3"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
@@ -264,14 +326,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="target" />
-                </LinearLayout>
-
-                <ProgressBar
-                    android:id="@+id/progressBar3"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progress="100" />
+                    </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -312,8 +367,33 @@
                         android:layout_weight="1"
                         android:editable="false"
                         android:text="User 4" />
-
+                    
                     <TextView
+                        android:id="@+id/percentage4"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="%" />
+
+                    
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="100" />
+                
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/points" />
+                
+                <TextView
                         android:id="@+id/currentPoints4"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
@@ -332,14 +412,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="target" />
-                </LinearLayout>
-
-                <ProgressBar
-                    android:id="@+id/progressBar4"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progress="100" />
+                    </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -380,8 +453,33 @@
                         android:layout_weight="1"
                         android:editable="false"
                         android:text="User 5" />
-
+                    
                     <TextView
+                        android:id="@+id/percentage5"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="%" />
+
+                    
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar5"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="100" />
+                
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/points" />
+                
+                <TextView
                         android:id="@+id/currentPoints5"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
@@ -400,14 +498,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="target" />
-                </LinearLayout>
-
-                <ProgressBar
-                    android:id="@+id/progressBar5"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progress="100" />
+                    </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

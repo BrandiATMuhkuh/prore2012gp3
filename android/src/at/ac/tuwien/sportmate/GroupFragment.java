@@ -41,6 +41,12 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 	TextView currentPoints3;
 	TextView currentPoints4;
 	TextView currentPoints5;
+	
+	TextView percentage1;
+	TextView percentage2;
+	TextView percentage3;
+	TextView percentage4;
+	TextView percentage5;
 
 
 	@Override
@@ -152,6 +158,18 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 
 		TextView targetPoints5 = (TextView) view.findViewById(R.id.targetPoints5);
 		targetPoints5.setText(String.valueOf(member5.calculateWeeklyTargetPoints()));
+		
+		//percentages
+		percentage1 = (TextView) view.findViewById(R.id.percentage1);
+		percentage1.setText(member1.calculateWeeklyPercentage() + "%");
+		percentage2 = (TextView) view.findViewById(R.id.percentage2);
+		percentage2.setText(member2.calculateWeeklyPercentage() + "%");
+		percentage3 = (TextView) view.findViewById(R.id.percentage3);
+		percentage3.setText(member3.calculateWeeklyPercentage() + "%");
+		percentage4 = (TextView) view.findViewById(R.id.percentage4);
+		percentage4.setText(member4.calculateWeeklyPercentage() + "%");
+		percentage5 = (TextView) view.findViewById(R.id.percentage5);
+		percentage5.setText(member5.calculateWeeklyPercentage() + "%");
 
 		//Progressbars Instantiate
 		ProgressBar progressBar1 = (ProgressBar) view.findViewById(R.id.progressBar1);
@@ -277,5 +295,12 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		currentPoints3.setText(String.valueOf(member3.calculateWeeklyPoints()));
 		currentPoints4.setText(String.valueOf(member4.calculateWeeklyPoints()));
 		currentPoints5.setText(String.valueOf(member5.calculateWeeklyPoints()));
+		
+		//percentages
+		percentage1.setText(member1.calculateWeeklyPercentage() + "%");
+		percentage2.setText(member2.calculateWeeklyPercentage() + "%");
+		percentage3.setText(member3.calculateWeeklyPercentage() + "%");
+		percentage4.setText(member4.calculateWeeklyPercentage() + "%");
+		percentage5.setText(member5.calculateWeeklyPercentage() + "%");
 	}
 }	
