@@ -186,6 +186,15 @@ public class SingleStatistic extends Fragment implements EventInterface {
 			}
 		});
 		
+		
+		if (member.user_id == AppData.getInstance().getCurrentMember().user_id){
+			//showProfile.setVisibility(View.GONE);
+			Log.d("Debug", "Des bist du selber");
+		} else {
+			showProfile.setVisibility(View.VISIBLE);
+			Log.d("Debug", "Des is wer anders");
+		}
+		
 		return view;
 	}
 
@@ -279,6 +288,14 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		progressBar3.setProgress(member.calculateWeeklyCategoryPercentage(3));
 		progressBar4.setProgress(member.calculateWeeklyCategoryPercentage(4));
 		progressBar5.setProgress(member.calculateWeeklyCategoryPercentage(5));
+		
+		if (member.user_id == AppData.getInstance().getCurrentMember().user_id){
+			//showProfile.setVisibility(View.GONE);
+			Log.d("Debug", "Des bist du selber");
+		} else {
+			showProfile.setVisibility(View.VISIBLE);
+			Log.d("Debug", "Des is wer anders");
+		}
 		
 		scrollView.fullScroll(ScrollView.FOCUS_UP);
 	}
