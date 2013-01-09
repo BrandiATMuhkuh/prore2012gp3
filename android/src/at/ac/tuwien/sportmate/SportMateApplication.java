@@ -95,7 +95,7 @@ public class SportMateApplication extends Application {
 	 * Is called via user interaction (arduino or phone)
 	 */
     public void sendShowProgress(){
-    	setProgresses(49,80);
+    	setProgresses(AppData.getInstance().getCurrentMember().calculateWeeklyPercentage(),AppData.getInstance().getCurrentGroup().calculateWeeklyPercentage());
 	}
     
     public void testSendEventA(){

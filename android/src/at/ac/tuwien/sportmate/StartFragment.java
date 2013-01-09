@@ -271,6 +271,7 @@ public class StartFragment extends Fragment implements EventInterface,
 			PAUSE = false;
 			DBHandler.setActive(AppData.getInstance().getCurrentMember()
 					.getUser_id(), 0);
+			SportMateApplication.getApplication().setMyNotificatinoLight(0);
 			this.saveActivity();
 			this.resetLayout();
 			break;
@@ -315,7 +316,8 @@ public class StartFragment extends Fragment implements EventInterface,
 
 				setTimerTicker(view);
 				setGroupMembersDuringActivity(view);
-
+				
+				SportMateApplication.getApplication().setMyNotificatinoLight(1);
 			}
 		});
 

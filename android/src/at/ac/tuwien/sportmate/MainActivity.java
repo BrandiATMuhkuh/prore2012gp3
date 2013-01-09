@@ -21,11 +21,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
 
 public class MainActivity extends FragmentActivity implements
 ActionBar.TabListener {
@@ -112,6 +107,11 @@ ActionBar.TabListener {
 		 * MyTabListener<SelectTargetFragment>(this, "Target",
 		 * SelectTargetFragment.class)); actionBar.addTab(tab);
 		 */
+		
+		//Alles LEDs ausschalten
+		SportMateApplication.getApplication().setGroupNotificatinoLight(0);
+		SportMateApplication.getApplication().setMyNotificatinoLight(0);
+		SportMateApplication.getApplication().setProgresses(0, 0);
 
 	}
 
