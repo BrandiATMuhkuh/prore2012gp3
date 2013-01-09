@@ -1,7 +1,7 @@
 package at.ac.tuwien.sportmate;
 
 public class BoCategory {
-
+	
 	int category_id; 
 	String category_name; 
 	double category_intensity; 
