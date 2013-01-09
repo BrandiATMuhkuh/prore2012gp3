@@ -57,7 +57,7 @@ ActionBar.TabListener {
 
 		// load all weekly data From DB
 		data = AppData.getInstance();
-		data.setCurrentMember(DBHandler.getGroupMember(1));
+		data.setCurrentMember(DBHandler.getGroupMember(2));
 		data.loadData();
 
 		// check DB for active members and write into appData
