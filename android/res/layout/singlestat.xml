@@ -27,7 +27,7 @@
             android:background="@color/dark_grey"
             android:clickable="true"
             android:ems="10"
-            android:text="My Profile"
+            android:text="Mein Profil"
             android:textAllCaps="false"
             android:textSize="14dp"
             android:textColor="@color/light_grey"/>
