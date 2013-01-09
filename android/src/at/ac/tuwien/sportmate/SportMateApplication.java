@@ -35,8 +35,8 @@ public class SportMateApplication extends Application {
     	// TODO Auto-generated method stub
     	super.onCreate();
     	
-    	//registerReceiver(ArduinoReceiver, new IntentFilter(AmarinoIntent.ACTION_RECEIVED));
-		//Amarino.connect(this, DEVICE_ADDRESS);
+    	registerReceiver(ArduinoReceiver, new IntentFilter(AmarinoIntent.ACTION_RECEIVED));
+		Amarino.connect(this, DEVICE_ADDRESS);
     }
     
     public void registerListener(String className, EventInterface ef){
