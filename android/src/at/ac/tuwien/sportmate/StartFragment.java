@@ -131,7 +131,7 @@ public class StartFragment extends Fragment implements EventInterface,
 		groupPercentage = (TextView) view.findViewById(R.id.groupPercentage);
 
 		setCategroyImage();
-		
+
 		/*
 		 * Nicht mehr aktuell -> Default über Sternsymbol
 		 * switch(AppData.getInstance().getDefaultSportCategory()) { case 1:
@@ -198,101 +198,71 @@ public class StartFragment extends Fragment implements EventInterface,
 		switch (v.getId()) {
 		case R.id.categoryChoose1:
 			AppData.getInstance().setDefaultSportCategory(1);
-			image1.setBackgroundResource(R.drawable.ausdauer_banner);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+
+			setActiveCategoryImage(1);
+
 			selectedCategory = AppData.getInstance().getCategories().get(0);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose2:
 			AppData.getInstance().setDefaultSportCategory(2);
-			image2.setBackgroundResource(R.drawable.kraft_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			
+			setActiveCategoryImage(2);
+			
 			selectedCategory = AppData.getInstance().getCategories().get(1);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose3:
 			AppData.getInstance().setDefaultSportCategory(3);
-			image3.setBackgroundResource(R.drawable.ball_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			
+			setActiveCategoryImage(3);
+			
 			selectedCategory = AppData.getInstance().getCategories().get(2);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose4:
 			AppData.getInstance().setDefaultSportCategory(4);
-			image4.setBackgroundResource(R.drawable.gymnastik_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			
+			setActiveCategoryImage(4);
+			
 			selectedCategory = AppData.getInstance().getCategories().get(3);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryChoose5:
 			AppData.getInstance().setDefaultSportCategory(5);
-			image5.setBackgroundResource(R.drawable.leichte_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
+			
+			setActiveCategoryImage(5);
+			
 			selectedCategory = AppData.getInstance().getCategories().get(4);
 			selectCategoryView(v);
 			break;
 		case R.id.categoryImageMain1:
 			AppData.getInstance().setDefaultSportCategory(1);
-			image1.setBackgroundResource(R.drawable.ausdauer_banner);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			setActiveCategoryImage(1);
 			selectedCategory = AppData.getInstance().getCategories().get(0);
 			selectCategoryView(category1);
 			break;
 		case R.id.categoryImageMain2:
 			AppData.getInstance().setDefaultSportCategory(2);
-			image2.setBackgroundResource(R.drawable.kraft_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			setActiveCategoryImage(2);
 			selectedCategory = AppData.getInstance().getCategories().get(1);
 			selectCategoryView(category2);
 			break;
 		case R.id.categoryImageMain3:
 			AppData.getInstance().setDefaultSportCategory(3);
-			image3.setBackgroundResource(R.drawable.ball_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			setActiveCategoryImage(3);
 			selectedCategory = AppData.getInstance().getCategories().get(2);
 			selectCategoryView(category3);
 			break;
 		case R.id.categoryImageMain4:
 			AppData.getInstance().setDefaultSportCategory(4);
-			image4.setBackgroundResource(R.drawable.gymnastik_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image5.setBackgroundResource(R.drawable.leichte_square);
+			setActiveCategoryImage(4);
 			selectedCategory = AppData.getInstance().getCategories().get(3);
 			selectCategoryView(category4);
 			break;
 		case R.id.categoryImageMain5:
 			AppData.getInstance().setDefaultSportCategory(5);
-			image5.setBackgroundResource(R.drawable.leichte_banner);
-			image1.setBackgroundResource(R.drawable.ausdauer_square);
-			image2.setBackgroundResource(R.drawable.kraft_square);
-			image3.setBackgroundResource(R.drawable.ball_square);
-			image4.setBackgroundResource(R.drawable.gymnastik_square);
+			setActiveCategoryImage(5);
 			selectedCategory = AppData.getInstance().getCategories().get(4);
 			selectCategoryView(category5);
 			break;
@@ -570,6 +540,60 @@ public class StartFragment extends Fragment implements EventInterface,
 
 		AppData.getInstance().loadData();
 
+	}
+
+	private void setActiveCategoryImage(int activeCategoryID) {
+		int defaultActivityID = AppData.getInstance().getCurrentMember().default_activity;
+
+		image1.setBackgroundResource(R.drawable.ausdauer_icon);
+		image2.setBackgroundResource(R.drawable.kraft_icon);
+		image3.setBackgroundResource(R.drawable.ballsport_icon);
+		image4.setBackgroundResource(R.drawable.gymnastik_icon);
+		image5.setBackgroundResource(R.drawable.leichte_icon);
+
+		Log.d("setImage", String.valueOf(defaultActivityID));
+		Log.d("setImage", String.valueOf(activeCategoryID));
+
+		if (activeCategoryID != defaultActivityID) {
+			// depending on the default activity, set the banner
+			switch (activeCategoryID) {
+			case CategoryMappings.AUSDAUER:
+				image1.setBackgroundResource(R.drawable.ausdauer_banner);
+				break;
+			case CategoryMappings.KRAFT:
+				image2.setBackgroundResource(R.drawable.kraft_banner);
+				break;
+			case CategoryMappings.BALLSPORT:
+				image3.setBackgroundResource(R.drawable.ball_banner);
+				break;
+			case CategoryMappings.GYMNASTIK:
+				image4.setBackgroundResource(R.drawable.gymnastik_banner);
+				break;
+			case CategoryMappings.LEICHT:
+				image5.setBackgroundResource(R.drawable.leichte_banner);
+				break;
+			}
+		} else {
+			// depending on the default activity, set the banner with favorite
+			// badge
+			switch (activeCategoryID) {
+			case CategoryMappings.AUSDAUER:
+				image1.setBackgroundResource(R.drawable.ausdauer_banner_fav);
+				break;
+			case CategoryMappings.KRAFT:
+				image2.setBackgroundResource(R.drawable.kraft_banner_fav);
+				break;
+			case CategoryMappings.BALLSPORT:
+				image3.setBackgroundResource(R.drawable.ball_banner_fav);
+				break;
+			case CategoryMappings.GYMNASTIK:
+				image4.setBackgroundResource(R.drawable.gymnastik_banner_fav);
+				break;
+			case CategoryMappings.LEICHT:
+				image5.setBackgroundResource(R.drawable.leichtes_banner_fav);
+				break;
+			}
+		}
 	}
 
 	private void setCategroyImage() {
