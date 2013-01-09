@@ -91,13 +91,10 @@ ActionBar.TabListener {
 		start = actionBar.newTab().setText("Start").setTabListener(this);
 		actionBar.addTab(start);
 
-		user = actionBar.newTab().setText("User").setTabListener(this);
+		user = actionBar.newTab().setText("Profil").setTabListener(this);
 		actionBar.addTab(user);
 
-		activityStart = actionBar.newTab().setText("Start")
-				.setTabListener(this);
-
-		Tab tab = actionBar.newTab().setText("Group").setTabListener(this);
+		Tab tab = actionBar.newTab().setText("Gruppe").setTabListener(this);
 		actionBar.addTab(tab);
 
 		myTab = "Start";
