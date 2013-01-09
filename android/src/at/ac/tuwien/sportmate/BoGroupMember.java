@@ -172,14 +172,14 @@ public class BoGroupMember {
 
 	public int calculateAllPoints() {
 
-		int points = 0;
+		double points = 0;
 
 		for (BoActivity a : activities) {
-			points += a.category.category_intensity * a.duration_min
-					* (1000 / 60);
+			//points += a.category.category_intensity * a.duration_min * (1000 / 60); // + a.bonus_points;
+			points += a.points * a.bonus_points;
 		}
 
-		return points;
+		return (int)points;
 	}
 
 	public int calculateWeeklyPoints() {
@@ -187,9 +187,8 @@ public class BoGroupMember {
 
 		for (BoActivity a : activities) {
 
-			points += a.category.category_intensity * a.duration_min
-					* (1000.0 / 60.0);
-
+			//points += a.category.category_intensity * a.duration_min * (1000.0 / 60.0); // + a.bonus_points;
+			points += a.points * a.bonus_points;
 		}
 
 		return (int) points;
@@ -210,8 +209,8 @@ public class BoGroupMember {
 
 		for (BoActivity a : activities) {
 			if (a.category.category_id == category_id) {
-				points += a.duration_min * a.category.category_intensity
-						* (1000.0 / 60.0);
+				//points += a.duration_min * a.category.category_intensity * (1000.0 / 60.0); // + a.bonus_points;
+				points += a.points * a.bonus_points;
 			}
 		}
 
