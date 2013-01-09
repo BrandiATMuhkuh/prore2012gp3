@@ -184,6 +184,19 @@ ActionBar.TabListener {
 		single.updateView();
 		mViewPager.setCurrentItem(1);
 	}
+	
+	public static void updateAllViews(){
+		
+		AppData.getInstance().loadData();
+		
+		SingleStatistic singleFragement = (SingleStatistic) mAppSectionsPagerAdapter
+			.getActiveFragment(mViewPager, 1);
+		singleFragement.updateView();
+		
+		GroupFragment groupFragment = (GroupFragment) mAppSectionsPagerAdapter
+			.getActiveFragment(mViewPager, 2);
+		groupFragment.updateView();
+	}
 
 	public static void showStart() 
 	{

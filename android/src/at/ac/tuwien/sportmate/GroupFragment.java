@@ -35,6 +35,12 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 	BoGroupMember member3;
 	BoGroupMember member4;
 	BoGroupMember member5;
+	
+	TextView currentPoints1;
+	TextView currentPoints2;
+	TextView currentPoints3;
+	TextView currentPoints4;
+	TextView currentPoints5;
 
 
 	@Override
@@ -116,19 +122,19 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		linearLayout5.setBackgroundResource(R.drawable.groupmember_selector);
 
 		//Set Current Points
-		TextView currentPoints1 = (TextView) view.findViewById(R.id.currentPoints1);
+		currentPoints1 = (TextView) view.findViewById(R.id.currentPoints1);
 		currentPoints1.setText(String.valueOf(member1.calculateWeeklyPoints()));
 
-		TextView currentPoints2 = (TextView) view.findViewById(R.id.currentPoints2);
+		currentPoints2 = (TextView) view.findViewById(R.id.currentPoints2);
 		currentPoints2.setText(String.valueOf(member2.calculateWeeklyPoints()));
 
-		TextView currentPoints3 = (TextView) view.findViewById(R.id.currentPoints3);
+		currentPoints3 = (TextView) view.findViewById(R.id.currentPoints3);
 		currentPoints3.setText(String.valueOf(member3.calculateWeeklyPoints()));
 
-		TextView currentPoints4 = (TextView) view.findViewById(R.id.currentPoints4);
+		currentPoints4 = (TextView) view.findViewById(R.id.currentPoints4);
 		currentPoints4.setText(String.valueOf(member4.calculateWeeklyPoints()));
 
-		TextView currentPoints5 = (TextView) view.findViewById(R.id.currentPoints5);
+		currentPoints5 = (TextView) view.findViewById(R.id.currentPoints5);
 		currentPoints5.setText(String.valueOf(member5.calculateWeeklyPoints()));
 
 		//Set TargetPoints
@@ -256,5 +262,20 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 	public void onClick(View v)
 	{
 		onShowContact(v);
+	}
+	
+	public void updateView() {
+		member1 = data.getCurrentGroup().groupMembers.get(0);
+		member2 = data.getCurrentGroup().groupMembers.get(1);
+		member3 = data.getCurrentGroup().groupMembers.get(2);
+		member4 = data.getCurrentGroup().groupMembers.get(3);
+		member5 = data.getCurrentGroup().groupMembers.get(4);
+		
+		//Set Current Points
+		currentPoints1.setText(String.valueOf(member1.calculateWeeklyPoints()));
+		currentPoints2.setText(String.valueOf(member2.calculateWeeklyPoints()));
+		currentPoints3.setText(String.valueOf(member3.calculateWeeklyPoints()));
+		currentPoints4.setText(String.valueOf(member4.calculateWeeklyPoints()));
+		currentPoints5.setText(String.valueOf(member5.calculateWeeklyPoints()));
 	}
 }	

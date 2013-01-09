@@ -68,7 +68,9 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		
 		member = data.getCurrentViewedMember();
 		
-		if (member == null) member = data.getCurrentMember();
+		if (member == null) {
+			member = data.getCurrentMember();
+		}
 		
 	}
 
@@ -227,7 +229,10 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	
 	public void updateView()
 	{
+		
 		member = data.getCurrentViewedMember();
+		
+		if (member == null) member = data.getCurrentMember();
 
 		username.setText(member.getUser_name());
 

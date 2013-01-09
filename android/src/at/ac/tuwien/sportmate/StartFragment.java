@@ -292,6 +292,7 @@ public class StartFragment extends Fragment implements EventInterface,
 			DBHandler.setActive(AppData.getInstance().getCurrentMember().getUser_id(), 0);
 			this.saveActivity();
 			this.resetLayout();
+			MainActivity.updateAllViews();
 			break;
 		}
 	}
@@ -566,7 +567,7 @@ public class StartFragment extends Fragment implements EventInterface,
 		
 		DBHandler.addActivity(new_activity);
 		
-		AppData.getInstance().loadData();
+		
 		
 		
 		
