@@ -547,11 +547,11 @@ public class StartFragment extends Fragment implements EventInterface,
 	private void setActiveCategoryImage(int activeCategoryID) {
 		int defaultActivityID = AppData.getInstance().getCurrentMember().default_activity;
 
-		image1.setBackgroundResource(R.drawable.ausdauer_icon);
-		image2.setBackgroundResource(R.drawable.kraft_icon);
-		image3.setBackgroundResource(R.drawable.ballsport_icon);
-		image4.setBackgroundResource(R.drawable.gymnastik_icon);
-		image5.setBackgroundResource(R.drawable.leichte_icon);
+		image1.setBackgroundResource(R.drawable.ausdauer_icon_2);
+		image2.setBackgroundResource(R.drawable.kraft_icon_2);
+		image3.setBackgroundResource(R.drawable.ballsport_icon_2);
+		image4.setBackgroundResource(R.drawable.gymnastik_icon_2);
+		image5.setBackgroundResource(R.drawable.leichte_icon_2);
 
 		Log.d("setImage", String.valueOf(defaultActivityID));
 		Log.d("setImage", String.valueOf(activeCategoryID));
@@ -601,11 +601,11 @@ public class StartFragment extends Fragment implements EventInterface,
 	private void setCategroyImage() {
 		int defaultActivityID = AppData.getInstance().getCurrentMember().default_activity;
 
-		image1.setBackgroundResource(R.drawable.ausdauer_icon);
-		image2.setBackgroundResource(R.drawable.kraft_icon);
-		image3.setBackgroundResource(R.drawable.ballsport_icon);
-		image4.setBackgroundResource(R.drawable.gymnastik_icon);
-		image5.setBackgroundResource(R.drawable.leichte_icon);
+		image1.setBackgroundResource(R.drawable.ausdauer_icon_2);
+		image2.setBackgroundResource(R.drawable.kraft_icon_2);
+		image3.setBackgroundResource(R.drawable.ballsport_icon_2);
+		image4.setBackgroundResource(R.drawable.gymnastik_icon_2);
+		image5.setBackgroundResource(R.drawable.leichte_icon_2);
 
 		// depending on the default activity, set the banner
 		switch (defaultActivityID) {
