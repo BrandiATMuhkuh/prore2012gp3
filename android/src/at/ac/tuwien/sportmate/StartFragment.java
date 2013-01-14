@@ -429,7 +429,8 @@ public class StartFragment extends Fragment implements EventInterface,
 
 	public void setTimerTicker(View view) {
 		// Do something long
-
+		STOP = false;
+		
 		// aktuelle startzeit bestimmen
 		start_time = System.currentTimeMillis();
 		lblStarttimeOut.setText(DateFormat.format("dd.MM.yyyy hh:mm", new Date(
@@ -462,14 +463,25 @@ public class StartFragment extends Fragment implements EventInterface,
 								lblBonusOut.setText(String
 										.valueOf((int) bonusPoints));
 
-								double progress = ((member
-										.calculateWeeklyCategoryPoints(selectedCategory
-												.getCategory_id())
-										+ points + bonusPoints) * 100)
-										/ member.calculateWeeklyCategoryTargetPoints(selectedCategory
-												.getCategory_id());
-								currentProgress.setProgress((int) progress);
-								groupPercentage.setText((int) progress + "%");
+								double progress;
+								
+								if(member.calculateWeeklyCategoryTargetPoints(selectedCategory.getCategory_id())==0)
+								{
+									progress = points + bonusPoints;
+									currentProgress.setProgress((int) progress%100);
+									groupPercentage.setText((int) progress + " Punkte");
+								} else 
+								{
+									progress = ((member
+											.calculateWeeklyCategoryPoints(selectedCategory
+													.getCategory_id())
+											+ points + bonusPoints) * 100)
+											/ member.calculateWeeklyCategoryTargetPoints(selectedCategory
+													.getCategory_id());
+									currentProgress.setProgress((int) progress);
+									groupPercentage.setText((int) progress + "%");
+								}
+								
 							}
 						});
 						try {
@@ -486,7 +498,8 @@ public class StartFragment extends Fragment implements EventInterface,
 		new Thread(runnable).start();
 	}
 
-	private void resetLayout() {
+	private void resetLayout() 
+	{
 		final AlphaAnimation aa = new AlphaAnimation(1, 0);
 		aa.setDuration(500);
 		aa.setAnimationListener(new AnimationListener() {
