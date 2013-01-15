@@ -601,7 +601,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:padding="3dp" >
@@ -612,7 +612,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/groupmember_selector"
+                android:background="@drawable/button_background"
                 android:ems="10"
                 android:text="Ziele Ändern"
                 android:textAllCaps="false"
@@ -649,17 +649,21 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/left"
-                    android:text="" />
+                    android:text=""
+                    android:padding="3dp"
+                    android:layout_margin="3dp" />
 
                 <TextView
                     android:id="@+id/ausdauer_count"
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="54dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text=""
-                    android:textSize="28sp" />
+                    android:textSize="18sp" 
+                    android:textStyle="bold"
+                    android:background="@color/light_grey" />
 
                 <Button
                     android:id="@+id/ausdauer_up"
@@ -667,7 +671,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/right"
-                    android:text="" />
+                    android:text=""
+                    android:padding="3dp"
+                    android:layout_margin="3dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -691,17 +697,21 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/left"
-                    android:text="" />
+                    android:text=""
+                    android:padding="3dp"
+                    android:layout_margin="3dp"  />
 
                 <TextView
                     android:id="@+id/kraft_count"
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="54dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text=""
-                    android:textSize="28sp" />
+                    android:textSize="18sp"
+                    android:background="@color/light_grey"
+                    android:textStyle="bold"  />
 
                 <Button
                     android:id="@+id/kraft_up"
@@ -709,7 +719,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/right"
-                    android:text="" />
+                    android:text=""
+                    android:padding="3dp"
+                    android:layout_margin="3dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -733,17 +745,21 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/left"
-                    android:text="" />
+                    android:text=""
+                    android:padding="3dp"
+                    android:layout_margin="3dp"  />
 
                 <TextView
                     android:id="@+id/ballspiel_count"
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="54dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text=""
-                    android:textSize="28sp" />
+                    android:textSize="18sp"
+                    android:background="@color/light_grey"
+                    android:textStyle="bold"  />
 
                 <Button
                     android:id="@+id/ballspiel_up"
@@ -751,7 +767,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/right"
-                    android:text="" />
+                    android:text=""
+                    android:padding="3dp"
+                    android:layout_margin="3dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -775,17 +793,21 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/left"
-                    android:text="" />
+                    android:text=""
+                    android:padding="3dp"
+                    android:layout_margin="3dp"  />
 
                 <TextView
                     android:id="@+id/gymnastik_count"
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="54dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text=""
-                    android:textSize="28sp" />
+                    android:textSize="18sp"
+                    android:background="@color/light_grey"
+                    android:textStyle="bold"  />
 
                 <Button
                     android:id="@+id/gymnastik_up"
@@ -793,7 +815,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/right"
-                    android:text="" />
+                    android:text=""
+                    android:padding="3dp"
+                    android:layout_margin="3dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -817,17 +841,21 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/left"
-                    android:text="" />
+                    android:text=""
+                    android:padding="3dp"
+                    android:layout_margin="3dp"  />
 
                 <TextView
                     android:id="@+id/leichte_count"
                     android:layout_width="0dip"
-                    android:layout_height="wrap_content"
+                    android:layout_height="54dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text=""
-                    android:textSize="28sp" />
+                    android:textSize="18sp"
+                    android:background="@color/light_grey"
+                    android:textStyle="bold"  />
 
                 <Button
                     android:id="@+id/leichte_up"
@@ -835,7 +863,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/right"
-                    android:text="" />
+                    android:text=""
+                    android:padding="3dp"
+                    android:layout_margin="3dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -854,23 +884,24 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/gesamtLabel"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:padding="5dp" />
 
                 <TextView
                     android:id="@+id/gesamt_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:padding="5dp" />
             </LinearLayout>
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:padding="3dp" >
@@ -881,7 +912,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/groupmember_selector"
+                android:background="@drawable/button_background"
                 android:ems="10"
                 android:text="Ziele Speichern"
                 android:textAllCaps="false"
