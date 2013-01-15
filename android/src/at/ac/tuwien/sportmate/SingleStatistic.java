@@ -241,9 +241,14 @@ public class SingleStatistic extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) 
 			{
-				//TODO: Save targets
-				
+				DBHandler.updateWeeklyTargets(data.getCurrentMember().user_id, ausdauer_count, kraft_count, ballspiel_count, gym_count, leichte_count);
+				member.setWeeklyTarget(1, ausdauer_count);
+				member.setWeeklyTarget(2, kraft_count);
+				member.setWeeklyTarget(3, ballspiel_count);
+				member.setWeeklyTarget(4, gym_count);
+				member.setWeeklyTarget(5, leichte_count);
 				updateView();
+				
 			}
 		});
 

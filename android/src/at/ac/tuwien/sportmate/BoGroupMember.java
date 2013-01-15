@@ -229,4 +229,13 @@ public class BoGroupMember {
 
 		return (int) points;
 	}
+	
+	public void setWeeklyTarget(int category_id, int weekly_target_mins)
+	{
+		for (BoWeeklyTarget w : weeklyTargets) {
+			if (w.category.category_id == category_id) {
+				w.weekly_target_min = weekly_target_mins;
+			}
+		}
+	}
 }
