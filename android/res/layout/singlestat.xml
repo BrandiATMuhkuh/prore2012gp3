@@ -11,586 +11,882 @@
         android:orientation="vertical" >
 
         <LinearLayout
-	        xmlns:android="http://schemas.android.com/apk/res/android"
-	        android:layout_width="match_parent"
-	        android:layout_height="fill_parent"
-	        android:orientation="horizontal" >
-        
-        <Button
-            android:id="@+id/selectMyUser"
-            android:layout_width="88dp"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_marginTop="5dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/selectMyUser"
+                android:layout_width="88dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/back_button"
+                android:clickable="true"
+                android:ems="10"
+                android:padding="3dp"
+                android:text="Mein Profil"
+                android:textAllCaps="false"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="Username"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/showStats"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/category1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:orientation="horizontal"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:id="@+id/categoryImage1"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/ausdauer_square" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/editText1"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ausdauer" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar1"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="100" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/minutes" />
+
+                        <TextView
+                            android:id="@+id/currentMinutes1"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current" />
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator" />
+
+                        <TextView
+                            android:id="@+id/targetMinutes1"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="target" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/points" />
+
+                        <TextView
+                            android:id="@+id/currentPoints1"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current" />
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator" />
+
+                        <TextView
+                            android:id="@+id/targetPoints1"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="target" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/category2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:id="@+id/categoryImage2"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/kraft_square" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/editText2"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/fitness" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar2"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="100" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/minutes" />
+
+                        <TextView
+                            android:id="@+id/currentMinutes2"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current" />
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator" />
+
+                        <TextView
+                            android:id="@+id/targetMinutes2"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="target" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/points" />
+
+                        <TextView
+                            android:id="@+id/currentPoints2"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current" />
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator" />
+
+                        <TextView
+                            android:id="@+id/targetPoints2"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="target" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/category3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:id="@+id/categoryImage3"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/ball_square" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/editText3"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/spielsport" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar3"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="100" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/minutes" />
+
+                        <TextView
+                            android:id="@+id/currentMinutes3"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current" />
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator" />
+
+                        <TextView
+                            android:id="@+id/targetMinutes3"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="target" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/points" />
+
+                        <TextView
+                            android:id="@+id/currentPoints3"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current" />
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator" />
+
+                        <TextView
+                            android:id="@+id/targetPoints3"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="target" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/category4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:id="@+id/categoryImage4"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/gymnastik_square" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/editText4"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/gymnastik" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar4"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="100" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/minutes" />
+
+                        <TextView
+                            android:id="@+id/currentMinutes4"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current" />
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator" />
+
+                        <TextView
+                            android:id="@+id/targetMinutes4"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="target" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/points" />
+
+                        <TextView
+                            android:id="@+id/currentPoints4"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current" />
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator" />
+
+                        <TextView
+                            android:id="@+id/targetPoints4"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="target" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/category5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:id="@+id/categoryImage5"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/leichte_square" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/editText5"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/leichtes" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar5"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="100" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/minutes" />
+
+                        <TextView
+                            android:id="@+id/currentMinutes5"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current" />
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator" />
+
+                        <TextView
+                            android:id="@+id/targetMinutes5"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="target" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/points" />
+
+                        <TextView
+                            android:id="@+id/currentPoints5"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current" />
+
+                        <TextView
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seperator" />
+
+                        <TextView
+                            android:id="@+id/targetPoints5"
+                            style="@style/StandardTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="target" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
-            android:padding="3dp"
-            android:background="@drawable/back_button"
-            android:clickable="true"
-            android:ems="10"
-            android:text="Mein Profil"
-            android:textAllCaps="false"
-            android:textSize="14dp"/>
+            android:layout_marginRight="5dp"
+            android:padding="3dp" >
 
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="fill_parent"
+            <Button
+                android:id="@+id/changeTargets"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/groupmember_selector"
+                android:ems="10"
+                android:text="Ziele Ändern"
+                android:textAllCaps="false"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+        <!-- Select Targets -->
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/selectTarget"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="false"
-            android:ems="10"
-            android:gravity="center_horizontal"
-            android:padding="10dp"
-            android:text="Username"
-            android:textAllCaps="false"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            android:orientation="vertical" >
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/ausdauer_square" />
+
+                <Button
+                    android:id="@+id/ausdauer_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/left"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/ausdauer_count"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text=""
+                    android:textSize="28sp" />
+
+                <Button
+                    android:id="@+id/ausdauer_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/right"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/kraft_square" />
+
+                <Button
+                    android:id="@+id/kraft_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/left"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/kraft_count"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text=""
+                    android:textSize="28sp" />
+
+                <Button
+                    android:id="@+id/kraft_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/right"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/ball_square" />
+
+                <Button
+                    android:id="@+id/ballspiel_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/left"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/ballspiel_count"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text=""
+                    android:textSize="28sp" />
+
+                <Button
+                    android:id="@+id/ballspiel_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/right"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/gymnastik_square" />
+
+                <Button
+                    android:id="@+id/gymnastik_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/left"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/gymnastik_count"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text=""
+                    android:textSize="28sp" />
+
+                <Button
+                    android:id="@+id/gymnastik_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/right"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:padding="3dp" >
+
+                <ImageView
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:src="@drawable/leichte_square" />
+
+                <Button
+                    android:id="@+id/leichte_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/left"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/leichte_count"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text=""
+                    android:textSize="28sp" />
+
+                <Button
+                    android:id="@+id/leichte_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/right"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="false"
+                android:padding="3dp" >
+
+                <TextView
+                    android:id="@+id/gesamt_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/gesamtLabel"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/gesamt_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/category1"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="false"
-            android:orientation="horizontal"
             android:padding="3dp" >
 
-            <ImageView
-                android:id="@+id/categoryImage1"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
-                android:src="@drawable/ausdauer_square" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/editText1"
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/ausdauer" />
-
-                <ProgressBar
-                    android:id="@+id/progressBar1"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progress="100" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/minutes" />
-
-                    <TextView
-                        android:id="@+id/currentMinutes1"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="current" />
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/seperator" />
-
-                    <TextView
-                        android:id="@+id/targetMinutes1"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="target" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/points" />
-
-                    <TextView
-                        android:id="@+id/currentPoints1"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="current" />
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/seperator" />
-
-                    <TextView
-                        android:id="@+id/targetPoints1"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="target" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-          <LinearLayout
-            android:id="@+id/category2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="false"
-            android:padding="3dp" >
-
-            <ImageView
-                android:id="@+id/categoryImage2"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
-                android:src="@drawable/kraft_square" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/editText2"
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/fitness" />
-
-                <ProgressBar
-                    android:id="@+id/progressBar2"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progress="100" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/minutes" />
-
-                    <TextView
-                        android:id="@+id/currentMinutes2"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="current" />
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/seperator" />
-
-                    <TextView
-                        android:id="@+id/targetMinutes2"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="target" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/points" />
-
-                    <TextView
-                        android:id="@+id/currentPoints2"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="current" />
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/seperator" />
-
-                    <TextView
-                        android:id="@+id/targetPoints2"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="target" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-       <LinearLayout
-            android:id="@+id/category3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="false"
-            android:padding="3dp" >
-
-            <ImageView
-                android:id="@+id/categoryImage3"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
-                android:src="@drawable/ball_square" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/editText3"
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/spielsport" />
-
-                <ProgressBar
-                    android:id="@+id/progressBar3"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progress="100" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/minutes" />
-
-                    <TextView
-                        android:id="@+id/currentMinutes3"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="current" />
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/seperator" />
-
-                    <TextView
-                        android:id="@+id/targetMinutes3"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="target" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/points" />
-
-                    <TextView
-                        android:id="@+id/currentPoints3"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="current" />
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/seperator" />
-
-                    <TextView
-                        android:id="@+id/targetPoints3"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="target" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-      <LinearLayout
-            android:id="@+id/category4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="false"
-            android:padding="3dp" >
-
-            <ImageView
-                android:id="@+id/categoryImage4"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
-                android:src="@drawable/gymnastik_square" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/editText4"
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/gymnastik" />
-
-                <ProgressBar
-                    android:id="@+id/progressBar4"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progress="100" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/minutes" />
-
-                    <TextView
-                        android:id="@+id/currentMinutes4"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="current" />
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/seperator" />
-
-                    <TextView
-                        android:id="@+id/targetMinutes4"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="target" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/points" />
-
-                    <TextView
-                        android:id="@+id/currentPoints4"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="current" />
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/seperator" />
-
-                    <TextView
-                        android:id="@+id/targetPoints4"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="target" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/category5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="false"
-            android:padding="3dp" >
-
-            <ImageView
-                android:id="@+id/categoryImage5"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
-                android:src="@drawable/leichte_square" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/editText5"
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/leichtes" />
-
-                <ProgressBar
-                    android:id="@+id/progressBar5"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progress="100" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/minutes" />
-
-                    <TextView
-                        android:id="@+id/currentMinutes5"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="current" />
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/seperator" />
-
-                    <TextView
-                        android:id="@+id/targetMinutes5"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="target" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/points" />
-
-                    <TextView
-                        android:id="@+id/currentPoints5"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="current" />
-
-                    <TextView
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/seperator" />
-
-                    <TextView
-                        android:id="@+id/targetPoints5"
-                        style="@style/StandardTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="target" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
+            <Button
+                android:id="@+id/saveTargets"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/groupmember_selector"
+                android:ems="10"
+                android:text="Ziele Speichern"
+                android:textAllCaps="false"
+                android:textSize="14dp" />
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>
