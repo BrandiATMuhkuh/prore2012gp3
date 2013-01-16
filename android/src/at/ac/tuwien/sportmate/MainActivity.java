@@ -52,7 +52,7 @@ ActionBar.TabListener {
 
 		// load all weekly data From DB
 		data = AppData.getInstance();
-		data.setCurrentMember(DBHandler.getGroupMember(2));
+		data.setCurrentMember(DBHandler.getGroupMember(1));
 		data.loadData();
 
 		// check DB for active members and write into appData
@@ -275,13 +275,15 @@ ActionBar.TabListener {
 		{
 			@Override
 			public void run() {
-				while (true) {
+				while (true) 
+				{
 						 
 					ArrayList<BoGroupMember> group = AppData.getInstance().getCurrentGroup().groupMembers;
 					for (int i = 0; i < group.size(); i++)
 					{
 						if(group.get(i).user_id != AppData.getInstance().getCurrentMember().getUser_id())
 						{
+							group.get(i).weeklyTargets = DBHandler.getWeeklyTargetsFromUser(group.get(i).user_id);
 							if(group.get(i).seeIfWeeklyTargetChanged())
 							{
 								showNotificationForTargetChanges(group.get(i).user_id);
