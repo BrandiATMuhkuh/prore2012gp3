@@ -553,7 +553,7 @@ public class DBHandler {
 	public static boolean updateWeeklyTargets(int user_id, int cat1_mins,
 			int cat2_mins, int cat3_mins, int cat4_mins, int cat5_mins, Date date, 
 	Time time) {
-		
+		SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
 		Log.d("DBHandler", "updateWeeklyTargets for user_id = "
 				+ user_id);
 		
@@ -572,7 +572,7 @@ public class DBHandler {
 				.valueOf(cat4_mins)));
 		nameValuePairs.add(new BasicNameValuePair("cat5_mins", String
 				.valueOf(cat5_mins)));
-		nameValuePairs.add(new BasicNameValuePair("target_changed_at_date", date.toString()));
+		nameValuePairs.add(new BasicNameValuePair("target_changed_at_date", s.format(date)));
 		nameValuePairs.add(new BasicNameValuePair("target_changed_at_time", time.toString()));
 
 		String serverResponse = sendRequestToServer(serviceName, nameValuePairs);

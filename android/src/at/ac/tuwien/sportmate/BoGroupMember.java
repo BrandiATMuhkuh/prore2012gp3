@@ -246,7 +246,12 @@ public class BoGroupMember {
 			if(w != null){
 				java.util.Date date = new java.util.Date();
 				java.sql.Date sqlDate = new java.sql.Date( date.getTime() );
-				if(sqlDate==w.getTarget_changed_at_date())
+				
+				Log.d("seeIfWeeklyTargetChanged", user_id + " - " + w.getTarget_changed_at_date());
+				
+				if(sqlDate.getDay()==w.getTarget_changed_at_date().getDay() && 
+						sqlDate.getYear()==w.getTarget_changed_at_date().getYear()&&
+						sqlDate.getMonth()==w.getTarget_changed_at_date().getMonth())
 				{
 					return true;
 				}

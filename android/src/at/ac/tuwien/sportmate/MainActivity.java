@@ -36,6 +36,7 @@ ActionBar.TabListener {
 	private static Tab user; // my profile
 	private static boolean showMember; //true if user selects a member from GroupFragment 
 	private static boolean running;
+	private static ArrayList<Integer> notificationList;
 
 	private static ViewPager mViewPager;
 
@@ -60,6 +61,8 @@ ActionBar.TabListener {
 		//check for Target Changes
 		this.checkForTargetChanges();
 
+		notificationList = new ArrayList<Integer>();
+		
 		mNotificationManager = (NotificationManager) this
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -284,9 +287,10 @@ ActionBar.TabListener {
 						if(group.get(i).user_id != AppData.getInstance().getCurrentMember().getUser_id())
 						{
 							group.get(i).weeklyTargets = DBHandler.getWeeklyTargetsFromUser(group.get(i).user_id);
-							if(group.get(i).seeIfWeeklyTargetChanged())
+							if(group.get(i).seeIfWeeklyTargetChanged() && !notificationList.contains(group.get(i).user_id))
 							{
 								showNotificationForTargetChanges(group.get(i).user_id);
+								notificationList.add(group.get(i).user_id);
 							}
 						}
 					}
