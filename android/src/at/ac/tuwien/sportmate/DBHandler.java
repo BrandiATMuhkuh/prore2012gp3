@@ -2,6 +2,7 @@ package at.ac.tuwien.sportmate;
 
 import java.io.InputStream;
 import java.sql.Date;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -237,11 +238,27 @@ public class DBHandler {
 			String category_name = values[1];
 			double category_intensity = Double.parseDouble(values[2]);
 			int weekly_target_min = Integer.parseInt(values[3]);
-
+			String dateString = values[4];
+			String timeString = values[5];
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
+			Date date;
 			BoWeeklyTarget w = new BoWeeklyTarget();
+			try {
+				date = new Date(sdf.parse(dateString).getTime());
+			
+			Time time = Time.valueOf(timeString);
+			
 			w.category = new BoCategory(category_id, category_name,
 					category_intensity);
 			w.weekly_target_min = weekly_target_min;
+			w.setTarget_changed_at_date(date);
+			w.setTarget_changed_at_time(time);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			result.add(w);
 		}
 
@@ -534,8 +551,9 @@ public class DBHandler {
 	}
 
 	public static boolean updateWeeklyTargets(int user_id, int cat1_mins,
-			int cat2_mins, int cat3_mins, int cat4_mins, int cat5_mins) {
-
+			int cat2_mins, int cat3_mins, int cat4_mins, int cat5_mins, Date date, 
+	Time time) {
+		
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		nameValuePairs.add(new BasicNameValuePair("method",
 				"updateWeeklyTargets"));
@@ -551,6 +569,8 @@ public class DBHandler {
 				.valueOf(cat4_mins)));
 		nameValuePairs.add(new BasicNameValuePair("cat5_mins", String
 				.valueOf(cat5_mins)));
+		nameValuePairs.add(new BasicNameValuePair("target_changed_at_date", date.toString()));
+		nameValuePairs.add(new BasicNameValuePair("target_changed_at_time", time.toString()));
 
 		String serverResponse = sendRequestToServer(serviceName, nameValuePairs);
 
