@@ -47,6 +47,21 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 	TextView percentage3;
 	TextView percentage4;
 	TextView percentage5;
+	
+	TextView groupPercentage;
+	
+	ProgressBar groupProgress;
+	ProgressBar progressBar1;
+	ProgressBar progressBar2;
+	ProgressBar progressBar3;
+	ProgressBar progressBar4;
+	ProgressBar progressBar5;
+	
+	TextView targetPoints1;
+	TextView targetPoints2;
+	TextView targetPoints3;
+	TextView targetPoints4;
+	TextView targetPoints5;
 
 
 	@Override
@@ -63,6 +78,8 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		member4 = data.getCurrentGroup().groupMembers.get(3);
 		member5 = data.getCurrentGroup().groupMembers.get(4);
 		
+		
+		
 	}
 
 	@Override
@@ -77,10 +94,10 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		View view = inflater.inflate(R.layout.group, container, false);
 
 		//group Percentage
-		TextView groupPercentage = (TextView)view.findViewById(R.id.groupPercentage);
+		groupPercentage = (TextView)view.findViewById(R.id.groupPercentage);
 		groupPercentage.setText(String.valueOf(data.getCurrentGroup().calculateWeeklyPercentage()) + "%");
 		
-		ProgressBar groupProgress = (ProgressBar)view.findViewById(R.id.groupProgress);
+		groupProgress = (ProgressBar)view.findViewById(R.id.groupProgress);
 		groupProgress.setProgress(data.getCurrentGroup().calculateWeeklyPercentage());
 		groupProgress.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 		
@@ -144,19 +161,19 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		currentPoints5.setText(String.valueOf(member5.calculateWeeklyPoints()));
 
 		//Set TargetPoints
-		TextView targetPoints1 = (TextView) view.findViewById(R.id.targetPoints1);
+		targetPoints1 = (TextView) view.findViewById(R.id.targetPoints1);
 		targetPoints1.setText(String.valueOf(member1.calculateWeeklyTargetPoints()));
 
-		TextView targetPoints2 = (TextView) view.findViewById(R.id.targetPoints2);
+		targetPoints2 = (TextView) view.findViewById(R.id.targetPoints2);
 		targetPoints2.setText(String.valueOf(member2.calculateWeeklyTargetPoints()));
 
-		TextView targetPoints3 = (TextView) view.findViewById(R.id.targetPoints3);
+		targetPoints3 = (TextView) view.findViewById(R.id.targetPoints3);
 		targetPoints3.setText(String.valueOf(member3.calculateWeeklyTargetPoints()));
 
-		TextView targetPoints4 = (TextView) view.findViewById(R.id.targetPoints4);
+		targetPoints4 = (TextView) view.findViewById(R.id.targetPoints4);
 		targetPoints4.setText(String.valueOf(member4.calculateWeeklyTargetPoints()));
 
-		TextView targetPoints5 = (TextView) view.findViewById(R.id.targetPoints5);
+		targetPoints5 = (TextView) view.findViewById(R.id.targetPoints5);
 		targetPoints5.setText(String.valueOf(member5.calculateWeeklyTargetPoints()));
 		
 		//percentages
@@ -172,23 +189,23 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		percentage5.setText(member5.calculateWeeklyPercentage() + "%");
 
 		//Progressbars Instantiate
-		ProgressBar progressBar1 = (ProgressBar) view.findViewById(R.id.progressBar1);
+		progressBar1 = (ProgressBar) view.findViewById(R.id.progressBar1);
 		progressBar1.setProgress(member1.calculateWeeklyPercentage());
 		progressBar1.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
-		ProgressBar progressBar2 = (ProgressBar) view.findViewById(R.id.progressBar2);
+		progressBar2 = (ProgressBar) view.findViewById(R.id.progressBar2);
 		progressBar2.setProgress(member2.calculateWeeklyPercentage());
 		progressBar2.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
-		ProgressBar progressBar3 = (ProgressBar) view.findViewById(R.id.progressBar3);
+		progressBar3 = (ProgressBar) view.findViewById(R.id.progressBar3);
 		progressBar3.setProgress(member3.calculateWeeklyPercentage());
 		progressBar3.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
-		ProgressBar progressBar4 = (ProgressBar) view.findViewById(R.id.progressBar4);
+		progressBar4 = (ProgressBar) view.findViewById(R.id.progressBar4);
 		progressBar4.setProgress(member4.calculateWeeklyPercentage());
 		progressBar4.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
-		ProgressBar progressBar5 = (ProgressBar) view.findViewById(R.id.progressBar5);
+		progressBar5 = (ProgressBar) view.findViewById(R.id.progressBar5);
 		progressBar5.setProgress(member5.calculateWeeklyPercentage());
 		progressBar5.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
@@ -302,5 +319,19 @@ public class GroupFragment extends Fragment implements EventInterface, OnClickLi
 		percentage3.setText(member3.calculateWeeklyPercentage() + "%");
 		percentage4.setText(member4.calculateWeeklyPercentage() + "%");
 		percentage5.setText(member5.calculateWeeklyPercentage() + "%");
+		
+		//Target Points
+		targetPoints1.setText(String.valueOf(member1.calculateWeeklyTargetPoints()));
+		targetPoints2.setText(String.valueOf(member2.calculateWeeklyTargetPoints()));
+		targetPoints3.setText(String.valueOf(member3.calculateWeeklyTargetPoints()));
+		targetPoints4.setText(String.valueOf(member4.calculateWeeklyTargetPoints()));
+		targetPoints5.setText(String.valueOf(member5.calculateWeeklyTargetPoints()));
+
+		//progressBars
+		progressBar1.setProgress(member1.calculateWeeklyPercentage());
+		progressBar2.setProgress(member2.calculateWeeklyPercentage());
+		progressBar3.setProgress(member3.calculateWeeklyPercentage());
+		progressBar4.setProgress(member4.calculateWeeklyPercentage());
+		progressBar5.setProgress(member5.calculateWeeklyPercentage());
 	}
 }	

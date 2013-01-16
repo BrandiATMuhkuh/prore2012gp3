@@ -161,7 +161,7 @@ public class BoGroupMember {
 
 	public int calculateWeeklyCategoryPercentage(int category_id) {
 
-		double percentage = ((double) getWeeklyCategoryMinutes(category_id) / (double) getWeeklyTargetCategoryMins(category_id)) * 100;
+		double percentage = ((double) calculateWeeklyCategoryPoints(category_id) / (double) calculateWeeklyCategoryTargetPoints(category_id)) * 100;
 
 		Log.d("Test", "calculateWeeklyCategoryPercentage: " + percentage);
 		if (percentage > 100)
