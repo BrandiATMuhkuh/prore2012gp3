@@ -244,7 +244,6 @@ public class SingleStatistic extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) 
 			{
-				//loadProgress.setVisibility(View.VISIBLE);
 				DBHandler.updateWeeklyTargets(data.getCurrentMember().user_id, ausdauer_count, 
 						kraft_count, ballspiel_count, gym_count, leichte_count,new Date(System.currentTimeMillis()), 
 						new Time(System.currentTimeMillis()));
