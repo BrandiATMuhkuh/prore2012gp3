@@ -208,7 +208,7 @@ if (isset($_REQUEST['method'])) {
 	
 	else if ($_REQUEST['method'] == "updateUserDefaultCategory") {
 		
-		$q = mysql_query("UPDATE sm_user SET default_activity=".$_REQUEST['categroy_id']." WHERE user_id=".$_REQUEST['user_id']);
+		$q = mysql_query("UPDATE sm_user SET default_activity=".$_REQUEST['category_id']." WHERE user_id=".$_REQUEST['user_id']);
 		
 
 		if($q) print("ok");

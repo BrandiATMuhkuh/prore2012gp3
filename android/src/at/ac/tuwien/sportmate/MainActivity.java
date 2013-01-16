@@ -57,6 +57,8 @@ ActionBar.TabListener {
 
 		// check DB for active members and write into appData
 		this.countActiveGroupMembers();
+		//check for Target Changes
+		this.checkForTargetChanges();
 
 		mNotificationManager = (NotificationManager) this
 				.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -155,11 +157,15 @@ ActionBar.TabListener {
 		
 		SingleStatistic singleFragement = (SingleStatistic) mAppSectionsPagerAdapter
 			.getActiveFragment(mViewPager, 1);
+		if(singleFragement != null){
 		singleFragement.updateView();
+		}
 		
 		GroupFragment groupFragment = (GroupFragment) mAppSectionsPagerAdapter
 			.getActiveFragment(mViewPager, 2);
-		groupFragment.updateView();
+		if(groupFragment != null){
+			groupFragment.updateView();
+			}
 	}
 
 	public static void showActivityStart() {
@@ -262,6 +268,40 @@ ActionBar.TabListener {
 		new Thread(runnable).start();
 
 	}
+	
+	public void checkForTargetChanges() {
+
+		Runnable runnable = new Runnable() 
+		{
+			@Override
+			public void run() {
+				while (true) {
+						 
+					ArrayList<BoGroupMember> group = AppData.getInstance().getCurrentGroup().groupMembers;
+					for (int i = 0; i < group.size(); i++)
+					{
+						if(group.get(i).user_id != AppData.getInstance().getCurrentMember().getUser_id())
+						{
+							if(group.get(i).seeIfWeeklyTargetChanged())
+							{
+								showNotificationForTargetChanges(group.get(i).user_id);
+							}
+						}
+					}
+
+					try {
+						// refresh intervall
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+
+			}
+		};
+		new Thread(runnable).start();
+
+	}
 
 	public void showNotificationForActiveMembers() {
 		int mId = 1;
@@ -281,6 +321,50 @@ ActionBar.TabListener {
 		.setSmallIcon(R.drawable.logo_app)
 		.setContentTitle(s)
 		.setContentText("Mach jetzt mit und sicher dir Bonuspunkte");
+
+		// Creates an explicit intent for an Activity in your app
+		Intent resultIntent = new Intent(this, MainActivity.class);
+
+		// The stack builder object will contain an artificial back stack for
+		// the
+		// started Activity.
+		// This ensures that navigating backward from the Activity leads out of
+		// your application to the Home screen.
+		TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+		// Adds the back stack for the Intent (but not the Intent itself)
+		stackBuilder.addParentStack(MainActivity.class);
+		// Adds the Intent that starts the Activity to the top of the stack
+		stackBuilder.addNextIntent(resultIntent);
+		PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,
+		PendingIntent.FLAG_UPDATE_CURRENT);
+		//mBuilder.setContentIntent(resultPendingIntent);
+
+
+
+		// added:
+		Notification notification = mBuilder.build();
+		// Will show lights and make the notification disappear when the presses
+		// it
+		notification.flags |= Notification.FLAG_AUTO_CANCEL
+				| Notification.FLAG_SHOW_LIGHTS;
+
+		// mId allows you to update the notification later on.
+		mNotificationManager.notify(mId, notification);
+
+	}
+	
+	public void showNotificationForTargetChanges(int user_id) {
+		int mId = 1;
+
+		BoGroupMember member = AppData.getInstance().getGroupMember(user_id);
+		String s = member.user_name + " hat sein Ziel auf " + member.getWeeklyTargetMinutes() + " Minunten geŠndert.";
+		
+
+		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+				this)
+		.setSmallIcon(R.drawable.logo_app)
+		.setContentTitle(s)
+		.setContentText("");
 
 		// Creates an explicit intent for an Activity in your app
 		Intent resultIntent = new Intent(this, MainActivity.class);
