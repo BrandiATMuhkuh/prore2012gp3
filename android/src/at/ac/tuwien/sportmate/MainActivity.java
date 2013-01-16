@@ -21,6 +21,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 public class MainActivity extends FragmentActivity implements
 ActionBar.TabListener {
@@ -279,9 +280,8 @@ ActionBar.TabListener {
 		{
 			@Override
 			public void run() {
-				while (targetNotified) 
+				while (!targetNotified) 
 				{
-					targetNotified = true;
 					ArrayList<BoGroupMember> group = AppData.getInstance().getCurrentGroup().groupMembers;
 					for (int i = 0; i < group.size(); i++)
 					{
@@ -302,6 +302,7 @@ ActionBar.TabListener {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					targetNotified = true;
 				}
 
 			}
@@ -360,8 +361,9 @@ ActionBar.TabListener {
 
 	}
 	
-	public void showNotificationForTargetChanges() {
-		int mId = 1;
+	public void showNotificationForTargetChanges() 
+	{
+		int mId = 2;
 		String s = "";
 		if(notificationList.size() == 0)
 		{
@@ -409,8 +411,7 @@ ActionBar.TabListener {
 		Notification notification = mBuilder.build();
 		// Will show lights and make the notification disappear when the presses
 		// it
-		notification.flags |= Notification.FLAG_AUTO_CANCEL
-				| Notification.FLAG_SHOW_LIGHTS;
+		notification.flags |= Notification.FLAG_SHOW_LIGHTS;
 
 		// mId allows you to update the notification later on.
 		mNotificationManager.notify(mId, notification);
