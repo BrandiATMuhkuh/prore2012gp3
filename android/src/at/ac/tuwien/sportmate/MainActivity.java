@@ -36,7 +36,8 @@ ActionBar.TabListener {
 	private static Tab user; // my profile
 	private static boolean showMember; //true if user selects a member from GroupFragment 
 	private static boolean running;
-	private static ArrayList<Integer> notificationList;
+	private static ArrayList<BoGroupMember> notificationList;
+	public static boolean targetNotified = false;
 
 	private static ViewPager mViewPager;
 
@@ -61,7 +62,7 @@ ActionBar.TabListener {
 		//check for Target Changes
 		this.checkForTargetChanges();
 
-		notificationList = new ArrayList<Integer>();
+		notificationList = new ArrayList<BoGroupMember>();
 		
 		mNotificationManager = (NotificationManager) this
 				.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -278,22 +279,22 @@ ActionBar.TabListener {
 		{
 			@Override
 			public void run() {
-				while (true) 
+				while (targetNotified) 
 				{
-						 
+					targetNotified = true;
 					ArrayList<BoGroupMember> group = AppData.getInstance().getCurrentGroup().groupMembers;
 					for (int i = 0; i < group.size(); i++)
 					{
 						if(group.get(i).user_id != AppData.getInstance().getCurrentMember().getUser_id())
 						{
 							group.get(i).weeklyTargets = DBHandler.getWeeklyTargetsFromUser(group.get(i).user_id);
-							if(group.get(i).seeIfWeeklyTargetChanged() && !notificationList.contains(group.get(i).user_id))
+							if(group.get(i).seeIfWeeklyTargetChanged())
 							{
-								showNotificationForTargetChanges(group.get(i).user_id);
-								notificationList.add(group.get(i).user_id);
+								notificationList.add(group.get(i));
 							}
 						}
 					}
+					showNotificationForTargetChanges();
 
 					try {
 						// refresh intervall
@@ -359,18 +360,31 @@ ActionBar.TabListener {
 
 	}
 	
-	public void showNotificationForTargetChanges(int user_id) {
+	public void showNotificationForTargetChanges() {
 		int mId = 1;
-
-		BoGroupMember member = AppData.getInstance().getGroupMember(user_id);
-		String s = member.user_name + " hat sein Ziel auf " + member.getWeeklyTargetMinutes() + " Minunten geŠndert.";
+		String s = "";
+		if(notificationList.size() == 0)
+		{
+			return;
+		}
 		
+		if (notificationList.size() >= 1)
+		{
+			s = notificationList.get(0).getUser_name() + " hat sein Ziel auf " + notificationList.get(0).getWeeklyTargetMinutes() + " geŠndert"; 
+		}
+		if (notificationList.size() > 1)
+		{
+			for(int i = 1; i < notificationList.size(); i++)
+			{// maxi « =.. 
+				s += "," + notificationList.get(i).getUser_name() + " hat sein Ziel auf " + notificationList.get(i).getWeeklyTargetMinutes() + " geŠndert,"; 
+			}
+		} 
 
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
 				this)
 		.setSmallIcon(R.drawable.logo_app)
-		.setContentTitle(s)
-		.setContentText("");
+		.setContentTitle("Jemand hat sein Wochenziel geŠndert")
+		.setContentText(s);
 
 		// Creates an explicit intent for an Activity in your app
 		Intent resultIntent = new Intent(this, MainActivity.class);
