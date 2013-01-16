@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +52,7 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	TextView targetPoints3;
 	TextView targetPoints4;
 	TextView targetPoints5;
+	TextView loadText;
 
 	ProgressBar progressBar1;
 	ProgressBar progressBar2;
@@ -62,7 +65,7 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	private int ballspiel_count;
 	private int gym_count;
 	private int leichte_count;
-	
+
 	TextView ac;
 	TextView kc;
 	TextView sc;
@@ -71,6 +74,7 @@ public class SingleStatistic extends Fragment implements EventInterface {
 	TextView gesamt;
 	LinearLayout selectTargets;
 	LinearLayout showStats;
+	LinearLayout ueberLinerLayout;
 	Button changeTargets;
 	Button saveTargets;
 
@@ -198,8 +202,13 @@ public class SingleStatistic extends Fragment implements EventInterface {
 		progressBar5.setProgress(member.calculateWeeklyCategoryPercentage(5));
 		progressBar5.setProgressDrawable(getResources().getDrawable(R.drawable.progress_horizontal));
 
-		//----------Init Buttons--------//
+		ueberLinerLayout = (LinearLayout) view.findViewById(R.id.ueberLinerLayout);
 		
+		loadText = (TextView)view.findViewById(R.id.loadText);
+		loadText.setVisibility(View.GONE);
+
+		//----------Init Buttons--------//
+
 		showProfile = (Button)view.findViewById(R.id.selectMyUser);
 		showProfile.setOnClickListener(new View.OnClickListener()
 		{
@@ -219,10 +228,10 @@ public class SingleStatistic extends Fragment implements EventInterface {
 			showProfile.setVisibility(View.VISIBLE);
 			Log.d("Debug", "Des is wer anders");
 		}
-		
+
 		changeTargets = (Button) view.findViewById(R.id.changeTargets);
 		saveTargets = (Button) view.findViewById(R.id.saveTargets);
-		
+
 		if(member.user_id != AppData.getInstance().getCurrentMember().user_id)
 		{
 			changeTargets.setVisibility(View.GONE);
@@ -238,27 +247,37 @@ public class SingleStatistic extends Fragment implements EventInterface {
 				scrollView.fullScroll(ScrollView.FOCUS_UP);
 			}
 		});
-		
+
 		saveTargets.setVisibility(View.GONE);
-		saveTargets.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				DBHandler.updateWeeklyTargets(data.getCurrentMember().user_id, ausdauer_count, 
-						kraft_count, ballspiel_count, gym_count, leichte_count,new Date(System.currentTimeMillis()), 
-						new Time(System.currentTimeMillis()));
-				member.setWeeklyTarget(1, ausdauer_count);
-				member.setWeeklyTarget(2, kraft_count);
-				member.setWeeklyTarget(3, ballspiel_count);
-				member.setWeeklyTarget(4, gym_count);
-				member.setWeeklyTarget(5, leichte_count);
-				
-				MainActivity.updateAllViews();
-			}
+		
+		saveTargets.setOnTouchListener(new OnTouchListener() 
+		{
+		    @Override
+		    public boolean onTouch(View v, MotionEvent event) {
+		        if(event.getAction() == MotionEvent.ACTION_DOWN) 
+		        {
+		        	loadText.setVisibility(View.VISIBLE);
+		        	ueberLinerLayout.setAlpha((float)0.3);
+		        } else if (event.getAction() == MotionEvent.ACTION_UP) 
+		        {
+		        	member.setWeeklyTarget(1, ausdauer_count);
+					member.setWeeklyTarget(2, kraft_count);
+					member.setWeeklyTarget(3, ballspiel_count);
+					member.setWeeklyTarget(4, gym_count);
+					member.setWeeklyTarget(5, leichte_count);
+
+					DBHandler.updateWeeklyTargets(data.getCurrentMember().user_id, ausdauer_count, 
+							kraft_count, ballspiel_count, gym_count, leichte_count,new Date(System.currentTimeMillis()), 
+							new Time(System.currentTimeMillis()));
+
+					MainActivity.updateAllViews();
+		        }
+		        return true;
+		    }
 		});
 
 		//--------------Select Target------------//
-		
+
 		//Ausdauer 
 		ac = (TextView)view.findViewById(R.id.ausdauer_count);
 		((Button) view.findViewById(R.id.ausdauer_down)).setOnClickListener(new View.OnClickListener() {
@@ -358,13 +377,13 @@ public class SingleStatistic extends Fragment implements EventInterface {
 				refreshPoints();
 			}
 		});
-		
+
 		gesamt = (TextView)view.findViewById(R.id.gesamt_count);
 		selectTargets = (LinearLayout)view.findViewById(R.id.selectTarget);
 		selectTargets.setVisibility(View.GONE);
-		
+
 		showStats = (LinearLayout)view.findViewById(R.id.showStats);
-		
+
 		initTargets();
 
 		return view;
@@ -424,7 +443,6 @@ public class SingleStatistic extends Fragment implements EventInterface {
 
 	public void updateView()
 	{
-
 		member = data.getCurrentViewedMember();
 
 		if (member == null) member = data.getCurrentMember();
@@ -470,41 +488,44 @@ public class SingleStatistic extends Fragment implements EventInterface {
 			changeTargets.setVisibility(View.GONE);
 			Log.d("Debug", "Des is wer anders");
 		}
+
+    	ueberLinerLayout.setAlpha(1);
 		
 		selectTargets.setVisibility(View.GONE);
 		saveTargets.setVisibility(View.GONE);
 		showStats.setVisibility(View.VISIBLE);
-		
+		loadText.setVisibility(View.GONE);
+
 		scrollView.fullScroll(ScrollView.FOCUS_UP);
 	}
-	
+
 	private void refreshPoints(){
 		//Gesamtcount
 		Log.d(this.getClass().getSimpleName(), "refreshing Points");
 		double punkte = ausdauer_count*1.2 +
-						 kraft_count*1.1 +
-						 ballspiel_count*1.0 +
-						 gym_count*0.9 +
-						 leichte_count*0.8;
+				kraft_count*1.1 +
+				ballspiel_count*1.0 +
+				gym_count*0.9 +
+				leichte_count*0.8;
 		gesamt.setText(" " + String.valueOf((int)punkte));
 	}
-	
+
 	private void initTargets(){
-		
+
 		//daten aus db
 		ausdauer_count = member.getWeeklyTargetCategoryMins(1); 
 		kraft_count = member.getWeeklyTargetCategoryMins(2);
 		ballspiel_count = member.getWeeklyTargetCategoryMins(3);
 		gym_count = member.getWeeklyTargetCategoryMins(4);
 		leichte_count = member.getWeeklyTargetCategoryMins(5);
-		
+
 		ac.setText(String.format("%3d min", ausdauer_count));
 		kc.setText(String.format("%3d min", kraft_count));
 		sc.setText(String.format("%3d min", ballspiel_count));
 		gc.setText(String.format("%3d min", gym_count));
 		lc.setText(String.format("%3d min", leichte_count));
-		
+
 		refreshPoints();
-		
+
 	}
 }

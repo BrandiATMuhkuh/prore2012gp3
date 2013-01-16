@@ -61,7 +61,7 @@ ActionBar.TabListener {
 		// check DB for active members and write into appData
 		this.countActiveGroupMembers();
 		//check for Target Changes
-		//this.checkForTargetChanges();
+		this.checkForTargetChanges();
 
 		notificationList = new ArrayList<BoGroupMember>();
 		
@@ -353,8 +353,7 @@ ActionBar.TabListener {
 		Notification notification = mBuilder.build();
 		// Will show lights and make the notification disappear when the presses
 		// it
-		notification.flags |= Notification.FLAG_AUTO_CANCEL
-				| Notification.FLAG_SHOW_LIGHTS;
+		notification.flags |= Notification.FLAG_SHOW_LIGHTS;
 
 		// mId allows you to update the notification later on.
 		mNotificationManager.notify(mId, notification);
@@ -378,7 +377,7 @@ ActionBar.TabListener {
 		{
 			for(int i = 1; i < notificationList.size(); i++)
 			{// maxi « =.. 
-				s += "," + notificationList.get(i).getUser_name() + " hat sein Ziel auf " + notificationList.get(i).getWeeklyTargetMinutes() + " geŠndert,"; 
+				s += ", " + notificationList.get(i).getUser_name() + " hat sein Ziel auf " + notificationList.get(i).getWeeklyTargetMinutes() + " geŠndert,"; 
 			}
 		} 
 

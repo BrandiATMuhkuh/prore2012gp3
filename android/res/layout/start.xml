@@ -3,381 +3,394 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="fill_parent" >
 
         <LinearLayout
-            android:id="@+id/categoryChoose1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5px"
-            android:layout_marginRight="5px"
-            android:layout_marginTop="2px"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:padding="3px" >
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
-
-                <ImageView
-                    android:id="@+id/categoryImageMain1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="130px"
-                    android:background="@drawable/ausdauer_icon_2"
-                    android:clickable="false"
-                    android:focusable="false" />
-
-                <ImageView
-                    android:id="@+id/favorite_ausdauer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/favorite_inactive" />
-
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/categoryChoose2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5px"
-            android:layout_marginRight="5px"
-            android:layout_marginTop="2px"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:padding="3px" >
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
-
-                <ImageView
-                    android:id="@+id/categoryImageMain2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="130px"
-                    android:background="@drawable/kraft_icon_2"
-                    android:clickable="false"
-                    android:focusable="false" />
-
-                <ImageView
-                    android:id="@+id/favorite_kraft"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/favorite_inactive" />
-
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/categoryChoose3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5px"
-            android:layout_marginRight="5px"
-            android:layout_marginTop="2px"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:padding="3px" >
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
-
-                <ImageView
-                    android:id="@+id/categoryImageMain3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="130px"
-                    android:background="@drawable/ballsport_icon_2"
-                    android:clickable="false"
-                    android:focusable="false" />
-
-                <ImageView
-                    android:id="@+id/favorite_ballsport"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/favorite_inactive" />
-
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/categoryChoose4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5px"
-            android:layout_marginRight="5px"
-            android:layout_marginTop="2px"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:padding="3px" >
-
-           <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
-
-                <ImageView
-                    android:id="@+id/categoryImageMain4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="130px"
-                    android:background="@drawable/gymnastik_icon_2"
-                    android:clickable="false"
-                    android:focusable="false" />
-
-                <ImageView
-                    android:id="@+id/favorite_gymnastik"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/favorite_inactive" />
-
-            </RelativeLayout>
-            
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/categoryChoose5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5px"
-            android:layout_marginRight="5px"
-            android:layout_marginTop="2px"
-            android:background="@drawable/groupmember_selector"
-            android:clickable="true"
-            android:orientation="horizontal"
-            android:padding="3px" >
-
-            
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
-
-                <ImageView
-                    android:id="@+id/categoryImageMain5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="130px"
-                    android:background="@drawable/leichte_icon_2"
-                    android:clickable="false"
-                    android:focusable="false" />
-
-                <ImageView
-                    android:id="@+id/favorite_leichte"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/favorite_inactive" />
-
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/currentInformation"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5px"
-            android:layout_marginRight="5px"
-            android:layout_marginTop="2px"
-            android:background="@drawable/groupmember_selector"
             android:orientation="vertical"
-            android:padding="3px" >
+            android:id="@+id/ueberLinerLayout" >
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Fortschritt:"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/groupPercentage"
-                    style="@style/CategoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="%" />
-            </LinearLayout>
-
-            <ProgressBar
-                android:id="@+id/currentProgress"
-                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:id="@+id/categoryChoose1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/progress_horizontal" />
+                android:layout_marginLeft="5px"
+                android:layout_marginRight="5px"
+                android:layout_marginTop="2px"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="3px" >
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1px"
-                android:background="@color/dark_grey" />
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
-            <!-- ..............startzeit.............. -->
+                    <ImageView
+                        android:id="@+id/categoryImageMain1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130px"
+                        android:background="@drawable/ausdauer_icon_2"
+                        android:clickable="false"
+                        android:focusable="false" />
+
+                    <ImageView
+                        android:id="@+id/favorite_ausdauer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/favorite_inactive" />
+                </RelativeLayout>
+            </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/categoryChoose2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_marginLeft="5px"
+                android:layout_marginRight="5px"
+                android:layout_marginTop="2px"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="3px" >
 
-                <TextView
-                    android:id="@+id/lblStartzeit"
-                    style="@style/StandardTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="@string/starttime" />
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
-                <TextView
-                    android:id="@+id/lblStartzeitOut"
-                    style="@style/StandardTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="" />
+                    <ImageView
+                        android:id="@+id/categoryImageMain2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130px"
+                        android:background="@drawable/kraft_icon_2"
+                        android:clickable="false"
+                        android:focusable="false" />
+
+                    <ImageView
+                        android:id="@+id/favorite_kraft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/favorite_inactive" />
+                </RelativeLayout>
             </LinearLayout>
 
-            <!-- ............ zeit seit sport.......... -->
-
             <LinearLayout
+                android:id="@+id/categoryChoose3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_marginLeft="5px"
+                android:layout_marginRight="5px"
+                android:layout_marginTop="2px"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="3px" >
 
-                <TextView
-                    android:id="@+id/lblSportzeit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="@string/time" />
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
-                <TextView
-                    android:id="@+id/lblSportzeitOut"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="" />
+                    <ImageView
+                        android:id="@+id/categoryImageMain3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130px"
+                        android:background="@drawable/ballsport_icon_2"
+                        android:clickable="false"
+                        android:focusable="false" />
+
+                    <ImageView
+                        android:id="@+id/favorite_ballsport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/favorite_inactive" />
+                </RelativeLayout>
             </LinearLayout>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1px"
-                android:background="@color/dark_grey" />
-
-            <!-- ..........Punkte ............. -->
-
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:id="@+id/categoryChoose4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_marginLeft="5px"
+                android:layout_marginRight="5px"
+                android:layout_marginTop="2px"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="3px" >
 
-                <TextView
-                    android:id="@+id/lblPunkte"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="@string/points" />
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
-                <TextView
-                    android:id="@+id/lblPunkteOut"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="" />
+                    <ImageView
+                        android:id="@+id/categoryImageMain4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130px"
+                        android:background="@drawable/gymnastik_icon_2"
+                        android:clickable="false"
+                        android:focusable="false" />
+
+                    <ImageView
+                        android:id="@+id/favorite_gymnastik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/favorite_inactive" />
+                </RelativeLayout>
             </LinearLayout>
 
-            <!-- ........... Zusatzpunkte ................. -->
-
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:id="@+id/categoryChoose5"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_marginLeft="5px"
+                android:layout_marginRight="5px"
+                android:layout_marginTop="2px"
+                android:background="@drawable/groupmember_selector"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="3px" >
 
-                <TextView
-                    android:id="@+id/lblBonus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="Gruppenbonus" />
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
-                <TextView
-                    android:id="@+id/lblBonusOut"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="" />
+                    <ImageView
+                        android:id="@+id/categoryImageMain5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="130px"
+                        android:background="@drawable/leichte_icon_2"
+                        android:clickable="false"
+                        android:focusable="false" />
+
+                    <ImageView
+                        android:id="@+id/favorite_leichte"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/favorite_inactive" />
+                </RelativeLayout>
             </LinearLayout>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1px"
-                android:background="@color/dark_grey" />
-
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:id="@+id/currentInformation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5px"
+                android:layout_marginRight="5px"
+                android:layout_marginTop="2px"
+                android:background="@drawable/groupmember_selector"
+                android:orientation="vertical"
+                android:padding="3px" >
 
-                <TextView
-                    android:id="@+id/lblGroupMembersOut"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fortschritt:"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/groupPercentage"
+                        style="@style/CategoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="%" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/currentProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp" />
-            </LinearLayout>
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/progress_horizontal" />
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1px"
-                android:background="@color/dark_grey" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/dark_grey" />
 
-            <!-- ........... buttons für pause und stop activity ............... -->
+                <!-- ..............startzeit.............. -->
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <Button
-                    android:id="@+id/pauseActivity"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Pause"
-                    android:textColor="@color/group_member_color" />
+                    android:orientation="horizontal" >
 
-                <Button
-                    android:id="@+id/stopActivity"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/lblStartzeit"
+                        style="@style/StandardTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="@string/starttime" />
+
+                    <TextView
+                        android:id="@+id/lblStartzeitOut"
+                        style="@style/StandardTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="" />
+                </LinearLayout>
+
+                <!-- ............ zeit seit sport.......... -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Stop"
-                    android:textColor="@color/group_member_color" />
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/lblSportzeit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="@string/time" />
+
+                    <TextView
+                        android:id="@+id/lblSportzeitOut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/dark_grey" />
+
+                <!-- ..........Punkte ............. -->
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/lblPunkte"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="@string/points" />
+
+                    <TextView
+                        android:id="@+id/lblPunkteOut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="" />
+                </LinearLayout>
+
+                <!-- ........... Zusatzpunkte ................. -->
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/lblBonus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="Gruppenbonus" />
+
+                    <TextView
+                        android:id="@+id/lblBonusOut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/dark_grey" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblGroupMembersOut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/dark_grey" />
+
+                <!-- ........... buttons für pause und stop activity ............... -->
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/pauseActivity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pause"
+                        android:textColor="@color/group_member_color" />
+
+                    <Button
+                        android:id="@+id/stopActivity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Stop"
+                        android:textColor="@color/group_member_color" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/loadText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="40dp"
+            android:background="@drawable/groupmember_selector"
+            android:padding="20dp"
+            android:text="Laden..."
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:gravity="center" />
+    </RelativeLayout>
 
 </ScrollView>

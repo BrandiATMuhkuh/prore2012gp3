@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -60,6 +61,9 @@ public class StartFragment extends Fragment implements EventInterface,
 	LinearLayout category3;
 	LinearLayout category4;
 	LinearLayout category5;
+	LinearLayout ueberLinerLayout;
+	
+	TextView loadText;
 
 	ProgressBar currentProgress;
 
@@ -111,6 +115,7 @@ public class StartFragment extends Fragment implements EventInterface,
 		category3 = (LinearLayout) view.findViewById(R.id.categoryChoose3);
 		category4 = (LinearLayout) view.findViewById(R.id.categoryChoose4);
 		category5 = (LinearLayout) view.findViewById(R.id.categoryChoose5);
+		ueberLinerLayout = (LinearLayout) view.findViewById(R.id.ueberLinerLayout);
 
 		category1.setOnClickListener(this);
 		category2.setOnClickListener(this);
@@ -184,12 +189,37 @@ public class StartFragment extends Fragment implements EventInterface,
 		lblGroupmembersOut = (TextView) view
 				.findViewById(R.id.lblGroupMembersOut);
 		lblBonusOut = (TextView) view.findViewById(R.id.lblBonusOut);
+		
+		loadText = (TextView)view.findViewById(R.id.loadText);
+		loadText.setVisibility(View.GONE);
 
 		btnStop.setVisibility(View.VISIBLE);
 
 		// / ..............listeners....................
 		/* ................. stop button klick auf stopbutton................ */
-		btnStop.setOnClickListener(this);
+		btnStop.setOnTouchListener(new OnTouchListener() 
+		{
+		    @Override
+		    public boolean onTouch(View v, MotionEvent event) {
+		        if(event.getAction() == MotionEvent.ACTION_DOWN) 
+		        {
+		        	loadText.setVisibility(View.VISIBLE);	
+		        	ueberLinerLayout.setAlpha((float)0.3);
+		        } else if (event.getAction() == MotionEvent.ACTION_UP) 
+		        {
+		        	STOP = true;
+					PAUSE = false;
+					DBHandler.setActive(AppData.getInstance().getCurrentMember()
+							.getUser_id(), 0);
+					SportMateApplication.getApplication().setMyNotificatinoLight(0);
+					saveActivity();
+					resetLayout();
+					resetPoints();
+					MainActivity.updateAllViews();
+		        }
+		        return true;
+		    }
+		});;
 
 		/* ................. stop button klick auf stopbutton................ */
 		btnPause.setOnClickListener(new View.OnClickListener() {
@@ -564,6 +594,7 @@ public class StartFragment extends Fragment implements EventInterface,
 
 	private void resetLayout() 
 	{
+		
 		final AlphaAnimation aa = new AlphaAnimation(1, 0);
 		aa.setDuration(500);
 		aa.setAnimationListener(new AnimationListener() {
@@ -597,6 +628,8 @@ public class StartFragment extends Fragment implements EventInterface,
 
 		selected_item.startAnimation(aa);
 		currentInformation.startAnimation(aa);
+    	ueberLinerLayout.setAlpha(1);
+		loadText.setVisibility(View.GONE);
 	}
 
 	private void saveActivity() {
