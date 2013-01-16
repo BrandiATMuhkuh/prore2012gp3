@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5px"
             android:layout_marginRight="5px"
-            android:layout_marginTop="5px"
+            android:layout_marginTop="4px"
             android:background="@drawable/groupmember_selector"
             android:clickable="true"
             android:orientation="horizontal"
@@ -34,12 +34,13 @@
                     android:focusable="false" />
 
                 <ImageView
-                    android:id="@+id/fav1"
+                    android:id="@+id/favorite_ausdauer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
-                    android:src="@drawable/favorite_inactive" />
+                    android:background="@drawable/favorite_inactive" />
+
             </RelativeLayout>
         </LinearLayout>
 
@@ -49,19 +50,33 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5px"
             android:layout_marginRight="5px"
-            android:layout_marginTop="5px"
+            android:layout_marginTop="4px"
             android:background="@drawable/groupmember_selector"
             android:clickable="true"
             android:orientation="horizontal"
             android:padding="3px" >
 
-            <ImageView
-                android:id="@+id/categoryImageMain2"
-                android:layout_width="wrap_content"
-                android:layout_height="130px"
-                android:background="@drawable/kraft_icon_2"
-                android:clickable="false"
-                android:focusable="false" />
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <ImageView
+                    android:id="@+id/categoryImageMain2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130px"
+                    android:background="@drawable/kraft_icon_2"
+                    android:clickable="false"
+                    android:focusable="false" />
+
+                <ImageView
+                    android:id="@+id/favorite_kraft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/favorite_inactive" />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -70,19 +85,33 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5px"
             android:layout_marginRight="5px"
-            android:layout_marginTop="5px"
+            android:layout_marginTop="4px"
             android:background="@drawable/groupmember_selector"
             android:clickable="true"
             android:orientation="horizontal"
             android:padding="3px" >
 
-            <ImageView
-                android:id="@+id/categoryImageMain3"
-                android:layout_width="wrap_content"
-                android:layout_height="130px"
-                android:background="@drawable/ballsport_icon_2"
-                android:clickable="false"
-                android:focusable="false" />
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <ImageView
+                    android:id="@+id/categoryImageMain3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130px"
+                    android:background="@drawable/ballsport_icon_2"
+                    android:clickable="false"
+                    android:focusable="false" />
+
+                <ImageView
+                    android:id="@+id/favorite_ballsport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/favorite_inactive" />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -91,19 +120,34 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5px"
             android:layout_marginRight="5px"
-            android:layout_marginTop="5px"
+            android:layout_marginTop="4px"
             android:background="@drawable/groupmember_selector"
             android:clickable="true"
             android:orientation="horizontal"
             android:padding="3px" >
 
-            <ImageView
-                android:id="@+id/categoryImageMain4"
-                android:layout_width="wrap_content"
-                android:layout_height="130px"
-                android:background="@drawable/gymnastik_icon_2"
-                android:clickable="false"
-                android:focusable="false" />
+           <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <ImageView
+                    android:id="@+id/categoryImageMain4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130px"
+                    android:background="@drawable/gymnastik_icon_2"
+                    android:clickable="false"
+                    android:focusable="false" />
+
+                <ImageView
+                    android:id="@+id/favorite_gymnastik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/favorite_inactive" />
+
+            </RelativeLayout>
+            
         </LinearLayout>
 
         <LinearLayout
@@ -112,19 +156,34 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5px"
             android:layout_marginRight="5px"
-            android:layout_marginTop="5px"
+            android:layout_marginTop="4px"
             android:background="@drawable/groupmember_selector"
             android:clickable="true"
             android:orientation="horizontal"
             android:padding="3px" >
 
-            <ImageView
-                android:id="@+id/categoryImageMain5"
-                android:layout_width="wrap_content"
-                android:layout_height="130px"
-                android:background="@drawable/leichte_icon_2"
-                android:clickable="false"
-                android:focusable="false" />
+            
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <ImageView
+                    android:id="@+id/categoryImageMain5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130px"
+                    android:background="@drawable/leichte_icon_2"
+                    android:clickable="false"
+                    android:focusable="false" />
+
+                <ImageView
+                    android:id="@+id/favorite_leichte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/favorite_inactive" />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -133,7 +192,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="5px"
             android:layout_marginRight="5px"
-            android:layout_marginTop="5px"
+            android:layout_marginTop="4px"
             android:background="@drawable/groupmember_selector"
             android:orientation="vertical"
             android:padding="3px" >

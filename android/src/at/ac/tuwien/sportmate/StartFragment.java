@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Timer;
+
+import android.app.Application;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -23,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class StartFragment extends Fragment implements EventInterface,
 		OnClickListener {
@@ -38,6 +41,14 @@ public class StartFragment extends Fragment implements EventInterface,
 
 	LinearLayout currentInformation;
 
+	ImageView fav_image1;
+	ImageView fav_image2;
+	ImageView fav_image3;
+	ImageView fav_image4;
+	ImageView fav_image5;
+	
+	
+	
 	ImageView image1;
 	ImageView image2;
 	ImageView image3;
@@ -123,6 +134,23 @@ public class StartFragment extends Fragment implements EventInterface,
 		image4.setOnClickListener(this);
 		image5 = (ImageView) view.findViewById(R.id.categoryImageMain5);
 		image5.setOnClickListener(this);
+		
+		
+		fav_image1 = (ImageView) view.findViewById(R.id.favorite_ausdauer);
+		fav_image1.setVisibility(View.GONE);
+		fav_image1.setOnClickListener(this);
+		fav_image2 = (ImageView) view.findViewById(R.id.favorite_kraft);
+		fav_image2.setVisibility(View.GONE);
+		fav_image2.setOnClickListener(this);
+		fav_image3 = (ImageView) view.findViewById(R.id.favorite_ballsport);
+		fav_image3.setVisibility(View.GONE);
+		fav_image3.setOnClickListener(this);
+	    fav_image4 = (ImageView) view.findViewById(R.id.favorite_gymnastik);
+	    fav_image4.setVisibility(View.GONE);
+	    fav_image4.setOnClickListener(this);
+	    fav_image5 = (ImageView) view.findViewById(R.id.favorite_leichte);
+	    fav_image5.setVisibility(View.GONE);
+	    fav_image5.setOnClickListener(this);
 
 		currentProgress = (ProgressBar) view.findViewById(R.id.currentProgress);
 		currentProgress.setProgressDrawable(getResources().getDrawable(
@@ -275,7 +303,41 @@ public class StartFragment extends Fragment implements EventInterface,
 			this.saveActivity();
 			this.resetLayout();
 			break;
+			
+		case R.id.favorite_ausdauer:
+			swapDefaultActivity(CategoryMappings.AUSDAUER, R.id.favorite_ausdauer);
+			break;
+		case R.id.favorite_ballsport:
+			swapDefaultActivity(CategoryMappings.BALLSPORT, R.id.favorite_ballsport);
+			break;
+		case R.id.favorite_gymnastik:
+			swapDefaultActivity(CategoryMappings.GYMNASTIK, R.id.favorite_gymnastik);
+			break;
+		case R.id.favorite_kraft:
+			swapDefaultActivity(CategoryMappings.KRAFT, R.id.favorite_kraft);
+			break;
+		case R.id.favorite_leichte:
+			swapDefaultActivity(CategoryMappings.LEICHT, R.id.favorite_leichte);
+			break;
 		}
+	}
+
+	private void swapDefaultActivity(int category, int resourceID) {
+		int defaultActivityID = AppData.getInstance().getCurrentMember().default_activity;
+
+		if(category == defaultActivityID){
+			Toast.makeText(this.getActivity().getApplicationContext(), "Categroy is already selected as favorite (default).", 2000).show();
+		} else {
+			AppData.getInstance().getCurrentMember().setDefault_activity(category);
+			int user_id = AppData.getInstance().getCurrentMember().getUser_id();
+			DBHandler.updateUserDefaultCategory(user_id, category);
+			Log.d("update default category", user_id + " " + category);
+			
+			ImageView fav = (ImageView) view.findViewById(resourceID);
+			fav.setImageResource(R.drawable.favorite_active);
+			fav.setVisibility(View.VISIBLE);
+		}
+		
 	}
 
 	private void selectCategoryView(View v) {
@@ -565,6 +627,13 @@ public class StartFragment extends Fragment implements EventInterface,
 		image3.setBackgroundResource(R.drawable.ballsport_icon_2);
 		image4.setBackgroundResource(R.drawable.gymnastik_icon_2);
 		image5.setBackgroundResource(R.drawable.leichte_icon_2);
+		
+		fav_image1.setVisibility(View.GONE);
+		fav_image1.setVisibility(View.GONE);
+		fav_image2.setVisibility(View.GONE);
+		fav_image3.setVisibility(View.GONE);
+		fav_image4.setVisibility(View.GONE);
+		fav_image5.setVisibility(View.GONE);
 
 		Log.d("setImage", String.valueOf(defaultActivityID));
 		Log.d("setImage", String.valueOf(activeCategoryID));
@@ -574,18 +643,28 @@ public class StartFragment extends Fragment implements EventInterface,
 			switch (activeCategoryID) {
 			case CategoryMappings.AUSDAUER:
 				image1.setBackgroundResource(R.drawable.ausdauer_banner);
+				fav_image1.setVisibility(View.VISIBLE);
+				fav_image1.setImageResource(R.drawable.favorite_inactive);
 				break;
 			case CategoryMappings.KRAFT:
 				image2.setBackgroundResource(R.drawable.kraft_banner);
+				fav_image2.setVisibility(View.VISIBLE);
+				fav_image2.setImageResource(R.drawable.favorite_inactive);
 				break;
 			case CategoryMappings.BALLSPORT:
 				image3.setBackgroundResource(R.drawable.ball_banner);
+				fav_image3.setVisibility(View.VISIBLE);
+				fav_image3.setImageResource(R.drawable.favorite_inactive);
 				break;
 			case CategoryMappings.GYMNASTIK:
 				image4.setBackgroundResource(R.drawable.gymnastik_banner);
+				fav_image4.setVisibility(View.VISIBLE);
+				fav_image4.setImageResource(R.drawable.favorite_inactive);
 				break;
 			case CategoryMappings.LEICHT:
 				image5.setBackgroundResource(R.drawable.leichte_banner);
+				fav_image5.setVisibility(View.VISIBLE);
+				fav_image5.setImageResource(R.drawable.favorite_inactive);
 				break;
 			}
 		} else {
@@ -593,19 +672,29 @@ public class StartFragment extends Fragment implements EventInterface,
 			// badge
 			switch (activeCategoryID) {
 			case CategoryMappings.AUSDAUER:
-				image1.setBackgroundResource(R.drawable.ausdauer_banner_fav);
+				image1.setBackgroundResource(R.drawable.ausdauer_banner);
+				fav_image1.setVisibility(View.VISIBLE);
+				fav_image1.setBackgroundResource(R.drawable.favorite_active);
 				break;
 			case CategoryMappings.KRAFT:
-				image2.setBackgroundResource(R.drawable.kraft_banner_fav);
+				image2.setBackgroundResource(R.drawable.kraft_banner);
+				fav_image2.setVisibility(View.VISIBLE);
+				fav_image2.setBackgroundResource(R.drawable.favorite_active);
 				break;
 			case CategoryMappings.BALLSPORT:
-				image3.setBackgroundResource(R.drawable.ball_banner_fav);
+				image3.setBackgroundResource(R.drawable.ball_banner);
+				fav_image3.setVisibility(View.VISIBLE);
+				fav_image3.setBackgroundResource(R.drawable.favorite_active);
 				break;
 			case CategoryMappings.GYMNASTIK:
-				image4.setBackgroundResource(R.drawable.gymnastik_banner_fav);
+				image4.setBackgroundResource(R.drawable.gymnastik_banner);
+				fav_image4.setVisibility(View.VISIBLE);
+				fav_image4.setBackgroundResource(R.drawable.favorite_active);
 				break;
 			case CategoryMappings.LEICHT:
-				image5.setBackgroundResource(R.drawable.leichtes_banner_fav);
+				image5.setBackgroundResource(R.drawable.leichte_banner);
+				fav_image5.setVisibility(View.VISIBLE);
+				fav_image5.setBackgroundResource(R.drawable.favorite_active);
 				break;
 			}
 		}
@@ -619,6 +708,12 @@ public class StartFragment extends Fragment implements EventInterface,
 		image3.setBackgroundResource(R.drawable.ballsport_icon_2);
 		image4.setBackgroundResource(R.drawable.gymnastik_icon_2);
 		image5.setBackgroundResource(R.drawable.leichte_icon_2);
+		
+		fav_image1.setVisibility(View.GONE);
+		fav_image2.setVisibility(View.GONE);
+		fav_image3.setVisibility(View.GONE);
+		fav_image4.setVisibility(View.GONE);
+		fav_image5.setVisibility(View.GONE);
 
 		// depending on the default activity, set the banner
 		switch (defaultActivityID) {
