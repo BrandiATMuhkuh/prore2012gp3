@@ -61,7 +61,7 @@ ActionBar.TabListener {
 		// check DB for active members and write into appData
 		this.countActiveGroupMembers();
 		//check for Target Changes
-		this.checkForTargetChanges();
+		//this.checkForTargetChanges();
 
 		notificationList = new ArrayList<BoGroupMember>();
 		
@@ -163,7 +163,7 @@ ActionBar.TabListener {
 		SingleStatistic singleFragement = (SingleStatistic) mAppSectionsPagerAdapter
 			.getActiveFragment(mViewPager, 1);
 		if(singleFragement != null){
-		singleFragement.updateView();
+			singleFragement.updateView();
 		}
 		
 		GroupFragment groupFragment = (GroupFragment) mAppSectionsPagerAdapter

@@ -293,6 +293,8 @@ public class StartFragment extends Fragment implements EventInterface,
 			SportMateApplication.getApplication().setMyNotificatinoLight(0);
 			this.saveActivity();
 			this.resetLayout();
+			this.resetPoints();
+			MainActivity.updateAllViews();
 			break;
 			
 		case R.id.favorite_ausdauer:
@@ -526,6 +528,14 @@ public class StartFragment extends Fragment implements EventInterface,
 								} else 
 								{
 									progress = ((member
+											.calculateWeeklyPoints()
+											+ points + bonusPoints) * 100)
+											/ member.calculateWeeklyTargetPoints();
+									currentProgress.setProgress((int) progress);
+									groupPercentage.setText((int) progress + "%");
+									
+									/*
+									progress = ((member
 											.calculateWeeklyCategoryPoints(selectedCategory
 													.getCategory_id())
 											+ points + bonusPoints) * 100)
@@ -533,6 +543,7 @@ public class StartFragment extends Fragment implements EventInterface,
 													.getCategory_id());
 									currentProgress.setProgress((int) progress);
 									groupPercentage.setText((int) progress + "%");
+									*/
 								}
 								
 							}
@@ -737,8 +748,8 @@ public class StartFragment extends Fragment implements EventInterface,
 			DBHandler.setActive(AppData.getInstance().getCurrentMember()
 					.getUser_id(), 0);
 			SportMateApplication.getApplication().setMyNotificatinoLight(0);
-			this.saveActivity();
-			this.resetLayout();
+			//this.saveActivity();
+			//this.resetLayout();
 		} else {
 			switch(defaultActivityID)
 			{case CategoryMappings.AUSDAUER:
@@ -763,5 +774,10 @@ public class StartFragment extends Fragment implements EventInterface,
 				break;
 			}
 		}
+	}
+	
+	private void resetPoints(){
+		points = 0;
+		bonusPoints = 0;
 	}
 }
