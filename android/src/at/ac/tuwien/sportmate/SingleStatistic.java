@@ -1,6 +1,9 @@
 package at.ac.tuwien.sportmate;
 
 
+import java.sql.Date;
+import java.sql.Time;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -241,7 +244,9 @@ public class SingleStatistic extends Fragment implements EventInterface {
 			@Override
 			public void onClick(View v) 
 			{
-				DBHandler.updateWeeklyTargets(data.getCurrentMember().user_id, ausdauer_count, kraft_count, ballspiel_count, gym_count, leichte_count);
+				DBHandler.updateWeeklyTargets(data.getCurrentMember().user_id, ausdauer_count, 
+						kraft_count, ballspiel_count, gym_count, leichte_count,new Date(System.currentTimeMillis()), 
+						new Time(System.currentTimeMillis()));
 				member.setWeeklyTarget(1, ausdauer_count);
 				member.setWeeklyTarget(2, kraft_count);
 				member.setWeeklyTarget(3, ballspiel_count);

@@ -44,7 +44,10 @@ if (isset($_REQUEST['method'])) {
 			print($row['category_id']."-!-");
 			print($row['category_name']."-!-");
 			print($row['category_intensity']."-!-");
-			print($row['weekly_target_min']."\n");
+			print($row['weekly_target_min']."-!-");
+			print($row['target_changed_at_date']."-!-");
+			print($row['target_changed_at_time']."\n");
+			
 		}
 	}
 	
@@ -173,11 +176,30 @@ if (isset($_REQUEST['method'])) {
 	else if ($_REQUEST['method'] == "updateWeeklyTargets") {
 		$user_id = $_REQUEST['user_id'];
 		
-		$q1 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat1_mins']." WHERE category_id=1 AND user_id=".$user_id);
-		$q2 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat2_mins']." WHERE category_id=2 AND user_id=".$user_id);
-		$q3 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat3_mins']." WHERE category_id=3 AND user_id=".$user_id);
-		$q4 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat4_mins']." WHERE category_id=4 AND user_id=".$user_id);
-		$q5 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat5_mins']." WHERE category_id=5 AND user_id=".$user_id);
+		$q1 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat1_mins'].
+							", target_changed_at_date = '".$_REQUEST['target_chanded_at_date']."'".
+							", target_changed_at_time = '".$_REQUEST['target_chanded_at_time']."'".
+							" WHERE category_id=1 AND user_id=".$user_id);
+							
+		$q2 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat2_mins'].
+							", target_changed_at_date = '".$_REQUEST['target_chanded_at_date']."'".
+							", target_changed_at_time = '".$_REQUEST['target_chanded_at_time']."'".
+							" WHERE category_id=2 AND user_id=".$user_id);
+							
+		$q3 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat3_mins'].
+							", target_changed_at_date = '".$_REQUEST['target_chanded_at_date']."'".
+							", target_changed_at_time = '".$_REQUEST['target_chanded_at_time']."'".
+							" WHERE category_id=3 AND user_id=".$user_id);
+							
+		$q4 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat4_mins'].
+							", target_changed_at_date = '".$_REQUEST['target_chanded_at_date']."'".
+							", target_changed_at_time = '".$_REQUEST['target_chanded_at_time']."'".
+							" WHERE category_id=4 AND user_id=".$user_id);
+							
+		$q5 = mysql_query("UPDATE sm_weeklyTarget SET weekly_target_min=".$_REQUEST['cat5_mins'].
+							", target_changed_at_date = '".$_REQUEST['target_chanded_at_date']."'".
+							", target_changed_at_time = '".$_REQUEST['target_chanded_at_time']."'".
+							" WHERE category_id=5 AND user_id=".$user_id);
 
 		if($q1 and $q2 and $q3 and $q4 and $q5) print("ok");
 		else print("nok");

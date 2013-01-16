@@ -213,15 +213,6 @@ public class StartFragment extends Fragment implements EventInterface,
 		return view;
 	}
 
-	public void stopActivity() {
-		STOP = true;
-
-		// berechnungen durchführen.
-		stop_time = System.currentTimeMillis();
-
-		duration = stop_time - start_time;
-	}
-
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.categoryChoose1:
@@ -739,27 +730,38 @@ public class StartFragment extends Fragment implements EventInterface,
 	public void startActivity()
 	{
 		int defaultActivityID = AppData.getInstance().getCurrentMember().default_activity;
-		switch(defaultActivityID)
-		{case CategoryMappings.AUSDAUER:
-			selectedCategory = AppData.getInstance().getCategories().get(0);
-			selectCategoryView(category1);
-			break;
-		case CategoryMappings.KRAFT:
-			selectedCategory = AppData.getInstance().getCategories().get(1);
-			selectCategoryView(category2);
-			break;
-		case CategoryMappings.BALLSPORT:
-			selectedCategory = AppData.getInstance().getCategories().get(2);
-			selectCategoryView(category3);
-			break;
-		case CategoryMappings.GYMNASTIK:
-			selectedCategory = AppData.getInstance().getCategories().get(3);
-			selectCategoryView(category4);
-			break;
-		case CategoryMappings.LEICHT:
-			selectedCategory = AppData.getInstance().getCategories().get(4);
-			selectCategoryView(category5);
-			break;
+		if(!STOP)
+		{
+			STOP = true;
+			PAUSE = false;
+			DBHandler.setActive(AppData.getInstance().getCurrentMember()
+					.getUser_id(), 0);
+			SportMateApplication.getApplication().setMyNotificatinoLight(0);
+			this.saveActivity();
+			this.resetLayout();
+		} else {
+			switch(defaultActivityID)
+			{case CategoryMappings.AUSDAUER:
+				selectedCategory = AppData.getInstance().getCategories().get(0);
+				selectCategoryView(category1);
+				break;
+			case CategoryMappings.KRAFT:
+				selectedCategory = AppData.getInstance().getCategories().get(1);
+				selectCategoryView(category2);
+				break;
+			case CategoryMappings.BALLSPORT:
+				selectedCategory = AppData.getInstance().getCategories().get(2);
+				selectCategoryView(category3);
+				break;
+			case CategoryMappings.GYMNASTIK:
+				selectedCategory = AppData.getInstance().getCategories().get(3);
+				selectCategoryView(category4);
+				break;
+			case CategoryMappings.LEICHT:
+				selectedCategory = AppData.getInstance().getCategories().get(4);
+				selectCategoryView(category5);
+				break;
+			}
 		}
 	}
 }
