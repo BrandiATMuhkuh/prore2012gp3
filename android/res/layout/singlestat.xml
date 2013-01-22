@@ -613,14 +613,12 @@
                 <Button
                     android:id="@+id/changeTargets"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="fill_parent"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/button_background"
-                    android:ems="10"
+					android:textColor="@color/group_member_color"
                     android:text="Ziele Ändern"
-                    android:textAllCaps="false"
-                    android:textSize="14dp" />
+                    android:textAllCaps="false"/>
             </RelativeLayout>
 
             <!-- Select Targets -->
@@ -913,14 +911,12 @@
                 <Button
                     android:id="@+id/saveTargets"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="fill_parent"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/button_background"
-                    android:ems="10"
+                    android:textColor="@color/group_member_color"
                     android:text="Ziele Speichern"
-                    android:textAllCaps="false"
-                    android:textSize="14dp" />
+                    android:textAllCaps="false"/>
             </RelativeLayout>
         </LinearLayout>
 
