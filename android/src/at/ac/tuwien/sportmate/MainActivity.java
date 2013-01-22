@@ -93,7 +93,7 @@ ActionBar.TabListener {
 		});
 		
 		//This means that the ViewPager will keep the Fragments in memory as long as they are less than three tabs away from the currently selected one
-		mViewPager.setOffscreenPageLimit(3);
+		mViewPager.setOffscreenPageLimit(4);
 
 		start = actionBar.newTab().setText("Start").setTabListener(this);
 		actionBar.addTab(start);
@@ -103,6 +103,10 @@ ActionBar.TabListener {
 
 		Tab tab = actionBar.newTab().setText("Gruppe").setTabListener(this);
 		actionBar.addTab(tab);
+		
+		tab = actionBar.newTab().setText("Hilfe").setTabListener(this);
+		actionBar.addTab(tab);
+
 
 		myTab = "Start";
 
@@ -197,6 +201,8 @@ ActionBar.TabListener {
 				return new SingleStatistic();
 			case 2:
 				return new GroupFragment();
+			case 3:
+				return new HelpFragment();
 			default:
 				return new StartFragment();
 			}
@@ -204,7 +210,7 @@ ActionBar.TabListener {
 
 		@Override
 		public int getCount() {
-			return 3;
+			return 4;
 		}
 
 		public Fragment getActiveFragment(ViewPager container, int position) {
