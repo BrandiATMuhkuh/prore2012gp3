@@ -1,6 +1,7 @@
 package at.ac.tuwien.sportmate;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -248,10 +249,15 @@ public class BoGroupMember {
 				java.sql.Date sqlDate = new java.sql.Date( date.getTime() );
 				
 				Log.d("seeIfWeeklyTargetChanged", user_id + " - " + w.getTarget_changed_at_date());
+				Log.d("seeIfWeeklyTargetChanged", user_id + " - " + sqlDate);
 				
-				if(sqlDate.getDay()==w.getTarget_changed_at_date().getDay() && 
-						sqlDate.getYear()==w.getTarget_changed_at_date().getYear()&&
-						sqlDate.getMonth()==w.getTarget_changed_at_date().getMonth())
+				SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+				String stringDate = format.format(sqlDate);
+				String stringDate2 = format.format(w.getTarget_changed_at_date());
+				
+				
+				
+				if(stringDate.equals(stringDate2))
 				{
 					return true;
 				}
